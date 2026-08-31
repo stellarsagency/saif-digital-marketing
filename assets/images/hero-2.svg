@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="bg-800-600" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f0f23"/>
+      <stop offset="50%" stop-color="#1a1a3e"/>
+      <stop offset="100%" stop-color="#2d1b69"/>
+    </linearGradient>
+    <filter id="glow-800">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <pattern id="grid-800" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/>
+    </pattern>
+    <radialGradient id="circle-800" cx="70%" cy="30%" r="60%">
+      <stop offset="0%" stop-color="#2d1b69" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f0f23" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg-800-600)"/>
+  <rect width="800" height="600" fill="url(#grid-800)"/>
+  <rect width="800" height="600" fill="url(#circle-800)"/>
+  <circle cx="640" cy="120" r="90" fill="#2d1b69" opacity="0.1"/>
+  <circle cx="120" cy="480" r="60" fill="#2d1b69" opacity="0.08"/>
+  <text x="50%" y="45%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="120" font-weight="800" fill="#ffffff" opacity="0.95" filter="url(#glow-800)">Data-Driven Strategies</text>
+  <text x="50%" y="62%" dominant-baseline="middle" text-anchor="middle" font-family="'Segoe UI',Arial,sans-serif" font-size="50" fill="rgba(255,255,255,0.7)" font-weight="400">Digital Marketing Agency</text>
+</svg>
