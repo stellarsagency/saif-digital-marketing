@@ -215,9 +215,9 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .clients-slide img {
   height: 36px; width: auto; object-fit: contain;
-  filter: grayscale(100%); opacity: 0.4; transition: var(--transition);
+  filter: grayscale(100%); opacity: 0.5; transition: var(--transition);
 }
-.clients-slide img:hover { opacity: 0.8; filter: grayscale(0%); }
+.clients-slide img:hover { opacity: 0.9; filter: grayscale(0%); }
 @keyframes scrollClients { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
 /* ==================== EXPERIENCE / STATS ==================== */
