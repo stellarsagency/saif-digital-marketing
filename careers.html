@@ -2,206 +2,56 @@
 <html lang="en">
 <head>
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Careers - Saif Digital Marketing Agency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <style>
-    /* ==================== CAREERS PAGE SPECIFIC ==================== */
-    .career-features-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .career-feature-card {
-      text-align: center; padding: 36px 20px; background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); transition: var(--transition);
-    }
-    .career-feature-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-4px); }
-    .career-feature-icon {
-      display: flex; align-items: center; justify-content: center; width: 60px; height: 60px;
-      background: rgba(37,99,235,0.1); color: var(--primary); border-radius: 50%; margin: 0 auto 16px; font-size: 24px;
-    }
-    .career-feature-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-    .career-feature-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; }
-
-    /* Job Cards */
-    .jobs-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-    .job-card {
-      padding: 32px 28px; background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); transition: var(--transition); position: relative;
-    }
-    .job-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-2px); }
-    .job-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .job-card-title { font-size: 20px; font-weight: 700; color: var(--dark); }
-    .job-card-dept { font-size: 13px; color: var(--primary); font-weight: 600; margin-bottom: 10px; }
-    .job-card-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-    .job-tag {
-      display: inline-block; padding: 4px 12px; font-size: 12px; font-weight: 600;
-      border-radius: var(--radius-xl); background: rgba(37,99,235,0.08); color: var(--primary);
-    }
-    .job-tag.location { background: rgba(16,185,129,0.08); color: #10B981; }
-    .job-card-desc { font-size: 14px; color: var(--gray-500); line-height: 1.7; margin-bottom: 20px; }
-    .job-card-cta {
-      display: inline-flex; align-items: center; gap: 8px; padding: 10px 24px;
-      background: var(--primary); color: var(--white); font-size: 14px; font-weight: 600;
-      border-radius: var(--radius-md); text-decoration: none; transition: var(--transition); border: none; cursor: pointer;
-    }
-    .job-card-cta:hover { background: #1d4ed8; transform: translateY(-1px); }
-
-    /* Life at Agency */
-    .life-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .life-item {
-      height: 220px; border-radius: var(--radius-lg); overflow: hidden; position: relative;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .life-item:nth-child(1) { grid-column: span 2; }
-    .life-label {
-      color: var(--white); font-size: 16px; font-weight: 700; text-align: center;
-      padding: 12px 24px; background: rgba(0,0,0,0.15); border-radius: var(--radius-md);
-    }
-
-    /* Application Form */
-    .apply-form-wrapper {
-      max-width: 700px; margin: 0 auto; padding: 48px; background: var(--white);
-      border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-      box-shadow: var(--shadow-sm);
-    }
-    .apply-form-title { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 8px; }
-    .apply-form-subtitle { font-size: 15px; color: var(--gray-500); margin-bottom: 32px; }
-    .apply-form-group { margin-bottom: 20px; }
-    .apply-form-label { display: block; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
-    .apply-form-input, .apply-form-select, .apply-form-file {
-      width: 100%; padding: 12px 16px; font-size: 14px; border: 1px solid var(--gray-200);
-      border-radius: var(--radius-md); background: var(--white); color: var(--dark);
-      transition: var(--transition); outline: none;
-    }
-    .apply-form-input:focus, .apply-form-select:focus, .apply-form-file:focus {
-      border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
-    }
-    .apply-form-file { padding: 10px 16px; }
-    .apply-form-submit {
-      display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px;
-      background: var(--primary); color: var(--white); font-size: 15px; font-weight: 600;
-      border-radius: var(--radius-md); border: none; cursor: pointer; transition: var(--transition);
-    }
-    .apply-form-submit:hover { background: #1d4ed8; transform: translateY(-1px); }
-
-    /* Hero Slider */
-    .careers-hero-slider-wrap {
-      position: relative; width: 100%; height: 100%;
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .careers-hero-slide {
-      position: absolute; inset: 0; opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    .careers-hero-slide.active { opacity: 1; }
-    .careers-hero-slide img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
-    }
-    .careers-hero-slide-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(37,99,235,0.15) 0%, transparent 60%);
-      border-radius: var(--radius-lg);
-    }
-    .careers-hero-slide-dots {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; z-index: 10;
-    }
-    .careers-hero-dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: rgba(255,255,255,0.4); border: 2px solid rgba(255,255,255,0.6);
-      cursor: pointer; transition: var(--transition);
-    }
-    .careers-hero-dot.active { background: var(--white); border-color: var(--white); transform: scale(1.2); }
-    .careers-hero-slide-caption {
-      position: absolute; bottom: 50px; left: 24px; right: 24px;
-      background: rgba(15,23,42,0.7); backdrop-filter: blur(8px);
-      padding: 14px 20px; border-radius: var(--radius-md);
-      color: var(--white); font-size: 13px; font-weight: 500;
-    }
-    .careers-hero-slide-caption span { color: var(--primary-light); font-weight: 700; }
-
-    /* Life at Agency with images */
-    .life-item { position: relative; }
-    .life-item img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
-    .life-item::after { content: ''; position: absolute; inset: 0; background: rgba(0,0,0,0.35); border-radius: var(--radius-lg); }
-    .life-item .life-label { position: relative; z-index: 2; }
-
-    @media (max-width: 992px) {
-      .career-features-grid { grid-template-columns: repeat(2, 1fr); }
-      .jobs-grid { grid-template-columns: 1fr; }
-      .life-grid { grid-template-columns: repeat(2, 1fr); }
-      .life-item:nth-child(1) { grid-column: span 2; }
-      .life-item:nth-child(5) { grid-column: span 1; }
-    }
-    @media (max-width: 768px) {
-      .career-features-grid { grid-template-columns: 1fr; }
-      .life-grid { grid-template-columns: 1fr; }
-      .life-item:nth-child(1), .life-item:nth-child(5) { grid-column: span 1; }
-      .apply-form-wrapper { padding: 28px 20px; }
-    }
-  </style>
 </head>
 <body>
 
 <!-- ==================== HEADER ==================== -->
-<header class="site-header" id="site-header" role="banner">
-  <nav class="header-nav autocontent" aria-label="Main navigation">
+<header class="site-header" id="site-header">
+  <nav class="header-nav container">
     <div class="header-nav-inner">
       <div class="header-logo">
-        <a href="index.html" class="header-logo-link" aria-label="Saif Digital Home">
-          <svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="index.html" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
             <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
             <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-            <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/>
-            <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/>
-            <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/>
-            <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/>
-            <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/>
-            <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/>
           </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
         </a>
       </div>
 
-      <ul class="header-nav-desktop" role="menubar" aria-label="Main navigation" data-menu="desktop">
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
+      <ul class="header-nav-desktop">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
             Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false" aria-haspopup="true" aria-controls="mega-portfolio">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
             Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false" aria-haspopup="true" aria-controls="mega-company">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
             Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="contact.html" class="header-nav-link">Contact Us</a>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="careers.html" class="header-nav-link" style="color: var(--dark); font-weight: 700;">Careers</a>
         </li>
       </ul>
 
       <div class="header-actions">
-        <button type="button" class="header-search-trigger" aria-label="Search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <div class="header-language" role="group" aria-label="Language selection">
-          <a href="#" class="header-language-link active">English</a>
-        </div>
-        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-mobile-panel">
+        <a href="contact.html" class="header-cta">Get Started</a>
+        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
@@ -210,11 +60,10 @@
     </div>
   </nav>
 
-  <!-- Mega Menu Overlay -->
-  <div class="header-mega-overlay" id="megaOverlay" aria-hidden="true"></div>
+  <div class="header-mega-overlay" id="megaOverlay"></div>
 
   <!-- Mega Menu: Services -->
-  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
@@ -228,10 +77,9 @@
               <li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
               <li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
               <li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Create compelling content that drives conversions</span></a></li>
+              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic with strategic content creation</span></a></li>
               <li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Web Development</span><span class="header-mega-child-desc">Build fast, beautiful websites that convert</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Analytics & Reporting</span><span class="header-mega-child-desc">Data insights to optimize every marketing dollar</span></a></li>
+              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View our complete range of digital marketing services</span></a></li>
             </ul>
           </div>
         </div>
@@ -241,16 +89,18 @@
   </div>
 
   <!-- Mega Menu: Portfolio -->
-  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results and client success stories</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Portfolio</h3>
+              <p class="header-mega-desc">See our results and client success stories</p>
+            </div>
             <ul class="header-mega-child-grid">
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Client Results</span><span class="header-mega-child-desc">Measurable outcomes and ROI for our clients</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Industry Expertise</span><span class="header-mega-child-desc">Specialized strategies across multiple industries</span></a></li>
+              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
+              <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
             </ul>
           </div>
         </div>
@@ -260,16 +110,18 @@
   </div>
 
   <!-- Mega Menu: Company -->
-  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Company</h3>
+              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
+            </div>
             <ul class="header-mega-child-grid">
               <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
-              <li><a href="index.html#testimonials" class="header-mega-child-link"><span class="header-mega-child-title">Testimonials</span><span class="header-mega-child-desc">What our clients say about working with us</span></a></li>
-              <li><a href="index.html#process" class="header-mega-child-link"><span class="header-mega-child-title">Our Process</span><span class="header-mega-child-desc">How we deliver results step by step</span></a></li>
+              <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and marketing tips</span></a></li>
               <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team of digital experts</span></a></li>
             </ul>
           </div>
@@ -280,382 +132,353 @@
   </div>
 
   <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile">
-    <nav class="header-mobile-nav" aria-label="Mobile navigation">
+  <div class="header-mobile-panel" id="header-mobile-panel">
+    <nav class="header-mobile-nav">
       <ul class="header-mobile-list">
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-services" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">
+            Services
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-services">
             <li><a href="services/seo.html" class="header-mobile-link">SEO Optimization</a></li>
             <li><a href="services/social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
             <li><a href="services/ppc.html" class="header-mobile-link">PPC Advertising</a></li>
             <li><a href="services/email-marketing.html" class="header-mobile-link">Email Marketing</a></li>
             <li><a href="services/content-marketing.html" class="header-mobile-link">Content Marketing</a></li>
             <li><a href="services/brand-identity.html" class="header-mobile-link">Brand Identity</a></li>
-            <li><a href="services.html" class="header-mobile-link">Web Development</a></li>
-            <li><a href="services.html" class="header-mobile-link">Analytics & Reporting</a></li>
+            <li><a href="services.html" class="header-mobile-link">All Services</a></li>
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">Portfolio<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-portfolio" role="group">
-            <li><a href="portfolio.html" class="header-mobile-link">Case Studies</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Client Results</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Industry Expertise</a></li>
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">
+            Portfolio
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-portfolio">
+            <li><a href="portfolio.html" class="header-mobile-link">Portfolio</a></li>
+            <li><a href="case-studies.html" class="header-mobile-link">Case Studies</a></li>
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">Company<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-company" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">
+            Company
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-company">
             <li><a href="about.html" class="header-mobile-link">About Us</a></li>
-            <li><a href="index.html#testimonials" class="header-mobile-link">Testimonials</a></li>
-            <li><a href="index.html#process" class="header-mobile-link">Our Process</a></li>
+            <li><a href="blog.html" class="header-mobile-link">Blog</a></li>
             <li><a href="careers.html" class="header-mobile-link">Careers</a></li>
           </ul>
         </li>
         <li class="header-mobile-item"><a href="contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li>
-        <li class="header-mobile-item"><a href="careers.html" class="header-mobile-link header-mobile-link--direct active">Careers</a></li>
+        <li class="header-mobile-item"><a href="careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- ==================== HERO BANNER ==================== -->
-<section class="global-banner autocontent" aria-label="Careers banner">
-  <div class="global-banner__inner">
-    <div class="global-banner__info-col">
-      <div class="global-banner__info-inner">
-        <div class="global-banner__tagline">
-          <span class="tagline__text">Careers</span>
-        </div>
-        <h1 class="headline">
-          Build Your Career at
-          <br>
-          <span class="text-gradient">Saif Digital</span>
-        </h1>
-        <p class="global-banner__description">Join a team of passionate digital marketers, designers, and strategists who are shaping the future of digital marketing. We offer competitive salaries, flexible work, and growth opportunities.</p>
-        <div class="global-banner__cta">
-          <a href="#positions" class="primary-cta">View Openings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="global-banner__img-col">
-      <div class="global-banner__img-wrap">
-        <div class="careers-hero-slider-wrap" id="careersHeroSlider">
-          <div class="careers-hero-slide active">
-            <img src="assets/images/careers-1.jpg" alt="Team Collaboration">
-            <div class="careers-hero-slide-overlay"></div>
-            <div class="careers-hero-slide-caption">Teamwork <span>&rarr;</span> Collaborate with talented professionals</div>
-          </div>
-          <div class="careers-hero-slide">
-            <img src="assets/images/careers-2.jpg" alt="Creative Workspace">
-            <div class="careers-hero-slide-overlay"></div>
-            <div class="careers-hero-slide-caption">Innovation <span>&rarr;</span> A workspace that inspires creativity</div>
-          </div>
-          <div class="careers-hero-slide">
-            <img src="assets/images/careers-3.jpg" alt="Growth Opportunities">
-            <div class="careers-hero-slide-overlay"></div>
-            <div class="careers-hero-slide-caption">Growth <span>&rarr;</span> Build your career with us</div>
-          </div>
-          <div class="careers-hero-slide-dots">
-            <span class="careers-hero-dot active" data-slide="0"></span>
-            <span class="careers-hero-dot" data-slide="1"></span>
-            <span class="careers-hero-dot" data-slide="2"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ==================== PAGE BANNER ==================== -->
+<section class="page-banner">
+  <div class="container">
+    <span class="page-banner-tagline">Careers</span>
+    <h1>Build Your Career at<br><span class="text-gradient">Saif Digital</span></h1>
+    <p>Join a team of passionate digital marketers, designers, and strategists who are shaping the future of digital marketing. We offer competitive salaries, flexible work, and growth opportunities.</p>
+    <a href="#positions" class="primary-cta">View Openings <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-autocontent autocontent glass-effect">
-    <h3 class="clients-heading">The world's leading brands are powered by Saif Digital</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
+<!-- ==================== WHY JOIN US ==================== -->
+<section class="dark-section" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-stars"></i> Why Join Us</span>
+      <h2 class="section-title">Why You'll Love Working Here</h2>
+      <p class="section-desc">We invest in our people because great teams build great products.</p>
+    </div>
+    <div class="services-grid" style="grid-template-columns: repeat(4, 1fr);">
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-graph-up-arrow"></i></div>
+          <h3>Growth Opportunities</h3>
+          <p>Clear career paths, mentorship programs, and continuous learning to accelerate your professional growth.</p>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== WHY JOIN US ==================== -->
-<section class="autocontent" style="padding: 80px 0;">
-  <h2 class="insight-section-title">Why Join Us</h2>
-  <div class="career-features-grid">
-    <div class="career-feature-card">
-      <div class="career-feature-icon"><i class="bi bi-graph-up-arrow"></i></div>
-      <h3 class="career-feature-title">Growth Opportunities</h3>
-      <p class="career-feature-desc">Clear career paths, mentorship programs, and continuous learning opportunities to help you grow.</p>
-    </div>
-    <div class="career-feature-card">
-      <div class="career-feature-icon"><i class="bi bi-lightbulb"></i></div>
-      <h3 class="career-feature-title">Creative Environment</h3>
-      <p class="career-feature-desc">Work in a collaborative space where your ideas are valued and innovation is encouraged.</p>
-    </div>
-    <div class="career-feature-card">
-      <div class="career-feature-icon"><i class="bi bi-heart"></i></div>
-      <h3 class="career-feature-title">Competitive Benefits</h3>
-      <p class="career-feature-desc">Health insurance, unlimited PTO, remote work options, and performance bonuses.</p>
-    </div>
-    <div class="career-feature-card">
-      <div class="career-feature-icon"><i class="bi bi-people"></i></div>
-      <h3 class="career-feature-title">Team Culture</h3>
-      <p class="career-feature-desc">Regular team events, hackathons, and a supportive community that celebrates success.</p>
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-lightbulb"></i></div>
+          <h3>Creative Environment</h3>
+          <p>Work in a collaborative space where your ideas are valued and innovation is encouraged every day.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-heart"></i></div>
+          <h3>Competitive Benefits</h3>
+          <p>Health insurance, unlimited PTO, remote work options, and performance bonuses for top performers.</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-people"></i></div>
+          <h3>Team Culture</h3>
+          <p>Regular team events, hackathons, and a supportive community that celebrates success together.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== OPEN POSITIONS ==================== -->
-<section class="autocontent" id="positions" style="padding: 80px 0; background: var(--gray-50);">
-  <h2 class="insight-section-title">Open Positions</h2>
-  <div class="jobs-grid">
-
-    <div class="job-card">
-      <div class="job-card-top">
-        <div>
-          <h3 class="job-card-title">SEO Specialist</h3>
-          <p class="job-card-dept">Search Engine Optimization</p>
-        </div>
-      </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Full Time</span>
-        <span class="job-tag location">New York</span>
-      </div>
-      <p class="job-card-desc">Drive organic growth through technical SEO, content optimization, and link building strategies.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<section class="dark-section-2" id="positions" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-briefcase"></i> Open Positions</span>
+      <h2 class="section-title">Find Your Perfect Role</h2>
+      <p class="section-desc">We're always looking for talented people to join our team. Check out our current openings below.</p>
     </div>
+    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;">
 
-    <div class="job-card">
-      <div class="job-card-top">
+      <div class="job-card">
         <div>
-          <h3 class="job-card-title">Social Media Manager</h3>
-          <p class="job-card-dept">Social Media Marketing</p>
+          <h3>SEO Specialist</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> Search Engine Optimization</span>
+            <span><i class="bi bi-geo-alt"></i> New York</span>
+            <span><i class="bi bi-clock"></i> Full Time</span>
+          </div>
         </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Full Time</span>
-        <span class="job-tag location">Remote</span>
-      </div>
-      <p class="job-card-desc">Manage social media campaigns across Instagram, TikTok, LinkedIn, and Facebook.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
 
-    <div class="job-card">
-      <div class="job-card-top">
+      <div class="job-card">
         <div>
-          <h3 class="job-card-title">PPC Analyst</h3>
-          <p class="job-card-dept">Paid Advertising</p>
+          <h3>Social Media Manager</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> Social Media Marketing</span>
+            <span><i class="bi bi-geo-alt"></i> Remote</span>
+            <span><i class="bi bi-clock"></i> Full Time</span>
+          </div>
         </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Full Time</span>
-        <span class="job-tag location">New York</span>
-      </div>
-      <p class="job-card-desc">Optimize paid advertising campaigns across Google Ads and social platforms.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
 
-    <div class="job-card">
-      <div class="job-card-top">
+      <div class="job-card">
         <div>
-          <h3 class="job-card-title">Content Writer</h3>
-          <p class="job-card-dept">Content Marketing</p>
+          <h3>PPC Analyst</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> Paid Advertising</span>
+            <span><i class="bi bi-geo-alt"></i> New York</span>
+            <span><i class="bi bi-clock"></i> Full Time</span>
+          </div>
         </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Full / Part Time</span>
-        <span class="job-tag location">Remote</span>
-      </div>
-      <p class="job-card-desc">Create compelling blog posts, whitepapers, and marketing copy.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
 
-    <div class="job-card">
-      <div class="job-card-top">
+      <div class="job-card">
         <div>
-          <h3 class="job-card-title">Graphic Designer</h3>
-          <p class="job-card-dept">Creative & Design</p>
+          <h3>Content Writer</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> Content Marketing</span>
+            <span><i class="bi bi-geo-alt"></i> Remote</span>
+            <span><i class="bi bi-clock"></i> Full / Part Time</span>
+          </div>
         </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Full Time</span>
-        <span class="job-tag location">New York</span>
-      </div>
-      <p class="job-card-desc">Design visual content for social media, ads, and brand materials.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
 
-    <div class="job-card">
-      <div class="job-card-top">
+      <div class="job-card">
         <div>
-          <h3 class="job-card-title">Marketing Intern</h3>
-          <p class="job-card-dept">General Marketing</p>
+          <h3>Graphic Designer</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> Creative & Design</span>
+            <span><i class="bi bi-geo-alt"></i> New York</span>
+            <span><i class="bi bi-clock"></i> Full Time</span>
+          </div>
         </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="job-card-tags">
-        <span class="job-tag">Internship</span>
-        <span class="job-tag location">Remote</span>
-      </div>
-      <p class="job-card-desc">Learn digital marketing fundamentals while working on real client projects.</p>
-      <a href="#apply" class="job-card-cta">Apply Now <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
 
+      <div class="job-card">
+        <div>
+          <h3>Marketing Intern</h3>
+          <div class="job-meta">
+            <span><i class="bi bi-building"></i> General Marketing</span>
+            <span><i class="bi bi-geo-alt"></i> Remote</span>
+            <span><i class="bi bi-clock"></i> Internship</span>
+          </div>
+        </div>
+        <a href="#apply" class="primary-cta" style="padding: 10px 24px; font-size: 14px;">Apply Now <i class="bi bi-arrow-right"></i></a>
+      </div>
+
+    </div>
   </div>
 </section>
 
-<!-- ==================== LIFE AT AGENCY ==================== -->
-<section class="autocontent" style="padding: 80px 0;">
-  <h2 class="insight-section-title">Life at Saif Digital</h2>
-  <div class="life-grid">
-    <div class="life-item"><img src="assets/images/careers-1.jpg" alt="Team Collaboration"><span class="life-label">Team Collaboration</span></div>
-    <div class="life-item"><img src="assets/images/careers-2.jpg" alt="Creative Sessions"><span class="life-label">Creative Sessions</span></div>
-    <div class="life-item"><img src="assets/images/careers-3.jpg" alt="Office Events"><span class="life-label">Office Events</span></div>
-    <div class="life-item"><img src="assets/images/careers-4.jpg" alt="Brainstorming"><span class="life-label">Brainstorming</span></div>
-    <div class="life-item"><img src="assets/images/careers-5.jpg" alt="Celebrating Wins Together"><span class="life-label">Celebrating Wins Together</span></div>
+<!-- ==================== LIFE AT SAIF DIGITAL ==================== -->
+<section class="dark-section" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-camera"></i> Life at Saif Digital</span>
+      <h2 class="section-title">Our Team in Action</h2>
+      <p class="section-desc">A glimpse into the culture and environment that makes Saif Digital a great place to work.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/images/careers-1.jpg" alt="Team Collaboration">
+        <span class="gallery-item-label">Team Collaboration</span>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/careers-2.jpg" alt="Creative Sessions">
+        <span class="gallery-item-label">Creative Sessions</span>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/careers-3.jpg" alt="Office Events">
+        <span class="gallery-item-label">Office Events</span>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/careers-4.jpg" alt="Brainstorming">
+        <span class="gallery-item-label">Brainstorming</span>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/careers-5.jpg" alt="Celebrating Wins">
+        <span class="gallery-item-label">Celebrating Wins</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ==================== APPLICATION SECTION ==================== -->
-<section class="autocontent" id="apply" style="padding: 80px 0; background: var(--gray-50);">
-  <div class="apply-form-wrapper">
-    <h2 class="apply-form-title">Quick Apply</h2>
-    <p class="apply-form-subtitle">Interested in joining our team? Submit your application below and we'll get back to you shortly.</p>
-    <form id="applyForm">
-      <div class="apply-form-group">
-        <label class="apply-form-label" for="applyName">Full Name</label>
-        <input type="text" id="applyName" class="apply-form-input" placeholder="Enter your full name" required>
+<!-- ==================== QUICK APPLY FORM ==================== -->
+<section class="dark-section-2" id="apply" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-send"></i> Quick Apply</span>
+      <h2 class="section-title">Submit Your Application</h2>
+      <p class="section-desc">Interested in joining our team? Fill out the form below and we'll get back to you shortly.</p>
+    </div>
+    <div style="max-width: 700px; margin: 0 auto;">
+      <div class="contact-form">
+        <form id="applyForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="applyName">Full Name</label>
+              <input type="text" id="applyName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="applyEmail">Email Address</label>
+              <input type="email" id="applyEmail" placeholder="Enter your email address" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="applyPosition">Position</label>
+            <select id="applyPosition" required>
+              <option value="" disabled selected>Select a position</option>
+              <option value="seo-specialist">SEO Specialist</option>
+              <option value="social-media-manager">Social Media Manager</option>
+              <option value="ppc-analyst">PPC Analyst</option>
+              <option value="content-writer">Content Writer</option>
+              <option value="graphic-designer">Graphic Designer</option>
+              <option value="marketing-intern">Marketing Intern</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="applyResume">Resume / CV</label>
+            <input type="file" id="applyResume" accept=".pdf,.doc,.docx" required style="padding: 10px 16px;">
+          </div>
+          <button type="submit" class="primary-cta" style="width: 100%; justify-content: center;">Submit Application <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </form>
       </div>
-      <div class="apply-form-group">
-        <label class="apply-form-label" for="applyEmail">Email Address</label>
-        <input type="email" id="applyEmail" class="apply-form-input" placeholder="Enter your email address" required>
-      </div>
-      <div class="apply-form-group">
-        <label class="apply-form-label" for="applyPosition">Position</label>
-        <select id="applyPosition" class="apply-form-select" required>
-          <option value="" disabled selected>Select a position</option>
-          <option value="seo-specialist">SEO Specialist</option>
-          <option value="social-media-manager">Social Media Manager</option>
-          <option value="ppc-analyst">PPC Analyst</option>
-          <option value="content-writer">Content Writer</option>
-          <option value="graphic-designer">Graphic Designer</option>
-          <option value="marketing-intern">Marketing Intern</option>
-        </select>
-      </div>
-      <div class="apply-form-group">
-        <label class="apply-form-label" for="applyResume">Resume / CV</label>
-        <input type="file" id="applyResume" class="apply-form-file" accept=".pdf,.doc,.docx" required>
-      </div>
-      <button type="submit" class="apply-form-submit">Submit Application <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-    </form>
+    </div>
   </div>
 </section>
 
-<!-- ==================== NEWSLETTER ==================== -->
-<div class="newsletter-section-wrapper">
-  <div class="newsletter-pattern-side"><div class="newsletter-gradient-strip"></div></div>
-  <div class="newsletter-gradient-side"><div class="newsletter-gradient-overlay"></div></div>
-  <h1 class="newsletter-heading">Subscribe to our newsletter to get the latest news in your inbox.</h1>
-  <div class="newsletter-form-wrapper">
-    <form class="newsletter-form" id="newsletterForm">
-      <div class="newsletter-input-group">
+<!-- ==================== NEWSLETTER SECTION ==================== -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-left">
+      <img src="assets/images/newsletter-img.jpg" alt="Subscribe to Saif Digital Newsletter">
+    </div>
+    <div class="newsletter-right">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Get the latest digital marketing tips and industry insights delivered to your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
         <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-stats">
+        <div class="newsletter-stat">
+          <h4>15K+</h4>
+          <p>Subscribers</p>
+        </div>
+        <div class="newsletter-stat">
+          <h4>Weekly</h4>
+          <p>New Content</p>
+        </div>
+        <div class="newsletter-stat">
+          <h4>Free</h4>
+          <p>Always</p>
+        </div>
       </div>
-    </form>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-              <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-              <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
-            </svg>
-          </div>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
+            <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
+            <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
+          </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
+        </a>
+        <p>Data-driven digital marketing agency helping businesses grow through SEO, social media, PPC, and content strategy.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/seo.html">SEO Optimization</a></li>
-            <li><a href="services/social-media.html">Social Media Marketing</a></li>
-            <li><a href="services/ppc.html">PPC Advertising</a></li>
-            <li><a href="services/email-marketing.html">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html">Brand Identity</a></li>
-            <li><a href="services.html">Web Development</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Portfolio</h4>
-          <ul>
-            <li><a href="portfolio.html">Case Studies</a></li>
-            <li><a href="portfolio.html">Client Results</a></li>
-            <li><a href="portfolio.html">Industry Expertise</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Insights</h4>
-          <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="#">Guides</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Testimonials</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/seo.html">SEO</a></li>
+          <li><a href="services/social-media.html">Social Media</a></li>
+          <li><a href="services/ppc.html">PPC</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/content-marketing.html">Content Marketing</a></li>
+          <li><a href="services/brand-identity.html">Brand Identity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>123 Digital Avenue, Tech City, TC 12345</li>
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -669,43 +492,21 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var slides = document.querySelectorAll('#careersHeroSlider .careers-hero-slide');
-  var dots = document.querySelectorAll('#careersHeroSlider .careers-hero-dot');
-  var currentSlide = 0;
-  var slideInterval;
-
-  function goToSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-    currentSlide = index;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-  }
-
-  function startSlider() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
-      clearInterval(slideInterval);
-      goToSlide(parseInt(this.dataset.slide));
-      startSlider();
-    });
-  });
-
-  startSlider();
+document.getElementById('applyForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for your application! We will review it and get back to you soon.');
+  this.reset();
+});
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for subscribing!');
+  this.reset();
 });
 </script>
 </body>

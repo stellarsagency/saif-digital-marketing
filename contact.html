@@ -2,205 +2,56 @@
 <html lang="en">
 <head>
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Contact Us - Saif Digital Marketing Agency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <style>
-    /* ==================== CONTACT PAGE SPECIFIC ==================== */
-    .contact-info-section { padding: 80px 0; }
-    .contact-info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .contact-info-card {
-      text-align: center; padding: 40px 28px; background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); transition: var(--transition);
-    }
-    .contact-info-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-4px); }
-    .contact-info-icon {
-      display: flex; align-items: center; justify-content: center; width: 64px; height: 64px;
-      background: rgba(37,99,235,0.1); color: var(--primary); border-radius: 50%; margin: 0 auto 20px; font-size: 26px;
-    }
-    .contact-info-title { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 14px; }
-    .contact-info-detail { font-size: 14px; color: var(--gray-500); line-height: 1.8; }
-    .contact-info-detail a { color: var(--gray-600); text-decoration: none; transition: var(--transition); }
-    .contact-info-detail a:hover { color: var(--primary); }
-
-    .contact-form-section { padding: 80px 0; background: var(--gray-50); }
-    .contact-form-wrapper { max-width: 800px; margin: 0 auto; }
-    .contact-form-group { margin-bottom: 20px; }
-    .contact-form-label { display: block; font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 6px; }
-    .contact-form-input,
-    .contact-form-select,
-    .contact-form-textarea {
-      width: 100%; padding: 12px 16px; font-size: 14px; color: var(--dark); background: var(--white);
-      border: 1px solid var(--gray-300); border-radius: var(--radius-md); outline: none; transition: var(--transition);
-      font-family: inherit;
-    }
-    .contact-form-input:focus,
-    .contact-form-select:focus,
-    .contact-form-textarea:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37,99,235,0.1); }
-    .contact-form-textarea { resize: vertical; min-height: 140px; }
-    .contact-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-    .contact-form-submit {
-      display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; font-size: 15px;
-      font-weight: 600; color: var(--white); background: var(--primary); border: none; border-radius: var(--radius-md);
-      cursor: pointer; transition: var(--transition); font-family: inherit;
-    }
-    .contact-form-submit:hover { background: #1d4ed8; transform: translateY(-2px); box-shadow: var(--shadow-md); }
-
-    .map-section { padding: 0; }
-    .map-placeholder {
-      width: 100%; height: 400px; background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-      display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden;
-    }
-    .map-pin {
-      width: 60px; height: 60px; background: var(--primary); border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 16px; box-shadow: 0 4px 20px rgba(37,99,235,0.4);
-    }
-    .map-pin i { transform: rotate(45deg); color: var(--white); font-size: 24px; }
-    .map-label { color: var(--white); font-size: 16px; font-weight: 600; opacity: 0.9; }
-    .map-sublabel { color: rgba(255,255,255,0.6); font-size: 13px; margin-top: 4px; }
-    .map-grid-line {
-      position: absolute; background: rgba(255,255,255,0.05);
-    }
-    .map-grid-h { width: 100%; height: 1px; }
-    .map-grid-v { width: 1px; height: 100%; }
-    .map-grid-h:nth-child(1) { top: 25%; }
-    .map-grid-h:nth-child(2) { top: 50%; }
-    .map-grid-h:nth-child(3) { top: 75%; }
-    .map-grid-v:nth-child(4) { left: 25%; }
-    .map-grid-v:nth-child(5) { left: 50%; }
-    .map-grid-v:nth-child(6) { left: 75%; }
-
-    /* Hero Slider */
-    .contact-hero-slider-wrap {
-      position: relative; width: 100%; height: 100%;
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .contact-hero-slide {
-      position: absolute; inset: 0; opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    .contact-hero-slide.active { opacity: 1; }
-    .contact-hero-slide img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
-    }
-    .contact-hero-slide-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(37,99,235,0.15) 0%, transparent 60%);
-      border-radius: var(--radius-lg);
-    }
-    .contact-hero-slide-dots {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; z-index: 10;
-    }
-    .contact-hero-dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: rgba(255,255,255,0.4); border: 2px solid rgba(255,255,255,0.6);
-      cursor: pointer; transition: var(--transition);
-    }
-    .contact-hero-dot.active { background: var(--white); border-color: var(--white); transform: scale(1.2); }
-    .contact-hero-slide-caption {
-      position: absolute; bottom: 50px; left: 24px; right: 24px;
-      background: rgba(15,23,42,0.7); backdrop-filter: blur(8px);
-      padding: 14px 20px; border-radius: var(--radius-md);
-      color: var(--white); font-size: 13px; font-weight: 500;
-    }
-    .contact-hero-slide-caption span { color: var(--primary-light); font-weight: 700; }
-
-    /* Contact Info with images */
-    .contact-info-card { overflow: hidden; }
-    .contact-info-card-img {
-      width: 100%; height: 160px; object-fit: cover; border-radius: var(--radius-md);
-      margin-bottom: 20px;
-    }
-
-    /* Office Gallery */
-    .office-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; padding: 80px 0; }
-    .office-gallery-item {
-      border-radius: var(--radius-lg); overflow: hidden; position: relative;
-      height: 260px;
-    }
-    .office-gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .office-gallery-item:hover img { transform: scale(1.05); }
-    .office-gallery-item-overlay {
-      position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
-      display: flex; align-items: flex-end; padding: 20px;
-    }
-    .office-gallery-item-label { color: var(--white); font-size: 15px; font-weight: 600; }
-
-    @media (max-width: 992px) {
-      .contact-info-grid { grid-template-columns: 1fr; }
-      .contact-form-row { grid-template-columns: 1fr; }
-      .office-gallery { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 768px) {
-      .contact-info-card { padding: 28px 20px; }
-      .map-placeholder { height: 280px; }
-    }
-  </style>
 </head>
 <body>
 
 <!-- ==================== HEADER ==================== -->
-<header class="site-header" id="site-header" role="banner">
-  <nav class="header-nav autocontent" aria-label="Main navigation">
+<header class="site-header" id="site-header">
+  <nav class="header-nav container">
     <div class="header-nav-inner">
       <div class="header-logo">
-        <a href="index.html" class="header-logo-link" aria-label="Saif Digital Home">
-          <svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="index.html" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
             <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
             <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-            <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/>
-            <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/>
-            <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/>
-            <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/>
-            <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/>
-            <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/>
           </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
         </a>
       </div>
 
-      <ul class="header-nav-desktop" role="menubar" aria-label="Main navigation" data-menu="desktop">
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
+      <ul class="header-nav-desktop">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
             Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false" aria-haspopup="true" aria-controls="mega-portfolio">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
             Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false" aria-haspopup="true" aria-controls="mega-company">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
             Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="contact.html" class="header-nav-link" style="color: var(--dark); font-weight: 700;">Contact Us</a>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="careers.html" class="header-nav-link">Careers</a>
         </li>
       </ul>
 
       <div class="header-actions">
-        <button type="button" class="header-search-trigger" aria-label="Search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <div class="header-language" role="group" aria-label="Language selection">
-          <a href="#" class="header-language-link active">English</a>
-        </div>
-        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-mobile-panel">
+        <a href="contact.html" class="header-cta">Get Started</a>
+        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
@@ -209,11 +60,10 @@
     </div>
   </nav>
 
-  <!-- Mega Menu Overlay -->
-  <div class="header-mega-overlay" id="megaOverlay" aria-hidden="true"></div>
+  <div class="header-mega-overlay" id="megaOverlay"></div>
 
   <!-- Mega Menu: Services -->
-  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
@@ -227,10 +77,9 @@
               <li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
               <li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
               <li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Create compelling content that drives conversions</span></a></li>
+              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic with strategic content creation</span></a></li>
               <li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Web Development</span><span class="header-mega-child-desc">Build fast, beautiful websites that convert</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Analytics & Reporting</span><span class="header-mega-child-desc">Data insights to optimize every marketing dollar</span></a></li>
+              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View our complete range of digital marketing services</span></a></li>
             </ul>
           </div>
         </div>
@@ -240,16 +89,18 @@
   </div>
 
   <!-- Mega Menu: Portfolio -->
-  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results and client success stories</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Portfolio</h3>
+              <p class="header-mega-desc">See our results and client success stories</p>
+            </div>
             <ul class="header-mega-child-grid">
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Client Results</span><span class="header-mega-child-desc">Measurable outcomes and ROI for our clients</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Industry Expertise</span><span class="header-mega-child-desc">Specialized strategies across multiple industries</span></a></li>
+              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
+              <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
             </ul>
           </div>
         </div>
@@ -259,16 +110,18 @@
   </div>
 
   <!-- Mega Menu: Company -->
-  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Company</h3>
+              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
+            </div>
             <ul class="header-mega-child-grid">
               <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
-              <li><a href="index.html#testimonials" class="header-mega-child-link"><span class="header-mega-child-title">Testimonials</span><span class="header-mega-child-desc">What our clients say about working with us</span></a></li>
-              <li><a href="index.html#process" class="header-mega-child-link"><span class="header-mega-child-title">Our Process</span><span class="header-mega-child-desc">How we deliver results step by step</span></a></li>
+              <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and marketing tips</span></a></li>
               <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team of digital experts</span></a></li>
             </ul>
           </div>
@@ -279,307 +132,266 @@
   </div>
 
   <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile">
-    <nav class="header-mobile-nav" aria-label="Mobile navigation">
+  <div class="header-mobile-panel" id="header-mobile-panel">
+    <nav class="header-mobile-nav">
       <ul class="header-mobile-list">
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-services" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">
+            Services
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-services">
             <li><a href="services/seo.html" class="header-mobile-link">SEO Optimization</a></li>
             <li><a href="services/social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
             <li><a href="services/ppc.html" class="header-mobile-link">PPC Advertising</a></li>
             <li><a href="services/email-marketing.html" class="header-mobile-link">Email Marketing</a></li>
             <li><a href="services/content-marketing.html" class="header-mobile-link">Content Marketing</a></li>
             <li><a href="services/brand-identity.html" class="header-mobile-link">Brand Identity</a></li>
-            <li><a href="services.html" class="header-mobile-link">Web Development</a></li>
-            <li><a href="services.html" class="header-mobile-link">Analytics & Reporting</a></li>
+            <li><a href="services.html" class="header-mobile-link">All Services</a></li>
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">Portfolio<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-portfolio" role="group">
-            <li><a href="portfolio.html" class="header-mobile-link">Case Studies</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Client Results</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Industry Expertise</a></li>
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">
+            Portfolio
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-portfolio">
+            <li><a href="portfolio.html" class="header-mobile-link">Portfolio</a></li>
+            <li><a href="case-studies.html" class="header-mobile-link">Case Studies</a></li>
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">Company<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-company" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">
+            Company
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-company">
             <li><a href="about.html" class="header-mobile-link">About Us</a></li>
-            <li><a href="index.html#testimonials" class="header-mobile-link">Testimonials</a></li>
-            <li><a href="index.html#process" class="header-mobile-link">Our Process</a></li>
+            <li><a href="blog.html" class="header-mobile-link">Blog</a></li>
             <li><a href="careers.html" class="header-mobile-link">Careers</a></li>
           </ul>
         </li>
-        <li class="header-mobile-item"><a href="contact.html" class="header-mobile-link header-mobile-link--direct" style="color: var(--dark); font-weight: 700;">Contact Us</a></li>
+        <li class="header-mobile-item"><a href="contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li>
         <li class="header-mobile-item"><a href="careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li>
       </ul>
     </nav>
   </div>
 </header>
 
-<!-- ==================== HERO BANNER ==================== -->
-<section class="global-banner autocontent" aria-label="Contact Us banner">
-  <div class="global-banner__inner">
-    <div class="global-banner__info-col">
-      <div class="global-banner__info-inner">
-        <div class="global-banner__tagline">
-          <span class="tagline__text">Contact Us</span>
-        </div>
-        <h1 class="headline">
-          Let's Start Your
-          <br>
-          <span class="text-gradient">Digital Journey</span>
-        </h1>
-        <p class="global-banner__description">Ready to transform your digital presence? Get in touch with our team for a free consultation. We'll analyze your current setup and show you how we can help you grow.</p>
-        <div class="global-banner__cta">
-          <a href="services.html" class="primary-cta">View Services <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="global-banner__img-col">
-      <div class="global-banner__img-wrap">
-        <div class="contact-hero-slider-wrap" id="contactHeroSlider">
-          <div class="contact-hero-slide active">
-            <img src="assets/images/office-1.jpg" alt="Office Space">
-            <div class="contact-hero-slide-overlay"></div>
-            <div class="contact-hero-slide-caption">Our Office <span>&rarr;</span> Modern workspace in the heart of the city</div>
-          </div>
-          <div class="contact-hero-slide">
-            <img src="assets/images/office-2.jpg" alt="Meeting Room">
-            <div class="contact-hero-slide-overlay"></div>
-            <div class="contact-hero-slide-caption">Meetings <span>&rarr;</span> Collaborative spaces for your ideas</div>
-          </div>
-          <div class="contact-hero-slide">
-            <img src="assets/images/office-3.jpg" alt="Creative Hub">
-            <div class="contact-hero-slide-overlay"></div>
-            <div class="contact-hero-slide-caption">Innovation <span>&rarr;</span> Where ideas come to life</div>
-          </div>
-          <div class="contact-hero-slide-dots">
-            <span class="contact-hero-dot active" data-slide="0"></span>
-            <span class="contact-hero-dot" data-slide="1"></span>
-            <span class="contact-hero-dot" data-slide="2"></span>
-          </div>
-        </div>
-      </div>
-    </div>
+<!-- ==================== PAGE BANNER ==================== -->
+<section class="page-banner">
+  <div class="container">
+    <span class="page-banner-tagline">Contact Us</span>
+    <h1>Let's Start Your<br><span class="text-gradient">Digital Journey</span></h1>
+    <p>Ready to transform your digital presence? Get in touch with our team for a free consultation. We'll analyze your current setup and show you how we can help you grow.</p>
+    <a href="#contact-section" class="primary-cta">Get in Touch <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-autocontent autocontent glass-effect">
-    <h3 class="clients-heading">The world's leading brands are powered by Saif Digital</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
+<!-- ==================== CONTACT SECTION ==================== -->
+<section class="dark-section" id="contact-section" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-chat-dots"></i> Reach Out</span>
+      <h2 class="section-title">Get in Touch</h2>
+      <p class="section-desc">We'd love to hear from you. Reach out to us through any of the channels below.</p>
+    </div>
+    <div class="contact-grid">
+      <!-- Left: Contact Info Cards -->
+      <div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="bi bi-geo-alt"></i></div>
+          <div>
+            <h4>Visit Us</h4>
+            <p>123 Digital Avenue<br>Marketing District, Suite 100<br>New York, NY 10001</p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="bi bi-telephone"></i></div>
+          <div>
+            <h4>Call Us</h4>
+            <p><a href="tel:+15551234567" style="color: var(--gray-400);">+1 (555) 123-4567</a><br><a href="tel:+15559876543" style="color: var(--gray-400);">+1 (555) 987-6543</a></p>
+          </div>
+        </div>
+        <div class="contact-info-card">
+          <div class="contact-info-icon"><i class="bi bi-envelope"></i></div>
+          <div>
+            <h4>Email Us</h4>
+            <p><a href="mailto:info@saifdigital.com" style="color: var(--gray-400);">info@saifdigital.com</a><br><a href="mailto:support@saifdigital.com" style="color: var(--gray-400);">support@saifdigital.com</a></p>
+          </div>
+        </div>
+        <div class="contact-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== CONTACT INFO ==================== -->
-<section class="contact-info-section autocontent">
-  <h2 class="insight-section-title">Get in Touch</h2>
-  <div class="contact-info-grid">
-    <div class="contact-info-card">
-      <img class="contact-info-card-img" src="assets/images/office-1.jpg" alt="Office Location">
-      <div class="contact-info-icon"><i class="bi bi-geo-alt"></i></div>
-      <h3 class="contact-info-title">Visit Us</h3>
-      <p class="contact-info-detail">123 Digital Avenue<br>Marketing District, Suite 100<br>New York, NY 10001</p>
-    </div>
-    <div class="contact-info-card">
-      <img class="contact-info-card-img" src="assets/images/office-2.jpg" alt="Phone Contact">
-      <div class="contact-info-icon"><i class="bi bi-telephone"></i></div>
-      <h3 class="contact-info-title">Call Us</h3>
-      <p class="contact-info-detail"><a href="tel:+15551234567">+1 (555) 123-4567</a><br><a href="tel:+15559876543">+1 (555) 987-6543</a></p>
-    </div>
-    <div class="contact-info-card">
-      <img class="contact-info-card-img" src="assets/images/office-3.jpg" alt="Email Contact">
-      <div class="contact-info-icon"><i class="bi bi-envelope"></i></div>
-      <h3 class="contact-info-title">Email Us</h3>
-      <p class="contact-info-detail"><a href="mailto:info@saifdigital.com">info@saifdigital.com</a><br><a href="mailto:support@saifdigital.com">support@saifdigital.com</a></p>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CONTACT FORM ==================== -->
-<section class="contact-form-section">
-  <div class="autocontent">
-    <h2 class="insight-section-title">Send Us a Message</h2>
-    <div class="contact-form-wrapper">
-      <form class="contact-form" id="contactForm" novalidate>
-        <div class="contact-form-row">
-          <div class="contact-form-group">
-            <label class="contact-form-label" for="contactName">Full Name</label>
-            <input type="text" id="contactName" class="contact-form-input" placeholder="Your full name" required>
+      <!-- Right: Contact Form -->
+      <div class="contact-form">
+        <h3 style="font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 24px;">Send Us a Message</h3>
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactName">Full Name</label>
+              <input type="text" id="contactName" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label for="contactEmail">Email</label>
+              <input type="email" id="contactEmail" placeholder="your@email.com" required>
+            </div>
           </div>
-          <div class="contact-form-group">
-            <label class="contact-form-label" for="contactEmail">Email</label>
-            <input type="email" id="contactEmail" class="contact-form-input" placeholder="your@email.com" required>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="contactPhone">Phone</label>
+              <input type="tel" id="contactPhone" placeholder="+1 (555) 000-0000">
+            </div>
+            <div class="form-group">
+              <label for="contactSubject">Subject</label>
+              <select id="contactSubject" required>
+                <option value="" disabled selected>Select a subject</option>
+                <option value="general">General Inquiry</option>
+                <option value="seo">SEO Services</option>
+                <option value="social-media">Social Media Marketing</option>
+                <option value="ppc">PPC Advertising</option>
+                <option value="content">Content Marketing</option>
+                <option value="brand">Brand Strategy</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="contact-form-row">
-          <div class="contact-form-group">
-            <label class="contact-form-label" for="contactPhone">Phone</label>
-            <input type="tel" id="contactPhone" class="contact-form-input" placeholder="+1 (555) 000-0000">
+          <div class="form-group">
+            <label for="contactMessage">Message</label>
+            <textarea id="contactMessage" placeholder="Tell us about your project or inquiry..." required></textarea>
           </div>
-          <div class="contact-form-group">
-            <label class="contact-form-label" for="contactSubject">Subject</label>
-            <select id="contactSubject" class="contact-form-select" required>
-              <option value="" disabled selected>Select a subject</option>
-              <option value="general">General Inquiry</option>
-              <option value="seo">SEO Services</option>
-              <option value="social-media">Social Media Marketing</option>
-              <option value="ppc">PPC Advertising</option>
-              <option value="content">Content Marketing</option>
-              <option value="brand">Brand Strategy</option>
-              <option value="other">Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="contact-form-group">
-          <label class="contact-form-label" for="contactMessage">Message</label>
-          <textarea id="contactMessage" class="contact-form-textarea" placeholder="Tell us about your project or inquiry..." required></textarea>
-        </div>
-        <div class="contact-form-group">
-          <button type="submit" class="contact-form-submit">Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
-        </div>
-      </form>
+          <button type="submit" class="primary-cta" style="width: 100%; justify-content: center;">Send Message <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        </form>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== OFFICE GALLERY ==================== -->
-<section class="autocontent">
-  <h2 class="insight-section-title">Our Spaces</h2>
-  <div class="office-gallery">
-    <div class="office-gallery-item">
-      <img src="assets/images/office-1.jpg" alt="Main Office">
-      <div class="office-gallery-item-overlay">
-        <span class="office-gallery-item-label">Main Office</span>
-      </div>
+<section class="dark-section-2" style="padding: 100px 0;">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow"><i class="bi bi-building"></i> Our Spaces</span>
+      <h2 class="section-title">Where Ideas Come to Life</h2>
+      <p class="section-desc">Take a look at our modern office spaces designed for creativity and collaboration.</p>
     </div>
-    <div class="office-gallery-item">
-      <img src="assets/images/office-2.jpg" alt="Meeting Rooms">
-      <div class="office-gallery-item-overlay">
-        <span class="office-gallery-item-label">Meeting Rooms</span>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="assets/images/office-1.jpg" alt="Main Office">
+        <span class="gallery-item-label">Main Office</span>
       </div>
-    </div>
-    <div class="office-gallery-item">
-      <img src="assets/images/office-3.jpg" alt="Creative Hub">
-      <div class="office-gallery-item-overlay">
-        <span class="office-gallery-item-label">Creative Hub</span>
+      <div class="gallery-item">
+        <img src="assets/images/office-2.jpg" alt="Meeting Rooms">
+        <span class="gallery-item-label">Meeting Rooms</span>
+      </div>
+      <div class="gallery-item">
+        <img src="assets/images/office-3.jpg" alt="Creative Hub">
+        <span class="gallery-item-label">Creative Hub</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== NEWSLETTER ==================== -->
-<div class="newsletter-section-wrapper">
-  <div class="newsletter-pattern-side"><div class="newsletter-gradient-strip"></div></div>
-  <div class="newsletter-gradient-side"><div class="newsletter-gradient-overlay"></div></div>
-  <h1 class="newsletter-heading">Subscribe to our newsletter to get the latest news in your inbox.</h1>
-  <div class="newsletter-form-wrapper">
-    <form class="newsletter-form" id="newsletterForm">
-      <div class="newsletter-input-group">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="newsletter-submit-btn">Subscribe</button>
-      </div>
-    </form>
+<!-- ==================== CTA SECTION ==================== -->
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to Grow Your Business?</h2>
+    <p>Let's discuss how we can help you achieve your digital marketing goals and scale your brand.</p>
+    <a href="contact.html" class="btn-white">Start Your Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
-</div>
+</section>
+
+<!-- ==================== NEWSLETTER SECTION ==================== -->
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-left">
+      <img src="assets/images/newsletter-img.jpg" alt="Subscribe to Saif Digital Newsletter">
+    </div>
+    <div class="newsletter-right">
+      <h2>Subscribe to Our Newsletter</h2>
+      <p>Get the latest digital marketing tips and industry insights delivered to your inbox.</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+      <div class="newsletter-stats">
+        <div class="newsletter-stat">
+          <h4>15K+</h4>
+          <p>Subscribers</p>
+        </div>
+        <div class="newsletter-stat">
+          <h4>Weekly</h4>
+          <p>New Content</p>
+        </div>
+        <div class="newsletter-stat">
+          <h4>Free</h4>
+          <p>Always</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-              <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-              <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
-            </svg>
-          </div>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="index.html" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
+            <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
+            <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
+          </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
+        </a>
+        <p>Data-driven digital marketing agency helping businesses grow through SEO, social media, PPC, and content strategy.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/seo.html">SEO Optimization</a></li>
-            <li><a href="services/social-media.html">Social Media Marketing</a></li>
-            <li><a href="services/ppc.html">PPC Advertising</a></li>
-            <li><a href="services/email-marketing.html">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html">Brand Identity</a></li>
-            <li><a href="services.html">Web Development</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Portfolio</h4>
-          <ul>
-            <li><a href="portfolio.html">Case Studies</a></li>
-            <li><a href="portfolio.html">Client Results</a></li>
-            <li><a href="portfolio.html">Industry Expertise</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Insights</h4>
-          <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="#">Guides</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html">Testimonials</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/seo.html">SEO</a></li>
+          <li><a href="services/social-media.html">Social Media</a></li>
+          <li><a href="services/ppc.html">PPC</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/content-marketing.html">Content Marketing</a></li>
+          <li><a href="services/brand-identity.html">Brand Identity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>123 Digital Avenue, Tech City, TC 12345</li>
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -593,43 +405,21 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
-
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-  var slides = document.querySelectorAll('#contactHeroSlider .contact-hero-slide');
-  var dots = document.querySelectorAll('#contactHeroSlider .contact-hero-dot');
-  var currentSlide = 0;
-  var slideInterval;
-
-  function goToSlide(index) {
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-    currentSlide = index;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
-  }
-
-  function nextSlide() {
-    goToSlide((currentSlide + 1) % slides.length);
-  }
-
-  function startSlider() {
-    slideInterval = setInterval(nextSlide, 4000);
-  }
-
-  dots.forEach(function(dot) {
-    dot.addEventListener('click', function() {
-      clearInterval(slideInterval);
-      goToSlide(parseInt(this.dataset.slide));
-      startSlider();
-    });
-  });
-
-  startSlider();
+document.getElementById('contactForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for your message! We will get back to you shortly.');
+  this.reset();
+});
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  alert('Thank you for subscribing!');
+  this.reset();
 });
 </script>
 </body>

@@ -2,216 +2,54 @@
 <html lang="en">
 <head>
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio - Saif Digital Marketing Agency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <style>
-    /* ==================== PORTFOLIO PAGE SPECIFIC ==================== */
-
-    /* Filter Tabs */
-    .filter-section { padding: 60px 0 0; }
-    .filter-tabs {
-      display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;
-    }
-    .filter-tab {
-      padding: 10px 24px; border: 1px solid var(--gray-300); background: var(--white);
-      color: var(--gray-600); font-size: 14px; font-weight: 600; border-radius: var(--radius-xl);
-      cursor: pointer; transition: var(--transition); outline: none;
-    }
-    .filter-tab:hover { border-color: var(--primary); color: var(--primary); }
-    .filter-tab.active {
-      background: var(--primary); color: var(--white); border-color: var(--primary);
-    }
-
-    /* Portfolio Grid */
-    .portfolio-section { padding: 60px 0 80px; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
-    .portfolio-card {
-      background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); overflow: hidden; transition: var(--transition);
-    }
-    .portfolio-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-6px); }
-    .portfolio-card.hidden { display: none; }
-    .portfolio-card-img {
-      height: 220px; position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-    }
-    .portfolio-card-img.seo { background: linear-gradient(135deg, #2563EB, #7C3AED); }
-    .portfolio-card-img.social { background: linear-gradient(135deg, #E11D48, #F97316); }
-    .portfolio-card-img.ppc { background: linear-gradient(135deg, #059669, #10B981); }
-    .portfolio-card-img.branding { background: linear-gradient(135deg, #D97706, #EF4444); }
-    .portfolio-card-img.content { background: linear-gradient(135deg, #7C3AED, #EC4899); }
-    .portfolio-card-img .img-icon {
-      font-size: 48px; color: rgba(255,255,255,0.3);
-    }
-    .portfolio-card-tag {
-      position: absolute; top: 16px; left: 16px;
-      padding: 5px 14px; background: rgba(255,255,255,0.92);
-      color: var(--primary); font-size: 12px; font-weight: 700;
-      border-radius: var(--radius-xl); backdrop-filter: blur(4px);
-    }
-    .portfolio-card-body { padding: 24px; }
-    .portfolio-card-title {
-      font-size: 20px; font-weight: 700; color: var(--dark);
-      margin-bottom: 8px; line-height: 1.3;
-    }
-    .portfolio-card-client {
-      font-size: 13px; color: var(--gray-500); margin-bottom: 6px;
-    }
-    .portfolio-card-result {
-      display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
-      background: rgba(34,197,94,0.1); color: #16a34a; font-size: 12px;
-      font-weight: 700; border-radius: var(--radius-xl); margin-bottom: 12px;
-    }
-    .portfolio-card-desc {
-      font-size: 14px; color: var(--gray-500); line-height: 1.7;
-      margin-bottom: 16px;
-    }
-    .portfolio-card-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 14px; font-weight: 600; color: var(--primary);
-      text-decoration: none; transition: var(--transition);
-    }
-    .portfolio-card-link:hover { gap: 10px; }
-    .portfolio-card-link svg {
-      width: 16px; height: 16px; transition: var(--transition);
-    }
-
-    /* Results Section */
-    .results-section { padding: 80px 0; background: var(--gray-50); }
-    .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .results-card {
-      text-align: center; padding: 36px 20px; background: var(--white);
-      border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-      transition: var(--transition);
-    }
-    .results-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-4px); }
-    .results-icon {
-      display: flex; align-items: center; justify-content: center;
-      width: 60px; height: 60px; background: rgba(37,99,235,0.1);
-      color: var(--primary); border-radius: 50%; margin: 0 auto 16px; font-size: 24px;
-    }
-    .results-value {
-      font-size: 32px; font-weight: 800; color: var(--dark); margin-bottom: 4px;
-    }
-    .results-value span { color: var(--primary); }
-    .results-label { font-size: 14px; color: var(--gray-500); font-weight: 500; }
-
-    /* CTA Section */
-    .portfolio-cta-section {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #2563EB 0%, #7C3AED 100%);
-      position: relative; overflow: hidden;
-    }
-    .portfolio-cta-section::before {
-      content: ''; position: absolute; top: -50%; right: -10%;
-      width: 400px; height: 400px; background: rgba(255,255,255,0.05);
-      border-radius: 50%;
-    }
-    .portfolio-cta-section::after {
-      content: ''; position: absolute; bottom: -30%; left: -5%;
-      width: 300px; height: 300px; background: rgba(255,255,255,0.05);
-      border-radius: 50%;
-    }
-    .portfolio-cta-inner {
-      text-align: center; position: relative; z-index: 1; max-width: 650px; margin: 0 auto;
-    }
-    .portfolio-cta-title {
-      font-size: 36px; font-weight: 800; color: var(--white);
-      margin-bottom: 16px; line-height: 1.2;
-    }
-    .portfolio-cta-desc {
-      font-size: 16px; color: rgba(255,255,255,0.85); line-height: 1.7;
-      margin-bottom: 32px;
-    }
-    .portfolio-cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 14px 32px; background: var(--white); color: var(--primary);
-      font-size: 15px; font-weight: 700; border-radius: var(--radius-xl);
-      text-decoration: none; transition: var(--transition); border: none; cursor: pointer;
-    }
-    .portfolio-cta-btn:hover {
-      background: var(--gray-100); transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    }
-
-    @media (max-width: 992px) {
-      .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .results-grid { grid-template-columns: repeat(2, 1fr); }
-      .portfolio-cta-title { font-size: 28px; }
-    }
-    @media (max-width: 768px) {
-      .portfolio-grid { grid-template-columns: 1fr; }
-      .results-grid { grid-template-columns: 1fr; }
-      .filter-tabs { gap: 8px; }
-      .filter-tab { padding: 8px 18px; font-size: 13px; }
-      .portfolio-cta-title { font-size: 24px; }
-    }
-  </style>
 </head>
 <body>
 
 <!-- ==================== HEADER ==================== -->
-<header class="site-header" id="site-header" role="banner">
-  <nav class="header-nav autocontent" aria-label="Main navigation">
+<header class="site-header" id="site-header">
+  <nav class="header-nav container">
     <div class="header-nav-inner">
       <div class="header-logo">
-        <a href="index.html" class="header-logo-link" aria-label="Saif Digital Home">
-          <svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="/" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
             <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
             <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-            <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/>
-            <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/>
-            <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/>
-            <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/>
-            <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/>
-            <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/>
           </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
         </a>
       </div>
-
-      <ul class="header-nav-desktop" role="menubar" aria-label="Main navigation" data-menu="desktop">
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
+      <ul class="header-nav-desktop">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
             Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger active" data-mega-trigger="portfolio" aria-expanded="false" aria-haspopup="true" aria-controls="mega-portfolio" style="color: var(--dark); font-weight: 700;">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
             Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false" aria-haspopup="true" aria-controls="mega-company">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
             Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="contact.html" class="header-nav-link">Contact Us</a>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="careers.html" class="header-nav-link">Careers</a>
         </li>
       </ul>
-
       <div class="header-actions">
-        <button type="button" class="header-search-trigger" aria-label="Search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <div class="header-language" role="group" aria-label="Language selection">
-          <a href="#" class="header-language-link active">English</a>
-        </div>
-        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-mobile-panel">
+        <a href="contact.html" class="header-cta">Get Started</a>
+        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
@@ -219,12 +57,8 @@
       </div>
     </div>
   </nav>
-
-  <!-- Mega Menu Overlay -->
-  <div class="header-mega-overlay" id="megaOverlay" aria-hidden="true"></div>
-
-  <!-- Mega Menu: Services -->
-  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true">
+  <div class="header-mega-overlay" id="megaOverlay"></div>
+  <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
@@ -238,10 +72,9 @@
               <li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
               <li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
               <li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Create compelling content that drives conversions</span></a></li>
+              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic with strategic content creation</span></a></li>
               <li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Web Development</span><span class="header-mega-child-desc">Build fast, beautiful websites that convert</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">Analytics & Reporting</span><span class="header-mega-child-desc">Data insights to optimize every marketing dollar</span></a></li>
+              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View our complete range of digital marketing services</span></a></li>
             </ul>
           </div>
         </div>
@@ -249,18 +82,18 @@
       <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
     </div>
   </div>
-
-  <!-- Mega Menu: Portfolio -->
-  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results and client success stories</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Portfolio</h3>
+              <p class="header-mega-desc">See our results and client success stories</p>
+            </div>
             <ul class="header-mega-child-grid">
+              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
               <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Client Results</span><span class="header-mega-child-desc">Measurable outcomes and ROI for our clients</span></a></li>
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Industry Expertise</span><span class="header-mega-child-desc">Specialized strategies across multiple industries</span></a></li>
             </ul>
           </div>
         </div>
@@ -268,19 +101,19 @@
       <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
     </div>
   </div>
-
-  <!-- Mega Menu: Company -->
-  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Company</h3>
+              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
+            </div>
             <ul class="header-mega-child-grid">
-              <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
-              <li><a href="index.html#testimonials" class="header-mega-child-link"><span class="header-mega-child-title">Testimonials</span><span class="header-mega-child-desc">What our clients say about working with us</span></a></li>
-              <li><a href="index.html#process" class="header-mega-child-link"><span class="header-mega-child-title">Our Process</span><span class="header-mega-child-desc">How we deliver results step by step</span></a></li>
-              <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team of digital experts</span></a></li>
+              <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Learn about our mission and values</span></a></li>
+              <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and industry trends</span></a></li>
+              <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team</span></a></li>
             </ul>
           </div>
         </div>
@@ -288,407 +121,270 @@
       <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
     </div>
   </div>
-
-  <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile">
-    <nav class="header-mobile-nav" aria-label="Mobile navigation">
-      <ul class="header-mobile-list">
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-services" role="group">
-            <li><a href="services/seo.html" class="header-mobile-link">SEO Optimization</a></li>
-            <li><a href="services/social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
-            <li><a href="services/ppc.html" class="header-mobile-link">PPC Advertising</a></li>
-            <li><a href="services/email-marketing.html" class="header-mobile-link">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html" class="header-mobile-link">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html" class="header-mobile-link">Brand Identity</a></li>
-            <li><a href="services.html" class="header-mobile-link">Web Development</a></li>
-            <li><a href="services.html" class="header-mobile-link">Analytics & Reporting</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger active" data-mobile-trigger="portfolio" aria-expanded="false">Portfolio<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown active" id="mobile-portfolio" role="group">
-            <li><a href="case-studies.html" class="header-mobile-link">Case Studies</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Client Results</a></li>
-            <li><a href="portfolio.html" class="header-mobile-link">Industry Expertise</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">Company<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-company" role="group">
-            <li><a href="about.html" class="header-mobile-link">About Us</a></li>
-            <li><a href="index.html#testimonials" class="header-mobile-link">Testimonials</a></li>
-            <li><a href="index.html#process" class="header-mobile-link">Our Process</a></li>
-            <li><a href="careers.html" class="header-mobile-link">Careers</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item"><a href="contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li>
-        <li class="header-mobile-item"><a href="careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li>
-      </ul>
-    </nav>
+  <div class="header-mobile-panel" id="mobilePanel">
+    <div class="header-mobile-inner">
+      <div class="header-mobile-section">
+        <h4 class="header-mobile-heading">Services</h4>
+        <ul class="header-mobile-links">
+          <li><a href="services/seo.html">SEO Optimization</a></li>
+          <li><a href="services/social-media.html">Social Media Marketing</a></li>
+          <li><a href="services/ppc.html">PPC Advertising</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/content-marketing.html">Content Marketing</a></li>
+          <li><a href="services/brand-identity.html">Brand Identity</a></li>
+          <li><a href="services.html">All Services</a></li>
+        </ul>
+      </div>
+      <div class="header-mobile-section">
+        <h4 class="header-mobile-heading">Portfolio</h4>
+        <ul class="header-mobile-links">
+          <li><a href="portfolio.html">Portfolio</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="header-mobile-section">
+        <h4 class="header-mobile-heading">Company</h4>
+        <ul class="header-mobile-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <a href="contact.html" class="header-mobile-cta">Get Started</a>
+    </div>
   </div>
 </header>
 
-<!-- ==================== HERO BANNER ==================== -->
-<section class="global-banner autocontent" aria-label="Portfolio banner">
-  <div class="global-banner__inner">
-    <div class="global-banner__info-col">
-      <div class="global-banner__info-inner">
-        <div class="global-banner__tagline">
-          <span class="tagline__text">Our Work</span>
-        </div>
-        <h1 class="headline">
-          Results That
-          <span class="text-gradient">Speak for Themselves</span>
-        </h1>
-        <p class="global-banner__description">We don't just promise results — we deliver them. Explore our portfolio of successful campaigns that have generated millions in revenue for our clients.</p>
-        <div class="global-banner__cta">
-          <a href="contact.html" class="primary-cta">Start a Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
-    </div>
-    <div class="global-banner__img-col">
-      <div class="global-banner__img-wrap">
-        <div class="sequence-slider-placeholder">
-          <div class="slider-building">
-            <div class="building-base"></div>
-            <div class="building-pillars">
-              <div class="pillar"></div><div class="pillar"></div><div class="pillar"></div><div class="pillar"></div>
-            </div>
-            <div class="building-top"></div>
-            <div class="building-dome"></div>
-          </div>
-          <div class="slider-label">Our Portfolio</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-autocontent autocontent glass-effect">
-    <h3 class="clients-heading">The world's leading brands are powered by Saif Digital</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><div class="client-logo-box">TechMart</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">CloudStack</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FlavorHouse</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">MedCare</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">PropertyPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">TechMart</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">CloudStack</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FlavorHouse</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">MedCare</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">PropertyPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== FILTER TABS ==================== -->
-<section class="filter-section autocontent">
-  <div class="filter-tabs" id="filterTabs">
-    <button class="filter-tab active" data-filter="all">All</button>
-    <button class="filter-tab" data-filter="seo">SEO</button>
-    <button class="filter-tab" data-filter="social">Social Media</button>
-    <button class="filter-tab" data-filter="ppc">PPC</button>
-    <button class="filter-tab" data-filter="branding">Branding</button>
-    <button class="filter-tab" data-filter="content">Content</button>
+<!-- ==================== PAGE BANNER ==================== -->
+<section class="page-banner">
+  <div class="page-banner-bg" style="background-image:url('assets/images/hero-1.jpg');"></div>
+  <div class="page-banner-overlay"></div>
+  <div class="container page-banner-content">
+    <span class="page-banner-tagline">Our Work</span>
+    <h1 class="page-banner-title">Results That Speak <span class="text-gradient">for Themselves</span></h1>
+    <p class="page-banner-desc">Explore our portfolio of successful campaigns that have driven real results for businesses across industries.</p>
+    <a href="contact.html" class="header-cta" style="margin-top:20px;display:inline-block;">Start Your Project</a>
   </div>
 </section>
 
 <!-- ==================== PORTFOLIO GRID ==================== -->
-<section class="portfolio-section autocontent">
-  <div class="portfolio-grid" id="portfolioGrid">
+<section class="dark-section" style="padding:80px 0;">
+  <div class="container">
+    <div class="portfolio-grid">
 
-    <!-- Card 1: E-Commerce SEO Campaign -->
-    <div class="portfolio-card" data-category="seo">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-1.jpg" alt="E-Commerce SEO Campaign" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">SEO</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">E-Commerce SEO Campaign</h3>
-        <p class="portfolio-card-client">Client: TechMart Online</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          +340% organic traffic, +180% revenue
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-1.jpg" alt="E-Commerce SEO Campaign">
+          <div class="portfolio-overlay">
+            <span class="badge">SEO</span>
+            <h3>E-Commerce SEO Campaign</h3>
+            <p>Complete SEO overhaul for a major e-commerce platform, resulting in 340% organic traffic growth.</p>
+            <div class="portfolio-result"><i class="bi bi-graph-up-arrow"></i> +340% Traffic</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">We completely redesigned TechMart's SEO strategy, resulting in page 1 rankings for 500+ keywords and a 340% increase in organic traffic within 8 months.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </div>
 
-    <!-- Card 2: Fashion Brand Social Media -->
-    <div class="portfolio-card" data-category="social">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-2.jpg" alt="Fashion Brand Social Media" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">Social Media</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">Fashion Brand Social Media</h3>
-        <p class="portfolio-card-client">Client: StyleHub</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          100K followers, +250% engagement
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-2.jpg" alt="Fashion Brand Social Media">
+          <div class="portfolio-overlay">
+            <span class="badge">Social Media</span>
+            <h3>Fashion Brand Social Media</h3>
+            <p>Built a social media presence from zero to 100K followers in 6 months for a fashion brand.</p>
+            <div class="portfolio-result"><i class="bi bi-people-fill"></i> 100K Followers</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">We built StyleHub's social media presence from zero to 100K followers across Instagram and TikTok with a content strategy that resonated with their Gen Z audience.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </div>
 
-    <!-- Card 3: SaaS Lead Generation -->
-    <div class="portfolio-card" data-category="ppc">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-3.jpg" alt="SaaS Lead Generation" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">PPC</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">SaaS Lead Generation</h3>
-        <p class="portfolio-card-client">Client: CloudStack</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          5X ROAS, 2000+ leads/month
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-3.jpg" alt="SaaS Lead Generation">
+          <div class="portfolio-overlay">
+            <span class="badge">PPC</span>
+            <h3>SaaS Lead Generation</h3>
+            <p>High-performance PPC campaigns generating qualified leads at 5X return on ad spend.</p>
+            <div class="portfolio-result"><i class="bi bi-cash-stack"></i> 5X ROAS</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">Our PPC campaigns for CloudStack generated a 5X return on ad spend, delivering over 2,000 qualified leads per month through Google and LinkedIn Ads.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </div>
 
-    <!-- Card 4: Restaurant Chain Rebrand -->
-    <div class="portfolio-card" data-category="branding">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-4.jpg" alt="Restaurant Chain Rebrand" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">Branding</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">Restaurant Chain Rebrand</h3>
-        <p class="portfolio-card-client">Client: FlavorHouse</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          +40% brand recognition
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-4.jpg" alt="Restaurant Chain Rebrand">
+          <div class="portfolio-overlay">
+            <span class="badge">Branding</span>
+            <h3>Restaurant Chain Rebrand</h3>
+            <p>Complete brand identity redesign increasing brand recognition by 40% across all channels.</p>
+            <div class="portfolio-result"><i class="bi bi-eye-fill"></i> +40% Recognition</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">We completely rebranded FlavorHouse with a new logo, visual identity, and brand guidelines that increased brand recognition by 40% across all touchpoints.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </div>
 
-    <!-- Card 5: Healthcare Content Strategy -->
-    <div class="portfolio-card" data-category="content">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-5.jpg" alt="Healthcare Content Strategy" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">Content</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">Healthcare Content Strategy</h3>
-        <p class="portfolio-card-client">Client: MedCare Clinic</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          +200% organic traffic, 50K monthly visitors
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-5.jpg" alt="Healthcare Content Strategy">
+          <div class="portfolio-overlay">
+            <span class="badge">Content</span>
+            <h3>Healthcare Content Strategy</h3>
+            <p>Strategic content marketing driving 200% more organic traffic for a healthcare provider.</p>
+            <div class="portfolio-result"><i class="bi bi-newspaper"></i> +200% Traffic</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">We developed a comprehensive content strategy for MedCare, publishing 60+ articles that established them as a trusted authority in healthcare marketing.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
-    </div>
 
-    <!-- Card 6: Real Estate Local SEO -->
-    <div class="portfolio-card" data-category="seo">
-      <a href="case-studies.html" class="portfolio-card-img">
-        <img src="assets/images/portfolio-6.jpg" alt="Real Estate Local SEO" style="width:100%;height:100%;object-fit:cover;">
-        <span class="portfolio-card-tag">SEO</span>
-      </a>
-      <div class="portfolio-card-body">
-        <h3 class="portfolio-card-title">Real Estate Local SEO</h3>
-        <p class="portfolio-card-client">Client: PropertyPlus</p>
-        <div class="portfolio-card-result">
-          <i class="bi bi-graph-up-arrow"></i>
-          #1 local rankings, +300% inquiries
+      <div class="portfolio-card">
+        <div class="portfolio-card-img">
+          <img src="assets/images/portfolio-6.jpg" alt="Real Estate Local SEO">
+          <div class="portfolio-overlay">
+            <span class="badge">SEO</span>
+            <h3>Real Estate Local SEO</h3>
+            <p>Achieved #1 Google rankings for 50+ local keywords for a real estate agency.</p>
+            <div class="portfolio-result"><i class="bi bi-trophy-fill"></i> #1 Rankings</div>
+            <a href="case-studies.html" class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></a>
+          </div>
         </div>
-        <p class="portfolio-card-desc">Our local SEO strategy helped PropertyPlus dominate Google Maps and local search results, generating 300% more property inquiries.</p>
-        <a href="case-studies.html" class="portfolio-card-link">View Case Study <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       </div>
+
     </div>
-
-  </div>
-
-  <div style="text-align:center; margin-top:40px;">
-    <a href="case-studies.html" class="primary-cta" style="display:inline-flex;align-items:center;gap:8px;padding:14px 36px;background:var(--primary);color:#fff;font-size:15px;font-weight:700;border-radius:var(--radius-xl);text-decoration:none;transition:var(--transition);">View All Case Studies <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== RESULTS ==================== -->
-<section class="results-section">
-  <div class="autocontent">
-    <h2 class="insight-section-title">Our Results</h2>
-    <div class="results-grid">
-      <div class="results-card">
-        <div class="results-icon"><i class="bi bi-rocket-takeoff"></i></div>
-        <div class="results-value">500<span>+</span></div>
-        <div class="results-label">Projects Completed</div>
+<!-- ==================== RESULTS SUMMARY ==================== -->
+<section class="dark-section-2" style="padding:80px 0;">
+  <div class="container">
+    <div class="stats-grid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px;">
+      <div class="stat-box">
+        <div class="stat-icon"><i class="bi bi-graph-up-arrow"></i></div>
+        <div class="stat-value">500%</div>
+        <div class="stat-label">Average Traffic Growth</div>
       </div>
-      <div class="results-card">
-        <div class="results-icon"><i class="bi bi-currency-dollar"></i></div>
-        <div class="results-value">$50<span>M+</span></div>
-        <div class="results-label">Revenue Generated</div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="bi bi-cash-stack"></i></div>
+        <div class="stat-value">5X</div>
+        <div class="stat-label">Average ROAS</div>
       </div>
-      <div class="results-card">
-        <div class="results-icon"><i class="bi bi-arrow-repeat"></i></div>
-        <div class="results-value">95<span>%</span></div>
-        <div class="results-label">Client Retention</div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="bi bi-people-fill"></i></div>
+        <div class="stat-value">200+</div>
+        <div class="stat-label">Clients Worldwide</div>
       </div>
-      <div class="results-card">
-        <div class="results-icon"><i class="bi bi-building"></i></div>
-        <div class="results-value">50<span>+</span></div>
-        <div class="results-label">Industries Served</div>
+      <div class="stat-box">
+        <div class="stat-icon"><i class="bi bi-award-fill"></i></div>
+        <div class="stat-value">50+</div>
+        <div class="stat-label">Industry Awards</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CTA SECTION ==================== -->
-<section class="portfolio-cta-section">
-  <div class="autocontent">
-    <div class="portfolio-cta-inner">
-      <h2 class="portfolio-cta-title">Ready to Write Your Success Story?</h2>
-      <p class="portfolio-cta-desc">Let's discuss how we can help your business achieve extraordinary results. Our team is ready to create a custom strategy tailored to your goals.</p>
-      <a href="contact.html" class="portfolio-cta-btn">Start a Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    </div>
+<!-- ==================== CTA ==================== -->
+<section class="cta-section">
+  <div class="container">
+    <h2 class="cta-title">Ready to Grow Your Business?</h2>
+    <p class="cta-desc">Let's discuss how we can help you achieve your digital marketing goals.</p>
+    <a href="contact.html" class="header-cta" style="background:#fff;color:var(--primary);">Start Your Project</a>
   </div>
 </section>
 
 <!-- ==================== NEWSLETTER ==================== -->
-<div class="newsletter-section-wrapper">
-  <div class="newsletter-pattern-side"><div class="newsletter-gradient-strip"></div></div>
-  <div class="newsletter-gradient-side"><div class="newsletter-gradient-overlay"></div></div>
-  <h1 class="newsletter-heading">Subscribe to our newsletter to get the latest news in your inbox.</h1>
-  <div class="newsletter-form-wrapper">
-    <form class="newsletter-form" id="newsletterForm">
-      <div class="newsletter-input-group">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="newsletter-submit-btn">Subscribe</button>
+<section class="newsletter-section">
+  <div class="container">
+    <div class="newsletter-inner">
+      <div class="newsletter-left">
+        <img src="assets/images/newsletter.jpg" alt="Newsletter">
       </div>
-    </form>
+      <div class="newsletter-right">
+        <h2 class="newsletter-title">Stay Updated with Our Newsletter</h2>
+        <p class="newsletter-desc">Get the latest digital marketing insights, tips, and trends delivered straight to your inbox.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault();">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="header-cta">Subscribe</button>
+        </form>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="header-logo" style="margin-bottom:16px;">
+          <a href="/" class="header-logo-link">
+            <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
               <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
               <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
             </svg>
-          </div>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
+            <span class="header-logo-text">Saif<span>Digital</span></span>
+          </a>
         </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/seo.html">SEO Optimization</a></li>
-            <li><a href="services/social-media.html">Social Media Marketing</a></li>
-            <li><a href="services/ppc.html">PPC Advertising</a></li>
-            <li><a href="services/email-marketing.html">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html">Brand Identity</a></li>
-            <li><a href="services.html">Web Development</a></li>
-          </ul>
+        <p>AI-enabled digital marketing solutions that drive measurable growth for forward-thinking businesses.</p>
+        <div class="footer-social">
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-twitter"></i></a>
+          <a href="#"><i class="bi bi-facebook"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
         </div>
-        <div class="footer-rightcontent">
-          <h4>Portfolio</h4>
-          <ul>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="portfolio.html">Client Results</a></li>
-            <li><a href="portfolio.html">Industry Expertise</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="index.html#testimonials">Testimonials</a></li>
-            <li><a href="index.html#process">Our Process</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Insights</h4>
-          <ul>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="case-studies.html">Case Studies</a></li>
-            <li><a href="#">Guides</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html#testimonials">Testimonials</a></li>
+          <li><a href="about.html#awards">Awards</a></li>
+          <li><a href="careers.html">Careers</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/seo.html">SEO</a></li>
+          <li><a href="services/social-media.html">Social Media</a></li>
+          <li><a href="services/ppc.html">PPC</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/content-marketing.html">Content Marketing</a></li>
+          <li><a href="services/brand-identity.html">Brand Identity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li><i class="bi bi-geo-alt"></i> 123 Digital Ave, Tech City, TC 12345</li>
+          <li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li>
+          <li><i class="bi bi-envelope"></i> hello@saifdigital.com</li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 Saif Digital Marketing Agency. All Rights Reserved.</p>
+      <p>&copy; 2025 Saif Digital Marketing Agency. All Rights Reserved.</p>
       <div class="footer-bottom-links">
-        <a href="#">Terms of Use</a>
+        <a href="#">Terms of Service</a>
         <a href="#">Privacy Policy</a>
       </div>
     </div>
   </div>
 </footer>
 
-<!-- Scripts -->
+<!-- ==================== SCRIPTS ==================== -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
 <script src="js/main.js"></script>
-<script>
-  (function() {
-    var tabs = document.querySelectorAll('#filterTabs .filter-tab');
-    var cards = document.querySelectorAll('#portfolioGrid .portfolio-card');
-    tabs.forEach(function(tab) {
-      tab.addEventListener('click', function() {
-        tabs.forEach(function(t) { t.classList.remove('active'); });
-        tab.classList.add('active');
-        var filter = tab.getAttribute('data-filter');
-        cards.forEach(function(card) {
-          if (filter === 'all' || card.getAttribute('data-category') === filter) {
-            card.classList.remove('hidden');
-          } else {
-            card.classList.add('hidden');
-          }
-        });
-      });
-    });
-  })();
-</script>
 </body>
 </html>

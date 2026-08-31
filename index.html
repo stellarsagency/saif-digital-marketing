@@ -2,393 +2,56 @@
 <html lang="en">
 <head>
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saif Digital Marketing Agency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/responsive.css">
-  <style>
-    .hero-slider-wrap {
-      position: relative; width: 100%; height: 100%;
-      border-radius: var(--radius-lg); overflow: hidden;
-    }
-    .hero-slide {
-      position: absolute; inset: 0; opacity: 0;
-      transition: opacity 1s ease-in-out;
-    }
-    .hero-slide.active { opacity: 1; }
-    .hero-slide img {
-      width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-lg);
-    }
-    .hero-slide-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, rgba(37,99,235,0.15) 0%, transparent 60%);
-      border-radius: var(--radius-lg);
-    }
-    .hero-slide-dots {
-      position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-      display: flex; gap: 10px; z-index: 10;
-    }
-    .hero-dot {
-      width: 12px; height: 12px; border-radius: 50%;
-      background: rgba(255,255,255,0.4); border: 2px solid rgba(255,255,255,0.6);
-      cursor: pointer; transition: var(--transition);
-    }
-    .hero-dot.active { background: var(--white); border-color: var(--white); transform: scale(1.2); }
-    .hero-slide-caption {
-      position: absolute; bottom: 50px; left: 24px; right: 24px;
-      background: rgba(15,23,42,0.7); backdrop-filter: blur(8px);
-      padding: 14px 20px; border-radius: var(--radius-md);
-      color: var(--white); font-size: 13px; font-weight: 500;
-    }
-    .hero-slide-caption span { color: var(--primary-light); font-weight: 700; }
-    /* Home Services Section */
-    .home-services-section { padding: 80px 0; background: var(--gray-50); }
-    .home-services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .home-service-card {
-      background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid var(--gray-200); transition: var(--transition); display: flex; flex-direction: column;
-    }
-    .home-service-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: transparent; }
-    .home-service-img { position: relative; height: 200px; overflow: hidden; }
-    .home-service-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .home-service-card:hover .home-service-img img { transform: scale(1.08); }
-    .home-service-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-    .home-service-body .icon-3d { width: 56px; height: 56px; font-size: 24px; border-radius: 14px; margin-bottom: 16px; transform: none; }
-    .home-service-body h3 { font-size: 20px; font-weight: 700; color: var(--dark); margin-bottom: 10px; }
-    .home-service-body p { font-size: 14px; color: var(--gray-500); line-height: 1.7; margin-bottom: 16px; flex: 1; }
-    .home-service-link { font-size: 14px; font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
-    .home-service-link:hover { gap: 10px; }
-    @media (max-width: 992px) { .home-services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 576px) { .home-services-grid { grid-template-columns: 1fr; } }
-
-    /* Home Experience Section */
-    .home-experience-section { padding: 80px 0; background: var(--white); }
-    .home-experience-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: center; }
-    .home-experience-img { border-radius: var(--radius-lg); overflow: hidden; }
-    .home-experience-img img { width: 100%; height: 420px; object-fit: cover; }
-    .home-stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
-    .home-stat-box { text-align: center; padding: 20px 12px; background: var(--gray-50); border-radius: var(--radius-md); border: 1px solid var(--gray-200); }
-    .home-stat-num { font-size: 32px; font-weight: 800; color: var(--primary); }
-    .home-stat-plus { font-size: 18px; font-weight: 700; color: var(--primary); }
-    .home-stat-box p { font-size: 12px; font-weight: 600; color: var(--gray-500); text-transform: uppercase; letter-spacing: 0.3px; margin-top: 4px; }
-    @media (max-width: 992px) { .home-experience-grid { grid-template-columns: 1fr; } .home-experience-img { display: none; } }
-    @media (max-width: 576px) { .home-stats-grid { grid-template-columns: repeat(2, 1fr); } }
-
-    /* Home Portfolio Section */
-    .home-portfolio-section { padding: 80px 0; background: var(--white); }
-    .home-portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-    .home-portfolio-card {
-      position: relative; border-radius: var(--radius-lg); overflow: hidden; height: 320px; display: block;
-    }
-    .home-portfolio-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .home-portfolio-card:hover img { transform: scale(1.08); }
-    .home-portfolio-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(180deg, transparent 30%, rgba(15,23,42,0.9) 100%);
-      display: flex; flex-direction: column; justify-content: flex-end; padding: 24px;
-      opacity: 0; transition: opacity 0.3s ease;
-    }
-    .home-portfolio-card:hover .home-portfolio-overlay { opacity: 1; }
-    .home-portfolio-overlay h3 { font-size: 18px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .home-portfolio-overlay p { font-size: 13px; color: var(--gray-400); margin-bottom: 8px; }
-    .home-portfolio-result {
-      display: inline-block; padding: 4px 12px; background: rgba(16,185,129,0.2); color: #34D399;
-      font-size: 12px; font-weight: 700; border-radius: var(--radius-xl); margin-bottom: 12px;
-    }
-    .home-portfolio-link { font-size: 13px; font-weight: 600; color: var(--primary-light); display: inline-flex; align-items: center; gap: 6px; }
-    @media (max-width: 992px) { .home-portfolio-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 576px) { .home-portfolio-grid { grid-template-columns: 1fr; } }
-
-    .clients-slide-track img {
-      height: 40px; width: auto; object-fit: contain; filter: grayscale(100%);
-      opacity: 0.5; transition: var(--transition);
-    }
-    .clients-slide-track img:hover { filter: grayscale(0%); opacity: 1; }
-    .client_logo_container { display: flex; align-items: center; }
-    .experience-image-wrap img {
-      width: 100%; height: 400px; object-fit: cover; border-radius: var(--radius-lg);
-    }
-    .news-banner-section {
-      background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0F172A 100%);
-      padding: 80px 0; position: relative; overflow: hidden;
-    }
-    .news-banner-section::before {
-      content: ''; position: absolute; top: -50%; right: -10%; width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(37,99,235,0.08) 0%, transparent 70%);
-      border-radius: 50%;
-    }
-    .news-banner-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-    }
-    .news-banner-left .news-eyebrow {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 6px 16px; background: rgba(37,99,235,0.15); border-radius: var(--radius-xl);
-      color: var(--primary-light); font-size: 13px; font-weight: 600; margin-bottom: 20px;
-    }
-    .news-banner-left .news-eyebrow .pulse-dot {
-      width: 8px; height: 8px; background: #22C55E; border-radius: 50%;
-      animation: pulse 2s ease-in-out infinite;
-    }
-    @keyframes pulse { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
-    .news-banner-left h2 {
-      font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2;
-    }
-    .news-banner-left p { font-size: 16px; color: var(--gray-400); line-height: 1.7; margin-bottom: 28px; }
-    .news-cards-grid {
-      display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px;
-    }
-    .news-card {
-      background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
-      border-radius: var(--radius-md); padding: 20px; transition: var(--transition); cursor: pointer;
-    }
-    .news-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); }
-    .news-card-date { font-size: 11px; color: var(--primary-light); font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
-    .news-card-title { font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.4; margin-bottom: 6px; }
-    .news-card-excerpt { font-size: 12px; color: var(--gray-500); line-height: 1.5; }
-    .awards-actual-section { padding: 80px 0; background: var(--gray-50); }
-    .awards-actual-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-      max-width: 1280px; margin: 0 auto; padding: 0 40px;
-    }
-    .award-actual-card {
-      background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid var(--gray-200); transition: var(--transition); cursor: pointer;
-    }
-    .award-actual-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .award-actual-img { width: 100%; height: 200px; object-fit: cover; }
-    .award-actual-body { padding: 24px; text-align: center; }
-    .award-actual-icon { font-size: 28px; color: var(--primary); margin-bottom: 12px; }
-    .award-actual-name { font-size: 17px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .award-actual-year { font-size: 13px; color: var(--gray-500); font-weight: 500; }
-    .values-section { padding: 80px 0; background: var(--white); }
-    .values-inner { max-width: 1280px; margin: 0 auto; padding: 0 40px; }
-    .values-header { text-align: center; margin-bottom: 48px; }
-    .values-header h2 { font-size: 36px; font-weight: 800; color: var(--dark); margin-bottom: 12px; }
-    .values-header p { font-size: 16px; color: var(--gray-500); max-width: 600px; margin: 0 auto; }
-    .values-tabs-nav {
-      display: flex; justify-content: center; gap: 4px; margin-bottom: 40px;
-      flex-wrap: wrap;
-    }
-    .values-tab-btn {
-      padding: 12px 24px; font-size: 14px; font-weight: 600; color: var(--gray-500);
-      background: var(--gray-100); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-xl); cursor: pointer; transition: var(--transition);
-    }
-    .values-tab-btn:hover { color: var(--primary); border-color: var(--primary); }
-    .values-tab-btn.active {
-      background: var(--primary); color: var(--white); border-color: var(--primary);
-    }
-    .values-tab-content { display: none; }
-    .values-tab-content.active { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-    .values-tab-image { border-radius: var(--radius-lg); overflow: hidden; }
-    .values-tab-image img { width: 100%; height: 350px; object-fit: cover; border-radius: var(--radius-lg); }
-    .values-tab-text h3 { font-size: 28px; font-weight: 800; color: var(--dark); margin-bottom: 16px; }
-    .values-tab-text p { font-size: 15px; color: var(--gray-500); line-height: 1.8; margin-bottom: 20px; }
-    .values-tab-features { display: flex; flex-direction: column; gap: 12px; }
-    .values-feature-item {
-      display: flex; align-items: center; gap: 12px; padding: 12px 16px;
-      background: var(--gray-50); border-radius: var(--radius-md); border: 1px solid var(--gray-200);
-    }
-    .values-feature-item i { color: var(--primary); font-size: 18px; flex-shrink: 0; }
-    .values-feature-item span { font-size: 14px; font-weight: 600; color: var(--dark); }
-    .blog-section { padding: 80px 0; background: var(--white); }
-    .blog-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
-      max-width: 1280px; margin: 0 auto; padding: 0 40px;
-    }
-    .blog-card {
-      background: var(--white); border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid var(--gray-200); transition: var(--transition);
-    }
-    .blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
-    .blog-card-img-wrap { position: relative; overflow: hidden; height: 200px; }
-    .blog-card-img-wrap img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
-    .blog-card:hover .blog-card-img-wrap img { transform: scale(1.05); }
-    .blog-card-tag {
-      position: absolute; top: 12px; left: 12px;
-      padding: 4px 12px; background: var(--primary); color: var(--white);
-      font-size: 11px; font-weight: 600; border-radius: var(--radius-xl); text-transform: uppercase;
-    }
-    .blog-card-body { padding: 24px; }
-    .blog-card-meta { display: flex; gap: 16px; margin-bottom: 12px; }
-    .blog-card-meta span { font-size: 12px; color: var(--gray-500); display: flex; align-items: center; gap: 4px; }
-    .blog-card-meta i { color: var(--primary); }
-    .blog-card-body h3 { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; line-height: 1.4; }
-    .blog-card-body p { font-size: 13px; color: var(--gray-500); line-height: 1.6; margin-bottom: 16px; }
-    .blog-card-link { font-size: 13px; font-weight: 600; color: var(--primary); display: inline-flex; align-items: center; gap: 6px; }
-    .blog-card-link:hover { gap: 10px; }
-    .cta-section {
-      padding: 80px 0;
-      background: var(--gradient-primary);
-      position: relative; overflow: hidden;
-    }
-    .cta-section::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 400px; height: 400px; background: rgba(255,255,255,0.05);
-      border-radius: 50%;
-    }
-    .cta-section::after {
-      content: ''; position: absolute; bottom: -80px; left: -80px;
-      width: 300px; height: 300px; background: rgba(255,255,255,0.03);
-      border-radius: 50%;
-    }
-    .cta-inner {
-      text-align: center; max-width: 700px; margin: 0 auto; padding: 0 40px;
-      position: relative; z-index: 2;
-    }
-    .cta-inner h2 { font-size: 40px; font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
-    .cta-inner p { font-size: 17px; color: rgba(255,255,255,0.85); margin-bottom: 32px; line-height: 1.7; }
-    .cta-btn-white {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 16px 36px; background: var(--white); color: var(--primary);
-      font-size: 16px; font-weight: 700; border-radius: var(--radius-xl);
-      transition: var(--transition);
-    }
-    .cta-btn-white:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
-    .cta-btn-white svg { transition: transform 0.3s; }
-    .cta-btn-white:hover svg { transform: translateX(4px); }
-    .newsletter-img-section {
-      padding: 80px 0;
-      background: linear-gradient(135deg, #0F172A 0%, #0E7490 50%, #06B6D4 100%);
-      position: relative; overflow: hidden;
-    }
-    .newsletter-img-inner {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
-      max-width: 1280px; margin: 0 auto; padding: 0 40px;
-    }
-    .newsletter-img-left img {
-      width: 100%; height: 350px; object-fit: cover;
-      border-radius: var(--radius-lg); border: 3px solid rgba(255,255,255,0.1);
-    }
-    .newsletter-img-right h2 {
-      font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2;
-    }
-    .newsletter-img-right p { font-size: 16px; color: rgba(255,255,255,0.75); margin-bottom: 28px; line-height: 1.7; }
-    .newsletter-img-form { display: flex; gap: 8px; }
-    .newsletter-img-form input {
-      flex: 1; padding: 14px 20px; border: none; border-radius: var(--radius-xl);
-      font-size: 14px; font-family: inherit; outline: none;
-    }
-    .newsletter-img-form button {
-      padding: 14px 28px; background: var(--white); color: var(--primary);
-      font-size: 14px; font-weight: 700; border-radius: var(--radius-xl);
-      border: none; cursor: pointer; transition: var(--transition); white-space: nowrap;
-    }
-    .newsletter-img-form button:hover { transform: translateY(-2px); box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    .newsletter-img-stats {
-      display: flex; gap: 32px; margin-top: 32px; padding-top: 24px;
-      border-top: 1px solid rgba(255,255,255,0.15);
-    }
-    .newsletter-img-stat-item h4 { font-size: 24px; font-weight: 800; color: var(--white); }
-    .newsletter-img-stat-item p { font-size: 12px; color: rgba(255,255,255,0.6); }
-    @media (max-width: 992px) {
-      .news-banner-inner { grid-template-columns: 1fr; }
-      .news-cards-grid { grid-template-columns: repeat(2, 1fr); }
-      .values-tab-content.active { grid-template-columns: 1fr; }
-      .blog-grid { grid-template-columns: repeat(2, 1fr); }
-      .awards-actual-grid { grid-template-columns: repeat(2, 1fr); }
-      .newsletter-img-inner { grid-template-columns: 1fr; text-align: center; }
-      .newsletter-img-left { display: none; }
-      .newsletter-img-form { max-width: 500px; }
-      .newsletter-img-stats { justify-content: center; }
-    }
-    @media (max-width: 768px) {
-      .news-cards-grid { grid-template-columns: 1fr; }
-      .news-banner-left h2 { font-size: 28px; }
-      .values-tabs-nav { gap: 6px; }
-      .values-tab-btn { padding: 10px 16px; font-size: 12px; }
-      .blog-grid { grid-template-columns: 1fr; padding: 0 20px; }
-      .awards-actual-grid { grid-template-columns: 1fr; padding: 0 20px; }
-      .cta-inner h2 { font-size: 28px; }
-      .newsletter-img-right h2 { font-size: 28px; }
-      .newsletter-img-form { flex-direction: column; }
-      .newsletter-img-stats { flex-direction: column; gap: 16px; align-items: center; }
-      .home-services-grid { grid-template-columns: repeat(2, 1fr); }
-      .home-portfolio-grid { grid-template-columns: repeat(2, 1fr); }
-      .home-experience-grid { grid-template-columns: 1fr; }
-      .home-experience-img { display: none; }
-      .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .home-services-grid { grid-template-columns: 1fr; }
-      .home-service-img { height: 180px; }
-      .home-service-body .icon-3d { width: 48px; height: 48px; font-size: 20px; }
-      .home-portfolio-grid { grid-template-columns: 1fr; }
-      .home-portfolio-card { height: 260px; }
-      .home-portfolio-overlay { opacity: 1; }
-      .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
-      .blog-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 576px) {
-      .headline, .banner-typewriter { font-size: 26px; }
-      .home-services-grid { grid-template-columns: 1fr; }
-      .home-portfolio-card { height: 240px; }
-      .home-stat-num { font-size: 20px; }
-    }
-  </style>
 </head>
 <body>
 
 <!-- ==================== HEADER ==================== -->
-<header class="site-header" id="site-header" role="banner">
-  <nav class="header-nav autocontent" aria-label="Main navigation">
+<header class="site-header" id="site-header">
+  <nav class="header-nav container">
     <div class="header-nav-inner">
       <div class="header-logo">
-        <a href="/" class="header-logo-link" aria-label="Saif Digital Home">
-          <svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <a href="/" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
             <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
             <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-            <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/>
-            <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/>
-            <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/>
-            <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/>
-            <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/>
-            <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/>
           </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
         </a>
       </div>
 
-      <ul class="header-nav-desktop" role="menubar" aria-label="Main navigation" data-menu="desktop">
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
+      <ul class="header-nav-desktop">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
             Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false" aria-haspopup="true" aria-controls="mega-portfolio">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
             Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
         </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false" aria-haspopup="true" aria-controls="mega-company">
+        <li class="header-nav-item has-dropdown">
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
             Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
           </button>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="contact.html" class="header-nav-link">Contact Us</a>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="careers.html" class="header-nav-link">Careers</a>
         </li>
       </ul>
 
       <div class="header-actions">
-        <button type="button" class="header-search-trigger" aria-label="Search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <div class="header-language" role="group" aria-label="Language selection">
-          <a href="#" class="header-language-link active">English</a>
-        </div>
-        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-mobile-panel">
+        <a href="contact.html" class="header-cta">Get Started</a>
+        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
           <span class="header-hamburger-line"></span>
@@ -397,10 +60,10 @@
     </div>
   </nav>
 
-  <div class="header-mega-overlay" id="megaOverlay" aria-hidden="true"></div>
+  <div class="header-mega-overlay" id="megaOverlay"></div>
 
   <!-- Mega Menu: Services -->
-  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
@@ -426,12 +89,15 @@
   </div>
 
   <!-- Mega Menu: Portfolio -->
-  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results and client success stories</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Portfolio</h3>
+              <p class="header-mega-desc">See our results and client success stories</p>
+            </div>
             <ul class="header-mega-child-grid">
               <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
               <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
@@ -444,12 +110,15 @@
   </div>
 
   <!-- Mega Menu: Company -->
-  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true">
+  <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
     <div class="header-mega-inner">
       <div class="header-mega-grid">
         <div class="header-mega-right">
           <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p></div>
+            <div class="header-mega-content-inner">
+              <h3 class="header-mega-title">Company</h3>
+              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
+            </div>
             <ul class="header-mega-child-grid">
               <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
               <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and marketing tips</span></a></li>
@@ -463,12 +132,15 @@
   </div>
 
   <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile">
-    <nav class="header-mobile-nav" aria-label="Mobile navigation">
+  <div class="header-mobile-panel" id="header-mobile-panel">
+    <nav class="header-mobile-nav">
       <ul class="header-mobile-list">
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-services" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">
+            Services
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-services">
             <li><a href="services/seo.html" class="header-mobile-link">SEO Optimization</a></li>
             <li><a href="services/social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
             <li><a href="services/ppc.html" class="header-mobile-link">PPC Advertising</a></li>
@@ -479,15 +151,21 @@
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">Portfolio<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-portfolio" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">
+            Portfolio
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-portfolio">
             <li><a href="portfolio.html" class="header-mobile-link">Portfolio</a></li>
             <li><a href="case-studies.html" class="header-mobile-link">Case Studies</a></li>
           </ul>
         </li>
         <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">Company<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-company" role="group">
+          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">
+            Company
+            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+          </button>
+          <ul class="header-mobile-dropdown" id="mobile-company">
             <li><a href="about.html" class="header-mobile-link">About Us</a></li>
             <li><a href="blog.html" class="header-mobile-link">Blog</a></li>
             <li><a href="careers.html" class="header-mobile-link">Careers</a></li>
@@ -501,34 +179,33 @@
 </header>
 
 <!-- ==================== HERO SECTION ==================== -->
-<section class="global-banner autocontent global-banner--has-slider" aria-label="Hero banner">
-  <div class="global-banner__inner">
-    <div class="global-banner__info-col">
-      <div class="global-banner__info-inner">
-        <div class="global-banner__tagline">
-          <span class="tagline__text">Digital Marketing Excellence</span>
+<section class="hero-section">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <div class="hero-tagline">
+          <span class="hero-tagline-text">Digital Marketing Excellence</span>
         </div>
-        <h1 class="headline">We Build Brands That <span class="text-gradient">Dominate Digital</span></h1>
-        <div class="banner-typewriter-container">
-          <span id="banner-typewriter" class="banner-typewriter" data-words='["Search Rankings","Social Presence","Conversion Rates","Brand Authority"]'></span>
+        <h1 class="hero-headline">AI-Enabled Ecosystems That <span class="text-gradient">Dominate Digital</span></h1>
+        <div class="hero-typewriter">
+          <span id="hero-typewriter"></span>
         </div>
-        <p class="global-banner__description">Saif Digital Marketing Agency helps businesses grow through data-driven SEO, social media marketing, PPC advertising, and content strategy. We've generated over $50M in revenue for our clients.</p>
-        <div class="global-banner__cta">
+        <p class="hero-description">Saif Digital Marketing Agency helps businesses grow through data-driven SEO, social media marketing, PPC advertising, and content strategy. We've generated over $50M in revenue for our clients.</p>
+        <div class="hero-cta">
           <a href="contact.html" class="primary-cta">Get Free Audit <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+          <a href="portfolio.html" class="btn-outline">View Our Work</a>
         </div>
       </div>
-    </div>
-    <div class="global-banner__img-col">
-      <div class="global-banner__img-wrap" style="height:480px;">
-        <div class="hero-slider-wrap" id="heroSlider">
-          <div class="hero-slide active">
-            <img src="assets/images/hero-1.jpg" alt="Saif Digital Marketing Strategy">
-            <div class="hero-slide-overlay"></div>
-            <div class="hero-slide-caption">Strategy <span>&rarr;</span> We build data-driven marketing plans</div>
-          </div>
-          <div class="hero-slide-dots">
-            <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
-          </div>
+      <div class="hero-img-col">
+        <div class="hero-img-wrap">
+          <img src="assets/images/hero-1.jpg" alt="Saif Digital Marketing Strategy">
+          <div class="hero-img-overlay"></div>
+          <div class="hero-img-caption">Strategy <span>&rarr;</span> Data-driven marketing plans that deliver results</div>
+        </div>
+        <div class="hero-dots">
+          <button class="hero-dot active" data-slide="0" aria-label="Slide 1"></button>
+          <button class="hero-dot" data-slide="1" aria-label="Slide 2"></button>
+          <button class="hero-dot" data-slide="2" aria-label="Slide 3"></button>
         </div>
       </div>
     </div>
@@ -536,47 +213,58 @@
 </section>
 
 <!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-autocontent autocontent glass-effect">
-    <h3 class="clients-heading">Trusted by 200+ Brands Worldwide</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><img src="assets/images/client-1.jpg" alt="Client 1"></div>
-          <div class="client_logo_container"><img src="assets/images/client-2.jpg" alt="Client 2"></div>
-          <div class="client_logo_container"><img src="assets/images/client-3.jpg" alt="Client 3"></div>
-          <div class="client_logo_container"><img src="assets/images/client-4.jpg" alt="Client 4"></div>
-          <div class="client_logo_container"><img src="assets/images/client-5.jpg" alt="Client 5"></div>
-          <div class="client_logo_container"><img src="assets/images/client-6.jpg" alt="Client 6"></div>
-          <div class="client_logo_container"><img src="assets/images/client-1.jpg" alt="Client 1"></div>
-          <div class="client_logo_container"><img src="assets/images/client-2.jpg" alt="Client 2"></div>
-          <div class="client_logo_container"><img src="assets/images/client-3.jpg" alt="Client 3"></div>
-          <div class="client_logo_container"><img src="assets/images/client-4.jpg" alt="Client 4"></div>
-          <div class="client_logo_container"><img src="assets/images/client-5.jpg" alt="Client 5"></div>
-          <div class="client_logo_container"><img src="assets/images/client-6.jpg" alt="Client 6"></div>
-        </div>
+<section class="clients-section">
+  <div class="container">
+    <h3 class="clients-heading">The world's leading brands are powered by Saif Digital</h3>
+    <div class="clients-track">
+      <div class="clients-slide">
+        <img src="assets/images/client-1.jpg" alt="Client 1" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-2.jpg" alt="Client 2" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-3.jpg" alt="Client 3" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-4.jpg" alt="Client 4" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-5.jpg" alt="Client 5" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-6.jpg" alt="Client 6" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-1.jpg" alt="Client 1" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-2.jpg" alt="Client 2" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-3.jpg" alt="Client 3" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-4.jpg" alt="Client 4" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-5.jpg" alt="Client 5" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
+        <img src="assets/images/client-6.jpg" alt="Client 6" style="height:36px;width:auto;object-fit:contain;filter:brightness(0) invert(1);opacity:0.4">
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- ==================== EXPERIENCE SECTION ==================== -->
-<section class="home-experience-section" id="about">
-  <div class="autocontent">
-    <div class="home-experience-grid">
-      <div class="home-experience-img">
-        <img src="assets/images/experience.jpg" alt="Saif Digital Team at Work">
-      </div>
-      <div class="home-experience-content">
-        <p style="font-size:14px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">About Us</p>
-        <h2 style="font-size:32px;font-weight:800;color:var(--dark);margin-bottom:16px;line-height:1.2;">10+ Years of Digital Marketing Excellence</h2>
-        <p style="font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:12px;">Founded in 2015, Saif Digital Marketing Agency has grown from a small startup to one of the most trusted digital marketing partners for businesses across the globe. Our team of 50+ specialists combines creativity with data-driven strategies to deliver results that matter.</p>
-        <p style="font-size:15px;color:var(--gray-500);line-height:1.8;margin-bottom:28px;">From startups to Fortune 500 companies, we've helped over 200 brands transform their digital presence, increase revenue, and build lasting connections with their audiences.</p>
-        <div class="home-stats-grid">
-          <div class="home-stat-box"><span class="home-stat-num" data-target="200">0</span><span class="home-stat-plus">+</span><p>Clients Served</p></div>
-          <div class="home-stat-box"><span class="home-stat-num" data-target="350">0</span><span class="home-stat-plus">+</span><p>Projects Completed</p></div>
-          <div class="home-stat-box"><span class="home-stat-num" data-target="50">0</span><span class="home-stat-plus">M+</span><p>Revenue Generated</p></div>
-          <div class="home-stat-box"><span class="home-stat-num" data-target="95">0</span><span class="home-stat-plus">%</span><p>Client Retention</p></div>
+<section class="experience-section">
+  <div class="container">
+    <div class="experience-inner">
+      <div class="experience-grid">
+        <div class="experience-img-wrap">
+          <img src="assets/images/experience.jpg" alt="Saif Digital Team at Work">
+        </div>
+        <div class="experience-content">
+          <h2>Technology partner to the world's leading brands</h2>
+          <p>Founded in 2015, Saif Digital Marketing Agency has grown from a small startup to one of the most trusted digital marketing partners for businesses across the globe. Our team of 50+ specialists combines creativity with data-driven strategies to deliver results that matter.</p>
+          <p>From startups to Fortune 500 companies, we've helped over 200 brands transform their digital presence, increase revenue, and build lasting connections with their audiences.</p>
+          <div class="experience-stats">
+            <div class="stat-box">
+              <div class="stat-value">200+</div>
+              <div class="stat-label">Clients Worldwide</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">350+</div>
+              <div class="stat-label">Successful Implementations</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">$50M+</div>
+              <div class="stat-label">Assets Managed Globally</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-value">10+</div>
+              <div class="stat-label">Years in Business</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -584,193 +272,238 @@
 </section>
 
 <!-- ==================== SERVICES SECTION ==================== -->
-<section class="home-services-section" id="services">
-  <div class="autocontent">
-    <div style="text-align:center;margin-bottom:48px;">
-      <p style="font-size:14px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">What We Do</p>
-      <h2 style="font-size:36px;font-weight:800;color:var(--dark);margin-bottom:12px;">Our Services</h2>
-      <p style="font-size:16px;color:var(--gray-500);max-width:600px;margin:0 auto;">Comprehensive digital marketing solutions tailored to grow your business and maximize ROI.</p>
+<section class="services-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">What We Do</span>
+      <h2 class="section-title">Our Services</h2>
+      <p class="section-desc">Comprehensive digital marketing solutions tailored to grow your business and maximize ROI.</p>
     </div>
-    <div class="home-services-grid">
-      <a href="services/seo.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-seo.jpg" alt="SEO Optimization"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-blue"><i class="bi bi-search"></i></div>
+    <div class="services-grid">
+      <a href="services/seo.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-seo.jpg" alt="SEO Optimization">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-search"></i></div>
           <h3>SEO Optimization</h3>
           <p>Dominate search rankings with technical SEO, keyword research, link building, and content optimization.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="services/social-media.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-social.jpg" alt="Social Media Marketing"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-cyan"><i class="bi bi-megaphone"></i></div>
+      <a href="services/social-media.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-social.jpg" alt="Social Media Marketing">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-megaphone"></i></div>
           <h3>Social Media Marketing</h3>
           <p>Build engaged communities and drive brand awareness across Instagram, Facebook, LinkedIn, and TikTok.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="services/ppc.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-ppc.jpg" alt="PPC Advertising"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-green"><i class="bi bi-google"></i></div>
+      <a href="services/ppc.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-ppc.jpg" alt="PPC Advertising">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-google"></i></div>
           <h3>PPC Advertising</h3>
           <p>Maximize your ad spend with Google Ads, Meta Ads, and retargeting campaigns that deliver measurable ROI.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="services/email-marketing.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-email.jpg" alt="Email Marketing"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-purple"><i class="bi bi-envelope"></i></div>
+      <a href="services/email-marketing.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-email.jpg" alt="Email Marketing">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-envelope"></i></div>
           <h3>Email Marketing</h3>
           <p>Nurture leads and drive conversions with personalized drip campaigns, automation, and segmentation.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="services/content-marketing.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-content.jpg" alt="Content Marketing"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-orange"><i class="bi bi-pencil-square"></i></div>
+      <a href="services/content-marketing.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-content.jpg" alt="Content Marketing">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-pencil-square"></i></div>
           <h3>Content Marketing</h3>
           <p>Attract and retain audiences with blog posts, whitepapers, videos, and infographics that drive action.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="services/brand-identity.html" class="home-service-card">
-        <div class="home-service-img"><img src="assets/images/service-brand.jpg" alt="Brand Identity"></div>
-        <div class="home-service-body">
-          <div class="icon-3d icon-3d-red"><i class="bi bi-palette"></i></div>
+      <a href="services/brand-identity.html" class="service-card">
+        <div class="service-card-img">
+          <img src="assets/images/service-brand.jpg" alt="Brand Identity">
+        </div>
+        <div class="service-card-body">
+          <div class="service-card-icon"><i class="bi bi-palette"></i></div>
           <h3>Brand Identity</h3>
           <p>Create a powerful brand with logo design, visual systems, and brand guidelines that resonate.</p>
-          <span class="home-service-link">Learn More <i class="bi bi-arrow-right"></i></span>
+          <span class="service-card-link">Learn More <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:40px;"><a href="services.html" class="primary-cta">Explore All Services <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
 <!-- ==================== PORTFOLIO SECTION ==================== -->
-<section class="home-portfolio-section" id="portfolio">
-  <div class="autocontent">
-    <div style="text-align:center;margin-bottom:40px;">
-      <p style="font-size:14px;font-weight:600;color:var(--primary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Our Work</p>
-      <h2 style="font-size:36px;font-weight:800;color:var(--dark);margin-bottom:12px;">Featured Projects</h2>
-      <p style="font-size:16px;color:var(--gray-500);max-width:600px;margin:0 auto;">Explore our portfolio of successful campaigns that have generated millions in revenue for our clients.</p>
+<section class="portfolio-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Our Work</span>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-desc">Explore our portfolio of successful campaigns that have generated millions in revenue for our clients.</p>
     </div>
-    <div class="home-portfolio-grid">
-      <a href="portfolio.html" class="home-portfolio-card">
+    <div class="portfolio-grid">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-1.jpg" alt="E-Commerce SEO Campaign">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-seo">SEO</span>
-          <h3>E-Commerce Revenue Growth</h3>
-          <p>Client: TechMart Online</p>
-          <span class="home-portfolio-result">+340% Organic Traffic</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-primary">SEO</span>
+          <h3>E-Commerce SEO Campaign</h3>
+          <p>Driving organic growth for online retailers</p>
+          <span class="portfolio-result">+340% Traffic</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="portfolio.html" class="home-portfolio-card">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-2.jpg" alt="Fashion Brand Social Media">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-social">Social Media</span>
-          <h3>Fashion Brand Launch</h3>
-          <p>Client: StyleHub</p>
-          <span class="home-portfolio-result">100K Followers in 6 Months</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-cyan">Social Media</span>
+          <h3>Fashion Brand Social Media</h3>
+          <p>Building engaged communities on social platforms</p>
+          <span class="portfolio-result">100K Followers</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="portfolio.html" class="home-portfolio-card">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-3.jpg" alt="SaaS Lead Generation">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-ppc">PPC</span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-green">PPC</span>
           <h3>SaaS Lead Generation</h3>
-          <p>Client: CloudStack</p>
-          <span class="home-portfolio-result">5X ROAS Achieved</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+          <p>Scaling B2B lead generation with paid campaigns</p>
+          <span class="portfolio-result">5X ROAS</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="portfolio.html" class="home-portfolio-card">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-4.jpg" alt="Restaurant Chain Rebrand">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-branding">Branding</span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-purple">Branding</span>
           <h3>Restaurant Chain Rebrand</h3>
-          <p>Client: FlavorHouse</p>
-          <span class="home-portfolio-result">+40% Brand Recognition</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+          <p>Complete brand identity redesign and launch</p>
+          <span class="portfolio-result">+40% Recognition</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="portfolio.html" class="home-portfolio-card">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-5.jpg" alt="Healthcare Content Strategy">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-content">Content</span>
-          <h3>Healthcare Authority</h3>
-          <p>Client: MedCare Clinic</p>
-          <span class="home-portfolio-result">+200% Organic Traffic</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-orange">Content</span>
+          <h3>Healthcare Content Strategy</h3>
+          <p>Establishing thought leadership in healthcare</p>
+          <span class="portfolio-result">+200% Traffic</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
-      <a href="portfolio.html" class="home-portfolio-card">
+      <a href="portfolio.html" class="portfolio-card">
         <img src="assets/images/portfolio-6.jpg" alt="Real Estate Local SEO">
-        <div class="home-portfolio-overlay">
-          <span class="tag-badge tag-seo">SEO</span>
-          <h3>Real Estate Local Domination</h3>
-          <p>Client: PropertyPlus</p>
-          <span class="home-portfolio-result">#1 Local Rankings</span>
-          <span class="home-portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
+        <div class="portfolio-overlay">
+          <span class="badge badge-primary">SEO</span>
+          <h3>Real Estate Local SEO</h3>
+          <p>Dominate local search for property listings</p>
+          <span class="portfolio-result">#1 Rankings</span>
+          <span class="portfolio-link">View Case Study <i class="bi bi-arrow-right"></i></span>
         </div>
       </a>
     </div>
-    <div style="text-align:center;margin-top:40px;"><a href="portfolio.html" class="primary-cta">View All Projects <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
   </div>
 </section>
 
 <!-- ==================== TESTIMONIALS ==================== -->
-<section class="insight-section awards-section" id="testimonials">
-  <div class="autocontent">
-    <h2 class="insight-section-title">What Our Clients Say</h2>
-    <div class="swiper testimonials-swiper">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide">
-          <article class="award-card testimonial-card-full"><div class="award-card-inner"><div class="award-card-copy">
-            <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p class="award-card-eyebrow">"Saif Digital transformed our online presence. We saw a 300% increase in organic traffic within 6 months."</p>
-            <h3 class="award-card-title">Sarah Johnson</h3><p class="award-card-year">CEO, TechStart</p>
-          </div></div></article>
+<section class="testimonials-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Testimonials</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+      <p class="section-desc">Hear from the brands that have transformed their digital presence with Saif Digital.</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
         </div>
-        <div class="swiper-slide">
-          <article class="award-card testimonial-card-full"><div class="award-card-inner"><div class="award-card-copy">
-            <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p class="award-card-eyebrow">"Their PPC campaigns generated 5X ROI for our business. Highly recommend their team."</p>
-            <h3 class="award-card-title">Ahmad Hassan</h3><p class="award-card-year">Marketing Director, GrowthCo</p>
-          </div></div></article>
-        </div>
-        <div class="swiper-slide">
-          <article class="award-card testimonial-card-full"><div class="award-card-inner"><div class="award-card-copy">
-            <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
-            <p class="award-card-eyebrow">"The social media strategy they built for us resulted in 50K new followers in just 3 months."</p>
-            <h3 class="award-card-title">Fatima Khan</h3><p class="award-card-year">Founder, StyleHub</p>
-          </div></div></article>
+        <p class="testimonial-text">"Saif Digital transformed our online presence. We saw a 300% increase in organic traffic within 6 months. Their team is incredibly talented and dedicated to delivering results."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/team-1.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Sarah Johnson</div>
+            <div class="testimonial-role">CEO, TechStart</div>
+          </div>
         </div>
       </div>
-      <div class="swiper-pagination"></div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="testimonial-text">"Their PPC campaigns generated 5X ROI for our business. Highly recommend their team for anyone looking to scale their digital advertising efforts effectively."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/team-2.jpg" alt="Ahmad Hassan" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Ahmad Hassan</div>
+            <div class="testimonial-role">Marketing Director, GrowthCo</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+          <i class="bi bi-star-fill"></i>
+        </div>
+        <p class="testimonial-text">"The social media strategy they built for us resulted in 50K new followers in just 3 months. Saif Digital truly understands how to build engaged online communities."</p>
+        <div class="testimonial-author">
+          <img src="assets/images/team-3.jpg" alt="Fatima Khan" class="testimonial-avatar">
+          <div>
+            <div class="testimonial-name">Fatima Khan</div>
+            <div class="testimonial-role">Founder, StyleHub</div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ==================== BLOG SECTION ==================== -->
-<section class="blog-section" id="blog">
-  <div class="autocontent">
-    <h2 class="insight-section-title">Latest Insights</h2>
+<section class="blog-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-eyebrow">Latest Insights</span>
+      <h2 class="section-title">From Our Blog</h2>
+      <p class="section-desc">Stay updated with the latest digital marketing trends, tips, and strategies.</p>
+    </div>
     <div class="blog-grid">
       <article class="blog-card">
-        <div class="blog-card-img-wrap">
+        <div class="blog-card-img">
           <img src="assets/images/blog-1.jpg" alt="SEO Trends for 2025">
           <span class="blog-card-tag">SEO</span>
         </div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span><i class="bi bi-calendar3"></i> January 10, 2025</span>
+            <span><i class="bi bi-calendar3"></i> Jan 10, 2025</span>
             <span><i class="bi bi-clock"></i> 7 min read</span>
           </div>
           <h3>10 SEO Trends for 2025</h3>
@@ -779,13 +512,13 @@
         </div>
       </article>
       <article class="blog-card">
-        <div class="blog-card-img-wrap">
+        <div class="blog-card-img">
           <img src="assets/images/blog-2.jpg" alt="Social Media Strategy Guide">
           <span class="blog-card-tag">Strategy</span>
         </div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span><i class="bi bi-calendar3"></i> February 5, 2025</span>
+            <span><i class="bi bi-calendar3"></i> Feb 5, 2025</span>
             <span><i class="bi bi-clock"></i> 5 min read</span>
           </div>
           <h3>Social Media Strategy Guide</h3>
@@ -794,13 +527,13 @@
         </div>
       </article>
       <article class="blog-card">
-        <div class="blog-card-img-wrap">
+        <div class="blog-card-img">
           <img src="assets/images/blog-3.jpg" alt="Content Marketing ROI">
           <span class="blog-card-tag">Content</span>
         </div>
         <div class="blog-card-body">
           <div class="blog-card-meta">
-            <span><i class="bi bi-calendar3"></i> March 12, 2025</span>
+            <span><i class="bi bi-calendar3"></i> Mar 12, 2025</span>
             <span><i class="bi bi-clock"></i> 6 min read</span>
           </div>
           <h3>Content Marketing ROI</h3>
@@ -816,34 +549,34 @@
 <section class="cta-section">
   <div class="cta-inner">
     <h2>Ready to Grow Your Business?</h2>
-    <p>Let's discuss how we can help you achieve your digital marketing goals.</p>
-    <a href="contact.html" class="cta-btn-white">Start Your Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p>Let's discuss how we can help you achieve your digital marketing goals and scale your brand.</p>
+    <a href="contact.html" class="btn-white">Start Your Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
 <!-- ==================== NEWSLETTER SECTION ==================== -->
-<section class="newsletter-img-section">
-  <div class="newsletter-img-inner">
-    <div class="newsletter-img-left">
+<section class="newsletter-section">
+  <div class="newsletter-inner">
+    <div class="newsletter-left">
       <img src="assets/images/newsletter-img.jpg" alt="Subscribe to Saif Digital Newsletter">
     </div>
-    <div class="newsletter-img-right">
+    <div class="newsletter-right">
       <h2>Subscribe to Our Newsletter</h2>
       <p>Get the latest digital marketing tips and industry insights delivered to your inbox.</p>
-      <form class="newsletter-img-form" id="newsletterImgForm">
+      <form class="newsletter-form" id="newsletterForm">
         <input type="email" placeholder="Enter your email address" required>
         <button type="submit">Subscribe</button>
       </form>
-      <div class="newsletter-img-stats">
-        <div class="newsletter-img-stat-item">
+      <div class="newsletter-stats">
+        <div class="newsletter-stat">
           <h4>15K+</h4>
           <p>Subscribers</p>
         </div>
-        <div class="newsletter-img-stat-item">
+        <div class="newsletter-stat">
           <h4>Weekly</h4>
           <p>New Content</p>
         </div>
-        <div class="newsletter-img-stat-item">
+        <div class="newsletter-stat">
           <h4>Free</h4>
           <p>Always</p>
         </div>
@@ -854,56 +587,60 @@
 
 <!-- ==================== FOOTER ==================== -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-              <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-              <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
-            </svg>
-          </div>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Our Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="header-logo-link">
+          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
+            <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
+            <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
+          </svg>
+          <span class="header-logo-text">Saif<span>Digital</span></span>
+        </a>
+        <p>Data-driven digital marketing agency helping businesses grow through SEO, social media, PPC, and content strategy.</p>
+        <div class="footer-social">
+          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
         </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/seo.html">SEO</a></li>
-            <li><a href="services/social-media.html">Social Media</a></li>
-            <li><a href="services/ppc.html">PPC</a></li>
-            <li><a href="services/email-marketing.html">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html">Brand Identity</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-          <div class="contact-social" style="margin-top:16px;">
-            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
-          </div>
-        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="portfolio.html#testimonials">Testimonials</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services/seo.html">SEO</a></li>
+          <li><a href="services/social-media.html">Social Media</a></li>
+          <li><a href="services/ppc.html">PPC</a></li>
+          <li><a href="services/email-marketing.html">Email Marketing</a></li>
+          <li><a href="services/content-marketing.html">Content Marketing</a></li>
+          <li><a href="services/brand-identity.html">Brand Identity</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Insights</h4>
+        <ul>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="portfolio.html">Portfolio</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact Us</h4>
+        <ul>
+          <li>123 Digital Avenue, Tech City, TC 12345</li>
+          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
+          <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
@@ -917,9 +654,11 @@
 </footer>
 
 <!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
 <script src="js/main.js"></script>
 <script>
 // Hero slider
@@ -941,40 +680,21 @@
     goToSlide((current + 1) % slides.length);
   }
 
-  dots.forEach(dot => {
-    dot.addEventListener('click', () => {
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() {
       clearInterval(interval);
       goToSlide(parseInt(dot.getAttribute('data-slide')));
       interval = setInterval(nextSlide, 4000);
     });
   });
 
-  interval = setInterval(nextSlide, 4000);
-})();
-
-// Portfolio filter tabs
-(function() {
-  const filterBtns = document.querySelectorAll('#portfolioTabs .values-tab-btn');
-  const cards = document.querySelectorAll('#portfolioGrid .award-card');
-
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const filter = btn.getAttribute('data-filter');
-      cards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
-          card.style.display = '';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
+  if (slides.length > 0) {
+    interval = setInterval(nextSlide, 4000);
+  }
 })();
 
 // Newsletter form
-document.getElementById('newsletterImgForm').addEventListener('submit', function(e) {
+document.getElementById('newsletterForm').addEventListener('submit', function(e) {
   e.preventDefault();
   alert('Thank you for subscribing!');
   this.reset();

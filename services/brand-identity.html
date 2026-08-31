@@ -12,589 +12,199 @@
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/responsive.css">
   <style>
-    .service-overview { padding: 80px 0; }
-    .service-overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
-    .service-overview-left h2 { font-size: 34px; font-weight: 800; color: var(--dark); margin-bottom: 20px; line-height: 1.2; }
-    .service-overview-left p { font-size: 15px; color: var(--gray-500); line-height: 1.8; margin-bottom: 14px; }
-    .service-overview-left .highlight-box {
-      margin-top: 24px; padding: 20px 24px; background: var(--gray-50); border-radius: var(--radius-md);
-      border: 1px solid var(--gray-200); border-left: 3px solid var(--primary);
-    }
-    .service-overview-left .highlight-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; font-style: italic; margin: 0; }
-    .service-overview-right { padding: 36px; background: var(--gray-50); border-radius: var(--radius-lg); border: 1px solid var(--gray-200); }
-    .service-overview-right h3 { font-size: 22px; font-weight: 700; color: var(--dark); margin-bottom: 24px; }
-    .feature-list { list-style: none; padding: 0; margin: 0; }
-    .feature-list li {
-      display: flex; align-items: flex-start; gap: 14px; padding: 14px 0;
-      border-bottom: 1px solid var(--gray-200);
-    }
-    .feature-list li:last-child { border-bottom: none; }
-    .feature-check {
-      display: flex; align-items: center; justify-content: center; width: 32px; height: 32px;
-      background: rgba(37,99,235,0.1); color: var(--primary); border-radius: 50%; flex-shrink: 0; font-size: 14px;
-    }
-    .feature-text h4 { font-size: 15px; font-weight: 700; color: var(--dark); margin-bottom: 4px; }
-    .feature-text p { font-size: 13px; color: var(--gray-500); line-height: 1.6; margin: 0; }
-
-    .process-section { padding: 80px 0; background: var(--gray-50); }
-    .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .process-card {
-      text-align: center; padding: 36px 24px; background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); transition: var(--transition); position: relative;
-    }
-    .process-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-4px); }
-    .process-step {
-      display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px;
-      background: var(--primary); color: var(--white); border-radius: 50%; font-size: 15px;
-      font-weight: 700; margin-bottom: 20px;
-    }
-    .process-icon {
-      display: flex; align-items: center; justify-content: center; width: 60px; height: 60px;
-      background: rgba(37,99,235,0.1); color: var(--primary); border-radius: 50%; margin: 0 auto 16px; font-size: 24px;
-    }
-    .process-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 8px; }
-    .process-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; }
-
-    .results-section { padding: 80px 0; }
-    .results-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-    .results-card {
-      text-align: center; padding: 36px 20px; background: var(--white); border: 1px solid var(--gray-200);
-      border-radius: var(--radius-lg); transition: var(--transition);
-    }
-    .results-card:hover { box-shadow: var(--shadow-md); border-color: transparent; transform: translateY(-4px); }
-    .results-value { font-size: 32px; font-weight: 800; color: var(--dark); margin-bottom: 4px; }
-    .results-value span { color: var(--primary); }
-    .results-label { font-size: 14px; color: var(--gray-500); font-weight: 500; }
-
-    .related-services-section { padding: 80px 0; background: var(--gray-50); }
-    .related-services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 800px; margin: 0 auto; }
-    .related-service-card {
-      padding: 32px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--radius-lg);
-      transition: var(--transition); text-decoration: none;
-    }
-    .related-service-card:hover { box-shadow: var(--shadow-md); border-color: var(--primary); transform: translateY(-4px); }
-    .related-service-icon {
-      display: flex; align-items: center; justify-content: center; width: 50px; height: 50px;
-      background: rgba(37,99,235,0.1); color: var(--primary); border-radius: 12px; font-size: 22px; margin-bottom: 16px;
-    }
-    .related-service-title { font-size: 18px; font-weight: 700; color: var(--dark); margin-bottom: 6px; }
-    .related-service-desc { font-size: 14px; color: var(--gray-500); line-height: 1.6; margin: 0; }
-
-    .cta-banner {
-      padding: 80px 0; background: linear-gradient(135deg, var(--primary), #4f46e5);
-      text-align: center;
-    }
-    .cta-banner h2 { font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 16px; }
-    .cta-banner p { font-size: 16px; color: rgba(255,255,255,0.85); margin-bottom: 32px; max-width: 600px; margin-left: auto; margin-right: auto; }
-    .cta-banner .white-cta {
-      display: inline-flex; align-items: center; gap: 8px; padding: 14px 32px; background: var(--white);
-      color: var(--primary); font-weight: 700; font-size: 15px; border-radius: var(--radius-xl);
-      text-decoration: none; transition: var(--transition);
-    }
-    .cta-banner .white-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-
-    @media (max-width: 992px) {
-      .service-overview-grid { grid-template-columns: 1fr; }
-      .process-grid { grid-template-columns: repeat(2, 1fr); }
-      .results-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 768px) {
-      .process-grid { grid-template-columns: 1fr; }
-      .results-grid { grid-template-columns: 1fr; }
-      .related-services-grid { grid-template-columns: 1fr; }
-      .cta-banner h2 { font-size: 28px; }
-    }
+    :root{--dark-bg:#0B1120;--dark-bg-2:#111827;--dark-card:#1A2332;--dark-border:#1E293B;--dark-text:#E2E8F0;--dark-text-muted:#94A3B8;--primary:#2563EB;--gradient-primary:linear-gradient(135deg,#2563EB 0%,#7C3AED 100%);--text-gradient:linear-gradient(135deg,#2563EB 0%,#7C3AED 100%)}
+    .text-gradient{background:var(--text-gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .dark-banner{background:var(--dark-bg);padding:120px 0 80px;position:relative;overflow:hidden}
+    .dark-banner::before{content:'';position:absolute;top:-50%;right:-20%;width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.08) 0%,transparent 70%);border-radius:50%}
+    .dark-banner .tagline__text{display:inline-block;padding:6px 16px;background:rgba(37,99,235,0.15);color:#3B82F6;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+    .dark-banner h1{font-size:52px;font-weight:800;color:#FFF;line-height:1.15;margin-bottom:20px}
+    .dark-banner p{font-size:17px;color:var(--dark-text-muted);line-height:1.8;max-width:560px;margin-bottom:32px}
+    .dark-banner .primary-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:var(--gradient-primary);color:#FFF;font-weight:700;font-size:15px;border-radius:12px;text-decoration:none;transition:all .3s}
+    .dark-banner .primary-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(37,99,235,0.35)}
+    .dark-banner .banner-visual{display:flex;align-items:center;justify-content:center}
+    .dark-banner .banner-img{width:100%;max-width:520px;border-radius:16px;border:1px solid var(--dark-border)}
+    .dark-section{background:var(--dark-bg);padding:100px 0}
+    .dark-section-2{background:var(--dark-bg-2);padding:100px 0}
+    .section-tag{display:inline-block;padding:6px 16px;background:rgba(37,99,235,0.15);color:#3B82F6;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:16px}
+    .section-title{font-size:38px;font-weight:800;color:#FFF;margin-bottom:16px;line-height:1.2}
+    .section-subtitle{font-size:16px;color:var(--dark-text-muted);line-height:1.7;max-width:600px}
+    .overview-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start}
+    .overview-text h2{font-size:36px;font-weight:800;color:#FFF;margin-bottom:20px;line-height:1.2}
+    .overview-text p{font-size:15px;color:var(--dark-text-muted);line-height:1.8;margin-bottom:14px}
+    .overview-text .highlight-box{margin-top:24px;padding:20px 24px;background:rgba(37,99,235,0.08);border-radius:12px;border:1px solid rgba(37,99,235,0.2);border-left:3px solid var(--primary)}
+    .overview-text .highlight-box p{font-size:14px;color:var(--dark-text-muted);line-height:1.7;font-style:italic;margin:0}
+    .features-panel{padding:36px;background:var(--dark-card);border-radius:16px;border:1px solid var(--dark-border)}
+    .features-panel h3{font-size:22px;font-weight:700;color:#FFF;margin-bottom:24px}
+    .feature-list{list-style:none;padding:0;margin:0}
+    .feature-list li{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--dark-border)}
+    .feature-list li:last-child{border-bottom:none}
+    .feature-check{display:flex;align-items:center;justify-content:center;width:32px;height:32px;background:rgba(37,99,235,0.15);color:#3B82F6;border-radius:50%;flex-shrink:0;font-size:14px}
+    .feature-text h4{font-size:15px;font-weight:700;color:#FFF;margin-bottom:4px}
+    .feature-text p{font-size:13px;color:var(--dark-text-muted);line-height:1.6;margin:0}
+    .process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .process-card{text-align:center;padding:36px 24px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:16px;transition:all .3s}
+    .process-card:hover{border-color:rgba(37,99,235,0.3);transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,0.3)}
+    .process-step{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;background:var(--gradient-primary);color:#FFF;border-radius:50%;font-size:15px;font-weight:700;margin-bottom:20px}
+    .process-icon{display:flex;align-items:center;justify-content:center;width:60px;height:60px;background:rgba(37,99,235,0.1);color:#3B82F6;border-radius:50%;margin:0 auto 16px;font-size:24px}
+    .process-title{font-size:18px;font-weight:700;color:#FFF;margin-bottom:8px}
+    .process-desc{font-size:14px;color:var(--dark-text-muted);line-height:1.6}
+    .results-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    .results-card{text-align:center;padding:36px 20px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:16px;transition:all .3s}
+    .results-card:hover{border-color:rgba(37,99,235,0.3);transform:translateY(-4px)}
+    .results-value{font-size:36px;font-weight:800;color:#FFF;margin-bottom:4px}
+    .results-value span{color:#3B82F6}
+    .results-label{font-size:14px;color:var(--dark-text-muted);font-weight:500}
+    .related-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;max-width:800px;margin:0 auto}
+    .related-card{padding:32px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:16px;transition:all .3s;text-decoration:none}
+    .related-card:hover{border-color:rgba(37,99,235,0.3);transform:translateY(-4px)}
+    .related-icon{display:flex;align-items:center;justify-content:center;width:50px;height:50px;background:rgba(37,99,235,0.15);color:#3B82F6;border-radius:12px;font-size:22px;margin-bottom:16px}
+    .related-title{font-size:18px;font-weight:700;color:#FFF;margin-bottom:6px}
+    .related-desc{font-size:14px;color:var(--dark-text-muted);line-height:1.6;margin:0}
+    .dark-cta{padding:100px 0;background:var(--gradient-primary);text-align:center;position:relative;overflow:hidden}
+    .dark-cta::before{content:'';position:absolute;top:-50%;right:-20%;width:500px;height:500px;background:rgba(255,255,255,0.05);border-radius:50%}
+    .dark-cta h2{font-size:38px;font-weight:800;color:#FFF;margin-bottom:16px}
+    .dark-cta p{font-size:16px;color:rgba(255,255,255,0.85);margin-bottom:32px;max-width:600px;margin-left:auto;margin-right:auto}
+    .dark-cta .white-cta{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;background:#FFF;color:#2563EB;font-weight:700;font-size:15px;border-radius:12px;text-decoration:none;transition:all .3s}
+    .dark-cta .white-cta:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,0.2)}
+    .newsletter-section-wrapper{background:var(--dark-bg-2)}
+    .newsletter-section-wrapper .newsletter-heading{color:#FFF}
+    .newsletter-section-wrapper .newsletter-input-group input{background:var(--dark-card);border:1px solid var(--dark-border);color:#FFF}
+    .newsletter-section-wrapper .newsletter-submit-btn{background:var(--gradient-primary);color:#FFF}
+    .footer{background:var(--dark-bg)}
+    @media(max-width:992px){.overview-grid{grid-template-columns:1fr}.process-grid{grid-template-columns:repeat(2,1fr)}.results-grid{grid-template-columns:repeat(2,1fr)}.dark-banner h1{font-size:38px}}
+    @media(max-width:768px){.process-grid{grid-template-columns:1fr}.results-grid{grid-template-columns:1fr}.related-grid{grid-template-columns:1fr}.dark-banner h1{font-size:32px}.dark-cta h2{font-size:28px}.section-title{font-size:28px}}
   </style>
 </head>
 <body>
-
-<!-- ==================== HEADER ==================== -->
 <header class="site-header" id="site-header" role="banner">
   <nav class="header-nav autocontent" aria-label="Main navigation">
     <div class="header-nav-inner">
-      <div class="header-logo">
-        <a href="../index.html" class="header-logo-link" aria-label="Saif Digital Home">
-          <svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-            <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-            <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-            <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/>
-            <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/>
-            <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/>
-            <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/>
-            <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/>
-            <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/>
-          </svg>
-        </a>
-      </div>
-
+      <div class="header-logo"><a href="../index.html" class="header-logo-link" aria-label="Saif Digital Home"><svg class="header-logo-svg" width="145" height="36" viewBox="0 0 145 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/><path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/><path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/><path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="#0F172A"/><path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="#0F172A"/><path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="#0F172A"/><path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="#0F172A"/><path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="#0F172A"/><path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="#0F172A"/></svg></a></div>
       <ul class="header-nav-desktop" role="menubar" aria-label="Main navigation" data-menu="desktop">
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger active" data-mega-trigger="services" aria-expanded="false" aria-haspopup="true" aria-controls="mega-services">
-            Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-        </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false" aria-haspopup="true" aria-controls="mega-portfolio">
-            Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-        </li>
-        <li class="header-nav-item has-dropdown" role="none">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false" aria-haspopup="true" aria-controls="mega-company">
-            Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="../contact.html" class="header-nav-link">Contact Us</a>
-        </li>
-        <li class="header-nav-item" role="none">
-          <a href="../careers.html" class="header-nav-link">Careers</a>
-        </li>
+        <li class="header-nav-item has-dropdown" role="none"><button type="button" class="header-nav-link header-nav-trigger active" data-mega-trigger="services">Services<svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button></li>
+        <li class="header-nav-item has-dropdown" role="none"><button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio">Portfolio<svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button></li>
+        <li class="header-nav-item has-dropdown" role="none"><button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company">Company<svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button></li>
+        <li class="header-nav-item" role="none"><a href="../contact.html" class="header-nav-link">Contact Us</a></li>
+        <li class="header-nav-item" role="none"><a href="../careers.html" class="header-nav-link">Careers</a></li>
       </ul>
-
-      <div class="header-actions">
-        <button type="button" class="header-search-trigger" aria-label="Search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <div class="header-language" role="group" aria-label="Language selection">
-          <a href="#" class="header-language-link active">English</a>
-        </div>
-        <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false" aria-controls="header-mobile-panel">
-          <span class="header-hamburger-line"></span>
-          <span class="header-hamburger-line"></span>
-          <span class="header-hamburger-line"></span>
-        </button>
-      </div>
+      <div class="header-actions"><button type="button" class="header-search-trigger" aria-label="Search"><i class="bi bi-search"></i></button><div class="header-language" role="group"><a href="#" class="header-language-link active">English</a></div><button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu"><span class="header-hamburger-line"></span><span class="header-hamburger-line"></span><span class="header-hamburger-line"></span></button></div>
     </div>
   </nav>
-
-  <!-- Mega Menu Overlay -->
   <div class="header-mega-overlay" id="megaOverlay" aria-hidden="true"></div>
-
-  <!-- Mega Menu: Services -->
-  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Services</h3>
-              <p class="header-mega-desc">Full-spectrum digital marketing solutions that drive measurable growth</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google with data-driven SEO strategies</span></a></li>
-              <li><a href="social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
-              <li><a href="ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
-              <li><a href="email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Engage audiences with compelling content strategies</span></a></li>
-              <li><a href="brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="../services.html" class="header-mega-child-link"><span class="header-mega-child-title">Web Development</span><span class="header-mega-child-desc">Build fast, beautiful websites that convert</span></a></li>
-              <li><a href="../services.html" class="header-mega-child-link"><span class="header-mega-child-title">Analytics & Reporting</span><span class="header-mega-child-desc">Data insights to optimize every marketing dollar</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
-  </div>
-
-  <!-- Mega Menu: Portfolio -->
-  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results and client success stories</p></div>
-            <ul class="header-mega-child-grid">
-              <li><a href="../portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-              <li><a href="../portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Client Results</span><span class="header-mega-child-desc">Measurable outcomes and ROI for our clients</span></a></li>
-              <li><a href="../portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Industry Expertise</span><span class="header-mega-child-desc">Specialized strategies across multiple industries</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
-  </div>
-
-  <!-- Mega Menu: Company -->
-  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p></div>
-            <ul class="header-mega-child-grid">
-              <li><a href="../about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
-              <li><a href="../index.html#testimonials" class="header-mega-child-link"><span class="header-mega-child-title">Testimonials</span><span class="header-mega-child-desc">What our clients say about working with us</span></a></li>
-              <li><a href="../index.html#process" class="header-mega-child-link"><span class="header-mega-child-title">Our Process</span><span class="header-mega-child-desc">How we deliver results step by step</span></a></li>
-              <li><a href="../careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team of digital experts</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
-  </div>
-
-  <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile">
-    <nav class="header-mobile-nav" aria-label="Mobile navigation">
-      <ul class="header-mobile-list">
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger active" data-mobile-trigger="services" aria-expanded="false">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown active" id="mobile-services" role="group">
-            <li><a href="seo.html" class="header-mobile-link">SEO Optimization</a></li>
-            <li><a href="social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
-            <li><a href="ppc.html" class="header-mobile-link">PPC Advertising</a></li>
-            <li><a href="email-marketing.html" class="header-mobile-link">Email Marketing</a></li>
-            <li><a href="content-marketing.html" class="header-mobile-link">Content Marketing</a></li>
-            <li><a href="brand-identity.html" class="header-mobile-link">Brand Identity</a></li>
-            <li><a href="../services.html" class="header-mobile-link">Web Development</a></li>
-            <li><a href="../services.html" class="header-mobile-link">Analytics & Reporting</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">Portfolio<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-portfolio" role="group">
-            <li><a href="../portfolio.html" class="header-mobile-link">Case Studies</a></li>
-            <li><a href="../portfolio.html" class="header-mobile-link">Client Results</a></li>
-            <li><a href="../portfolio.html" class="header-mobile-link">Industry Expertise</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">Company<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
-          <ul class="header-mobile-dropdown" id="mobile-company" role="group">
-            <li><a href="../about.html" class="header-mobile-link">About Us</a></li>
-            <li><a href="../index.html#testimonials" class="header-mobile-link">Testimonials</a></li>
-            <li><a href="../index.html#process" class="header-mobile-link">Our Process</a></li>
-            <li><a href="../careers.html" class="header-mobile-link">Careers</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item"><a href="../contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li>
-        <li class="header-mobile-item"><a href="../careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li>
-      </ul>
-    </nav>
-  </div>
+  <div class="header-mega-panel" id="mega-services" data-mega-panel="services" aria-hidden="true"><div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services"><div class="header-mega-content-inner"><h3 class="header-mega-title">Services</h3><p class="header-mega-desc">Full-spectrum digital marketing solutions</p></div><ul class="header-mega-child-grid"><li><a href="seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google</span></a></li><li><a href="social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness</span></a></li><li><a href="ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI</span></a></li><li><a href="email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads on autopilot</span></a></li><li><a href="content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Stories that drive action</span></a></li><li><a href="brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Stand out from the crowd</span></a></li><li><a href="../services.html" class="header-mega-child-link"><span class="header-mega-child-title">Web Development</span><span class="header-mega-child-desc">Build fast websites</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div></div></div>
+  <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio" aria-hidden="true"><div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results</p></div><ul class="header-mega-child-grid"><li><a href="../portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">Successful campaigns</span></a></li><li><a href="../portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Client Results</span><span class="header-mega-child-desc">Measurable outcomes</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div></div></div>
+  <div class="header-mega-panel" id="mega-company" data-mega-panel="company" aria-hidden="true"><div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise</p></div><ul class="header-mega-child-grid"><li><a href="../about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story</span></a></li><li><a href="../careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our team</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="../contact.html" class="header-mega-cta-btn">Get Started</a></div></div></div>
+  <div class="header-mobile-panel" id="header-mobile-panel" aria-hidden="true" data-menu="mobile"><nav class="header-mobile-nav"><ul class="header-mobile-list"><li class="header-mobile-item has-children"><button type="button" class="header-mobile-trigger active" data-mobile-trigger="services">Services<svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button><ul class="header-mobile-dropdown active" id="mobile-services"><li><a href="seo.html" class="header-mobile-link">SEO Optimization</a></li><li><a href="social-media.html" class="header-mobile-link">Social Media Marketing</a></li><li><a href="ppc.html" class="header-mobile-link">PPC Advertising</a></li><li><a href="email-marketing.html" class="header-mobile-link">Email Marketing</a></li><li><a href="content-marketing.html" class="header-mobile-link">Content Marketing</a></li><li><a href="brand-identity.html" class="header-mobile-link">Brand Identity</a></li></ul></li><li class="header-mobile-item"><a href="../contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li><li class="header-mobile-item"><a href="../careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li></ul></nav></div>
 </header>
 
-<!-- ==================== HERO BANNER ==================== -->
-<section class="global-banner autocontent" aria-label="Brand Identity banner">
-  <div class="global-banner__inner">
-    <div class="global-banner__info-col">
-      <div class="global-banner__info-inner">
-        <div class="global-banner__tagline">
-          <span class="tagline__text">Brand Identity</span>
-        </div>
-        <h1 class="headline">
-          <span class="text-content-grey">Stand Out</span>
-          <br>
-          <span style="background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">From the Crowd</span>
-        </h1>
-        <p class="global-banner__description">Our brand identity services help businesses create memorable, cohesive brands that resonate with their target audience and stand out in crowded markets.</p>
-        <div class="global-banner__cta">
-          <a href="../contact.html" class="primary-cta">Build Your Brand <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-        </div>
-      </div>
+<section class="dark-banner" aria-label="Brand Identity banner">
+  <div class="autocontent"><div class="overview-grid">
+    <div>
+      <span class="tagline__text">Brand Identity</span>
+      <h1>Stand Out From <span class="text-gradient">The Crowd</span></h1>
+      <p>Our brand identity services help businesses create memorable, distinctive visual identities that resonate with their target audience and establish a strong market presence.</p>
+      <a href="../contact.html" class="primary-cta">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
     </div>
-    <div class="global-banner__img-col">
-      <div class="global-banner__img-wrap">
-        <div class="sequence-slider-placeholder">
-          <div class="slider-building">
-            <div class="building-base"></div>
-            <div class="building-pillars">
-              <div class="pillar"></div><div class="pillar"></div><div class="pillar"></div><div class="pillar"></div>
-            </div>
-            <div class="building-top"></div>
-            <div class="building-dome"></div>
-          </div>
-          <div class="slider-label">Brand Identity</div>
-        </div>
-      </div>
-    </div>
-  </div>
+    <div class="banner-visual"><img src="../assets/images/brand-identity-hero.jpg" alt="Brand Identity" class="banner-img" onerror="this.style.display='none'"></div>
+  </div></div>
 </section>
 
-<!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-autocontent autocontent glass-effect">
-    <h3 class="clients-heading">The world's leading brands are powered by Saif Digital</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div>
-          <div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+<div class="clients-logos bannerClients" style="background:var(--dark-bg-2);border-top:1px solid var(--dark-border);border-bottom:1px solid var(--dark-border);"><div class="clients-autocontent autocontent glass-effect"><h3 class="clients-heading" style="color:var(--dark-text-muted);">The world's leading brands are powered by Saif Digital</h3><div class="clients-slider-wrap"><div class="clients-slider" id="clientsSlider"><div class="clients-slide-track" id="clientsSlideTrack"><div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div><div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div><div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div><div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div><div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div><div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div><div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div><div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div><div class="client_logo_container"><div class="client-logo-box">TechCorp</div></div><div class="client_logo_container"><div class="client-logo-box">StyleHub</div></div><div class="client_logo_container"><div class="client-logo-box">GreenLife</div></div><div class="client_logo_container"><div class="client-logo-box">HealthPlus</div></div><div class="client_logo_container"><div class="client-logo-box">RetailMax</div></div><div class="client_logo_container"><div class="client-logo-box">FinancePro</div></div><div class="client_logo_container"><div class="client-logo-box">EduLearn</div></div><div class="client_logo_container"><div class="client-logo-box">FoodChain</div></div></div></div></div></div></div>
 
-<!-- ==================== SERVICE OVERVIEW ==================== -->
-<section class="service-overview autocontent" id="overview">
-  <div class="service-overview-grid">
-    <div class="service-overview-left">
-      <div class="global-banner__tagline" style="margin-bottom: 16px;">
-        <span class="tagline__text">What We Do</span>
-      </div>
-      <h2>Brand identities that capture attention and build lasting recognition</h2>
-      <p>At Saif Digital Marketing Agency, we take a comprehensive approach to brand identity design that goes beyond creating a logo. Our team of experienced designers and brand strategists combines visual creativity, market research, and strategic thinking to help your business build a brand that truly connects with your audience.</p>
-      <p>We understand that every business is unique, which is why we develop customized brand identities tailored to your specific goals, industry, and target audience. From startups looking to establish their market presence to established brands seeking a refresh, we have the expertise and tools to deliver exceptional results.</p>
-      <p>Our strategic methodology ensures that every element of your brand identity is intentional, cohesive, and aligned with your business objectives, creating a memorable impression that builds trust and drives loyalty.</p>
-      <div class="highlight-box">
-        <p>"Our mission is to help businesses of all sizes build distinctive, authentic brand identities that resonate with their audience and create lasting emotional connections."</p>
-      </div>
+<section class="dark-section" id="overview">
+  <div class="autocontent"><div class="overview-grid">
+    <div class="overview-text">
+      <span class="section-tag">What We Do</span>
+      <h2>Brand identities that make lasting impressions</h2>
+      <p>At Saif Digital Marketing Agency, we craft brand identities that tell your story visually and emotionally. Our design process goes beyond aesthetics to create cohesive brand systems that build recognition and trust.</p>
+      <p>From logo design and color palettes to typography, imagery guidelines, and brand voice, we develop comprehensive brand identity systems that ensure consistency across every touchpoint - digital, print, and physical.</p>
+      <p>Whether you're launching a new brand or refreshing an existing one, we work closely with you to understand your values, vision, and audience to create an identity that truly represents who you are and connects with the people you serve.</p>
+      <div class="highlight-box"><p>"A strong brand identity isn't just about looking good - it's about creating an emotional connection that turns first-time buyers into lifelong advocates."</p></div>
     </div>
-    <div class="service-overview-right">
+    <div class="features-panel">
       <h3>Key Features</h3>
       <ul class="feature-list">
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Logo Design</h4>
-            <p>Custom logos that capture your brand's essence and create instant recognition.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Brand Guidelines</h4>
-            <p>Comprehensive style guides that ensure consistent brand application across all touchpoints.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Visual Identity</h4>
-            <p>Complete visual systems including color palettes, typography, and imagery styles.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Brand Strategy</h4>
-            <p>Strategic positioning that differentiates your brand in the marketplace.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Brand Voice</h4>
-            <p>Consistent messaging that reflects your brand personality and resonates with your audience.</p>
-          </div>
-        </li>
-        <li>
-          <span class="feature-check"><i class="bi bi-check-lg"></i></span>
-          <div class="feature-text">
-            <h4>Brand Audit</h4>
-            <p>Comprehensive evaluation of your current brand to identify opportunities for improvement.</p>
-          </div>
-        </li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Logo Design</h4><p>Unique, memorable logos that capture the essence of your brand.</p></div></li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Brand Guidelines</h4><p>Comprehensive style guides ensuring consistency across all platforms.</p></div></li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Visual Identity</h4><p>Color palettes, typography, and imagery that define your look.</p></div></li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Brand Voice</h4><p>Distinctive tone and messaging that resonates with your audience.</p></div></li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Collateral Design</h4><p>Business cards, brochures, and marketing materials that impress.</p></div></li>
+        <li><span class="feature-check"><i class="bi bi-check-lg"></i></span><div class="feature-text"><h4>Brand Strategy</h4><p>Data-driven positioning that differentiates you in the market.</p></div></li>
       </ul>
     </div>
-  </div>
+  </div></div>
 </section>
 
-<!-- ==================== BRAND IDENTITY PROCESS ==================== -->
-<section class="process-section">
+<section class="dark-section-2">
   <div class="autocontent">
-    <h2 class="insight-section-title">Our Brand Identity Process</h2>
+    <span class="section-tag">Our Process</span>
+    <h2 class="section-title">Our Brand Identity Process</h2>
+    <p class="section-subtitle">A proven methodology that delivers consistent, memorable brands.</p>
+    <div style="height:48px;"></div>
     <div class="process-grid">
-      <div class="process-card">
-        <span class="process-step">1</span>
-        <div class="process-icon"><i class="bi bi-binoculars"></i></div>
-        <h3 class="process-title">Discovery & Research</h3>
-        <p class="process-desc">We dive deep into your business, audience, competitors, and market landscape to uncover insights that inform your brand strategy.</p>
-      </div>
-      <div class="process-card">
-        <span class="process-step">2</span>
-        <div class="process-icon"><i class="bi bi-lightbulb"></i></div>
-        <h3 class="process-title">Concept Development</h3>
-        <p class="process-desc">Our team explores multiple creative directions, developing brand concepts that capture your unique value proposition.</p>
-      </div>
-      <div class="process-card">
-        <span class="process-step">3</span>
-        <div class="process-icon"><i class="bi bi-brush"></i></div>
-        <h3 class="process-title">Design & Refinement</h3>
-        <p class="process-desc">We refine your chosen concept through iterations, perfecting every detail until your brand identity truly represents your vision.</p>
-      </div>
-      <div class="process-card">
-        <span class="process-step">4</span>
-        <div class="process-icon"><i class="bi bi-book"></i></div>
-        <h3 class="process-title">Brand Guidelines Delivery</h3>
-        <p class="process-desc">We deliver comprehensive brand guidelines and all assets you need to maintain consistency across all brand touchpoints.</p>
-      </div>
+      <div class="process-card"><span class="process-step">1</span><div class="process-icon"><i class="bi bi-lightbulb"></i></div><h3 class="process-title">Discovery & Research</h3><p class="process-desc">We dive deep into your business, audience, and competitors to build a strategic foundation.</p></div>
+      <div class="process-card"><span class="process-step">2</span><div class="process-icon"><i class="bi bi-palette"></i></div><h3 class="process-title">Concept & Design</h3><p class="process-desc">Our designers create multiple concepts and refine until we achieve the perfect identity.</p></div>
+      <div class="process-card"><span class="process-step">3</span><div class="process-icon"><i class="bi bi-book"></i></div><h3 class="process-title">Guidelines & Assets</h3><p class="process-desc">We build comprehensive brand guidelines and deliver all final assets in all formats.</p></div>
+      <div class="process-card"><span class="process-step">4</span><div class="process-icon"><i class="bi bi-rocket"></i></div><h3 class="process-title">Launch & Support</h3><p class="process-desc">We help you launch your new brand and provide ongoing support for consistency.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== RESULTS ==================== -->
-<section class="results-section autocontent">
-  <h2 class="insight-section-title">Proven Results</h2>
-  <div class="results-grid">
-    <div class="results-card">
-      <div class="results-value">200<span>+</span></div>
-      <div class="results-label">Brands Designed</div>
-    </div>
-    <div class="results-card">
-      <div class="results-value">95<span>%</span></div>
-      <div class="results-label">Client Satisfaction</div>
-    </div>
-    <div class="results-card">
-      <div class="results-value">50<span>+</span></div>
-      <div class="results-label">Industries</div>
-    </div>
-    <div class="results-card">
-      <div class="results-value">100<span>%</span></div>
-      <div class="results-label">Custom Designs</div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== RELATED SERVICES ==================== -->
-<section class="related-services-section">
+<section class="dark-section">
   <div class="autocontent">
-    <h2 class="insight-section-title">Related Services</h2>
-    <div class="related-services-grid">
-      <a href="social-media.html" class="related-service-card">
-        <div class="related-service-icon"><i class="bi bi-share"></i></div>
-        <h3 class="related-service-title">Social Media Marketing</h3>
-        <p class="related-service-desc">Build brand awareness, engage your audience, and drive traffic with strategic social media campaigns.</p>
-      </a>
-      <a href="content-marketing.html" class="related-service-card">
-        <div class="related-service-icon"><i class="bi bi-file-earmark-text"></i></div>
-        <h3 class="related-service-title">Content Marketing</h3>
-        <p class="related-service-desc">Attract and retain customers with valuable, relevant content that drives profitable customer actions.</p>
-      </a>
+    <span class="section-tag">Results</span>
+    <h2 class="section-title">Proven Results</h2>
+    <p class="section-subtitle">Numbers that speak louder than promises.</p>
+    <div style="height:48px;"></div>
+    <div class="results-grid">
+      <div class="results-card"><div class="results-value">200<span>+</span></div><div class="results-label">Brands Created</div></div>
+      <div class="results-card"><div class="results-value">95<span>%</span></div><div class="results-label">Client Satisfaction</div></div>
+      <div class="results-card"><div class="results-value">50<span>+</span></div><div class="results-label">Industries Served</div></div>
+      <div class="results-card"><div class="results-value">100<span>%</span></div><div class="results-label">Custom Solutions</div></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CTA BANNER ==================== -->
-<section class="cta-banner">
+<section class="dark-section-2">
+  <div class="autocontent">
+    <span class="section-tag">Related</span>
+    <h2 class="section-title">Related Services</h2>
+    <p class="section-subtitle">Complement your brand identity with our other services.</p>
+    <div style="height:48px;"></div>
+    <div class="related-grid">
+      <a href="social-media.html" class="related-card"><div class="related-icon"><i class="bi bi-share"></i></div><h3 class="related-title">Social Media Marketing</h3><p class="related-desc">Amplify your brand presence across social platforms.</p></a>
+      <a href="content-marketing.html" class="related-card"><div class="related-icon"><i class="bi bi-file-earmark-text"></i></div><h3 class="related-title">Content Marketing</h3><p class="related-desc">Tell your brand story with valuable, engaging content.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="dark-cta">
   <div class="autocontent">
     <h2>Ready to Build Your Brand?</h2>
-    <p>Let our brand identity experts help you create a distinctive, memorable brand that resonates with your audience and stands out in the marketplace.</p>
-    <a href="../contact.html" class="white-cta">Build Your Brand <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <p>Let our brand identity experts help you create a distinctive, memorable brand that stands out in the market and connects with your audience.</p>
+    <a href="../contact.html" class="white-cta">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== NEWSLETTER ==================== -->
 <div class="newsletter-section-wrapper">
   <div class="newsletter-pattern-side"><div class="newsletter-gradient-strip"></div></div>
   <div class="newsletter-gradient-side"><div class="newsletter-gradient-overlay"></div></div>
   <h1 class="newsletter-heading">Subscribe to our newsletter to get the latest news in your inbox.</h1>
-  <div class="newsletter-form-wrapper">
-    <form class="newsletter-form" id="newsletterForm">
-      <div class="newsletter-input-group">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit" class="newsletter-submit-btn">Subscribe</button>
-      </div>
-    </form>
-  </div>
+  <div class="newsletter-form-wrapper"><form class="newsletter-form" id="newsletterForm"><div class="newsletter-input-group"><input type="email" placeholder="Enter your email address" required><button type="submit" class="newsletter-submit-btn">Subscribe</button></div></form></div>
 </div>
 
-<!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-              <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-              <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
-            </svg>
-          </div>
-          <ul>
-            <li><a href="../about.html">About Us</a></li>
-            <li><a href="../index.html#testimonials">Testimonials</a></li>
-            <li><a href="../index.html#process">Our Process</a></li>
-            <li><a href="../careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="seo.html">SEO Optimization</a></li>
-            <li><a href="social-media.html">Social Media Marketing</a></li>
-            <li><a href="ppc.html">PPC Advertising</a></li>
-            <li><a href="email-marketing.html">Email Marketing</a></li>
-            <li><a href="content-marketing.html">Content Marketing</a></li>
-            <li><a href="brand-identity.html">Brand Identity</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Portfolio</h4>
-          <ul>
-            <li><a href="../portfolio.html">Case Studies</a></li>
-            <li><a href="../portfolio.html">Client Results</a></li>
-            <li><a href="../portfolio.html">Industry Expertise</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Company</h4>
-          <ul>
-            <li><a href="../about.html">About Us</a></li>
-            <li><a href="../index.html#testimonials">Testimonials</a></li>
-            <li><a href="../index.html#process">Our Process</a></li>
-            <li><a href="../careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Insights</h4>
-          <ul>
-            <li><a href="../blog.html">Blog</a></li>
-            <li><a href="../case-studies.html">Case Studies</a></li>
-            <li><a href="#">Guides</a></li>
-            <li><a href="#">Events</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Saif Digital Marketing Agency. All Rights Reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
+    <div class="row"><div class="col-lg-12 col-md-12 footer-inner-right">
+      <div class="footer-rightcontent"><div class="logo_footer"><svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/><path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/><path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/><path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/><path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/><path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/><path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/><path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/><path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/></svg></div><ul><li><a href="../about.html">About Us</a></li><li><a href="../index.html#testimonials">Testimonials</a></li><li><a href="../index.html#process">Our Process</a></li><li><a href="../careers.html">Careers</a></li></ul></div>
+      <div class="footer-rightcontent"><h4>Services</h4><ul><li><a href="seo.html">SEO Optimization</a></li><li><a href="social-media.html">Social Media Marketing</a></li><li><a href="ppc.html">PPC Advertising</a></li><li><a href="email-marketing.html">Email Marketing</a></li><li><a href="content-marketing.html">Content Marketing</a></li><li><a href="brand-identity.html">Brand Identity</a></li></ul></div>
+      <div class="footer-rightcontent"><h4>Portfolio</h4><ul><li><a href="../portfolio.html">Case Studies</a></li><li><a href="../portfolio.html">Client Results</a></li></ul></div>
+      <div class="footer-rightcontent"><h4>Company</h4><ul><li><a href="../about.html">About Us</a></li><li><a href="../careers.html">Careers</a></li></ul></div>
+      <div class="footer-rightcontent"><h4>Contact Us</h4><ul><li>123 Digital Avenue, Tech City, TC 12345</li><li><a href="tel:+15551234567">+1 (555) 123-4567</a></li><li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li></ul></div>
+    </div></div>
+    <div class="footer-bottom"><p>&copy; 2026 Saif Digital Marketing Agency. All Rights Reserved.</p><div class="footer-bottom-links"><a href="#">Terms of Use</a><a href="#">Privacy Policy</a></div></div>
   </div>
 </footer>
-
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
