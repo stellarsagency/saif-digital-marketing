@@ -467,8 +467,8 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 .page-banner p { font-size: 17px; color: var(--gray-500); max-width: 600px; margin: 0 auto 32px; line-height: 1.7; position: relative; z-index: 2; }
 
 /* ==================== DARK SECTIONS ==================== */
-.dark-section { background: var(--dark); color: #ffffff; }
-.dark-section-2 { background: var(--dark-2); color: #ffffff; }
+.dark-section { background: #ffffff; color: #0a1628; }
+.dark-section-2 { background: #f8fafc; color: #0a1628; }
 .light-section { background: #ffffff; }
 .light-section-gray { background: #f8fafc; }
 
