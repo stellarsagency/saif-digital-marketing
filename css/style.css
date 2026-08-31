@@ -34,7 +34,8 @@
 /* ==================== RESET ==================== */
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 80px; }
-body { font-family: var(--font); color: var(--gray-600); background: var(--white); line-height: 1.6; overflow-x: hidden; }
+body { font-family: var(--font); color: var(--gray-400); background: var(--dark); line-height: 1.6; overflow-x: hidden; }
+h1, h2, h3, h4, h5, h6 { color: var(--white); }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 img { max-width: 100%; height: auto; display: block; }
 ul { list-style: none; }
@@ -477,9 +478,10 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
   margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--primary);
   font-size: 14px; font-weight: 600; color: var(--gray-400); position: relative; z-index: 2;
 }
+.page-banner-content { position: relative; z-index: 2; }
 .page-banner h1 {
-  font-size: 48px; font-weight: 800; color: var(--white); margin-bottom: 16px;
-  line-height: 1.1; position: relative; z-index: 2;
+  font-size: 48px; font-weight: 800; color: var(--white) !important; margin-bottom: 16px;
+  line-height: 1.1;
 }
 .page-banner h1 .text-gradient {
   background: var(--gradient-primary); -webkit-background-clip: text;
