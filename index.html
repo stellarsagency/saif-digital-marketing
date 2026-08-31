@@ -308,6 +308,27 @@
       .newsletter-img-right h2 { font-size: 28px; }
       .newsletter-img-form { flex-direction: column; }
       .newsletter-img-stats { flex-direction: column; gap: 16px; align-items: center; }
+      .home-services-grid { grid-template-columns: repeat(2, 1fr); }
+      .home-portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+      .home-experience-grid { grid-template-columns: 1fr; }
+      .home-experience-img { display: none; }
+      .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .home-services-grid { grid-template-columns: 1fr; }
+      .home-service-img { height: 180px; }
+      .home-service-body .icon-3d { width: 48px; height: 48px; font-size: 20px; }
+      .home-portfolio-grid { grid-template-columns: 1fr; }
+      .home-portfolio-card { height: 260px; }
+      .home-portfolio-overlay { opacity: 1; }
+      .home-stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .blog-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 576px) {
+      .headline, .banner-typewriter { font-size: 26px; }
+      .home-services-grid { grid-template-columns: 1fr; }
+      .home-portfolio-card { height: 240px; }
+      .home-stat-num { font-size: 20px; }
     }
   </style>
 </head>
