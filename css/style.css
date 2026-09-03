@@ -34,6 +34,7 @@
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: hidden; scroll-padding-top: 80px; }
 body { font-family: var(--font); color: var(--gray-600); background: #ffffff; line-height: 1.6; overflow-x: hidden; }
+*, *::before, *::after { box-sizing: border-box; }
 h1, h2, h3, h4, h5, h6 { color: #0a1628; font-weight: 700; }
 a { text-decoration: none; color: inherit; transition: var(--transition); }
 img { max-width: 100%; height: auto; display: block; }
