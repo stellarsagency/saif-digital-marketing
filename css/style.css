@@ -219,6 +219,7 @@ button { border: none; background: none; cursor: pointer; font-family: inherit; 
 }
 .clients-slide img:hover { opacity: 0.9; filter: grayscale(0%); }
 @keyframes scrollClients { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes scrollClientsLtr { 0% { transform: translateX(-50%); } 100% { transform: translateX(0); } }
 
 /* ==================== EXPERIENCE / STATS ==================== */
 .experience-section { padding: 100px 0; background: #f8fafc; position: relative; overflow: hidden; }
