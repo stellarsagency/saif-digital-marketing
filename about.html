@@ -2,130 +2,17 @@
 <html lang="en">
 <head>
   <link rel="shortcut icon" href="assets/images/favicon.ico" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>About Us - Saif Digital Marketing Agency</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.16/dist/typed.umd.js"></script>
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <link rel="stylesheet" href="css/responsive.css?v=3">
-  <style>
-    /* ==================== ABOUT PAGE SPECIFIC ==================== */
-    .about-story-section { padding: 80px 0; }
-    .about-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
-    .about-story-img-wrap { border-radius: var(--radius-lg); overflow: hidden; }
-    .about-story-img-wrap img { width: 100%; height: 480px; object-fit: cover; }
-    .about-story-tagline {
-      display: inline-flex; align-items: center; gap: 12px;
-      margin-bottom: 16px; padding-left: 16px; border-left: 3px solid var(--primary);
-      font-size: 14px; font-weight: 600; color: var(--gray-400);
-    }
-    .about-story-title { font-size: 32px; font-weight: 800; color: var(--white); margin-bottom: 20px; line-height: 1.2; }
-    .about-story-desc { font-size: 15px; color: var(--gray-400); line-height: 1.8; margin-bottom: 16px; }
-    .about-story-quote {
-      margin-top: 24px; padding: 20px 24px; background: rgba(255,255,255,0.04);
-      border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.06);
-      border-left: 3px solid var(--primary);
-    }
-    .about-story-quote p { font-size: 14px; color: var(--gray-400); line-height: 1.7; font-style: italic; margin: 0; }
-
-    /* Mission & Vision Cards */
-    .about-mv-section { padding: 80px 0; }
-    .about-mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; max-width: 1000px; margin: 0 auto; }
-    .about-mv-card {
-      padding: 40px 32px; background: rgba(255,255,255,0.03);
-      border-radius: var(--radius-lg); border: 1px solid rgba(255,255,255,0.06);
-      transition: var(--transition);
-    }
-    .about-mv-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-4px); }
-    .about-mv-icon {
-      width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 24px; margin-bottom: 20px;
-    }
-    .about-mv-icon-blue { background: rgba(37,99,235,0.15); color: var(--primary-light); }
-    .about-mv-icon-green { background: rgba(16,185,129,0.15); color: #34D399; }
-    .about-mv-card h3 { font-size: 22px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
-    .about-mv-card p { font-size: 15px; color: var(--gray-400); line-height: 1.8; margin: 0; }
-
-    /* Values Tabs */
-    .about-values-section { padding: 80px 0; }
-    .about-values-section h2 { text-align: center; font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 48px; }
-
-    /* Team */
-    .about-team-section { padding: 80px 0; }
-    .about-team-section h2 { text-align: center; font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 48px; }
-    .team-card-socials { display: flex; justify-content: center; gap: 10px; margin-top: 16px; }
-    .team-card-socials a {
-      display: flex; align-items: center; justify-content: center;
-      width: 32px; height: 32px; background: rgba(255,255,255,0.06);
-      color: var(--gray-400); border-radius: 50%; font-size: 13px; transition: var(--transition);
-    }
-    .team-card-socials a:hover { background: var(--primary); color: var(--white); }
-
-    /* Awards */
-    .about-awards-section { padding: 80px 0; }
-    .about-awards-section h2 { text-align: center; font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 48px; }
-    .about-award-card {
-      background: rgba(255,255,255,0.03); border-radius: var(--radius-lg); overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.06); transition: var(--transition);
-    }
-    .about-award-card:hover { border-color: rgba(37,99,235,0.3); transform: translateY(-4px); }
-    .about-award-card img { width: 100%; height: 220px; object-fit: cover; }
-    .about-award-card-body { padding: 24px; text-align: center; }
-    .about-award-card-name { font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 4px; }
-    .about-award-card-year { font-size: 13px; color: var(--primary-light); font-weight: 600; }
-
-    /* CTA */
-    .about-cta-section {
-      padding: 80px 0; background: var(--gradient-primary); text-align: center;
-      position: relative; overflow: hidden;
-    }
-    .about-cta-section::before {
-      content: ''; position: absolute; top: -100px; right: -100px;
-      width: 400px; height: 400px; background: rgba(255,255,255,0.05); border-radius: 50%;
-    }
-    .about-cta-section::after {
-      content: ''; position: absolute; bottom: -80px; left: -80px;
-      width: 300px; height: 300px; background: rgba(255,255,255,0.03); border-radius: 50%;
-    }
-    .about-cta-inner { position: relative; z-index: 2; }
-    .about-cta-inner h2 { font-size: 40px; font-weight: 800; color: var(--white); margin-bottom: 16px; line-height: 1.2; }
-    .about-cta-inner p { font-size: 17px; color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto 32px; line-height: 1.7; }
-    .about-cta-btn {
-      display: inline-flex; align-items: center; gap: 8px; padding: 16px 36px;
-      background: var(--white); color: var(--primary); font-size: 16px; font-weight: 700;
-      border-radius: var(--radius-xl); transition: var(--transition);
-    }
-    .about-cta-btn:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(0,0,0,0.2); }
-    .about-cta-btn svg { transition: transform 0.3s; }
-    .about-cta-btn:hover svg { transform: translateX(4px); }
-
-    /* Section titles */
-    .about-section-title { text-align: center; font-size: 36px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
-    .about-section-subtitle { text-align: center; font-size: 16px; color: var(--gray-400); max-width: 600px; margin: 0 auto 48px; }
-
-    @media (max-width: 992px) {
-      .about-story-grid { grid-template-columns: 1fr; }
-      .about-story-img-wrap img { height: 320px; }
-      .team-grid { grid-template-columns: repeat(2, 1fr); }
-      .awards-grid { grid-template-columns: repeat(2, 1fr); }
-      .values-tab-content.active { grid-template-columns: 1fr; }
-      .about-mv-grid { grid-template-columns: 1fr; }
-      .about-cta-inner h2 { font-size: 28px; }
-    }
-    @media (max-width: 768px) {
-      .team-grid { grid-template-columns: 1fr; }
-      .awards-grid { grid-template-columns: 1fr; }
-      .values-tab-content.active { grid-template-columns: 1fr; }
-      .about-story-title { font-size: 26px; }
-    }
-  </style>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
 <header class="site-header" id="site-header">
   <nav class="header-nav container">
     <div class="header-nav-inner">
@@ -141,22 +28,13 @@
       </div>
       <ul class="header-nav-desktop">
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
-            Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">Services <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
-            Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">Portfolio <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
-            Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">Company <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
       </ul>
       <div class="header-actions">
@@ -171,476 +49,247 @@
   </nav>
   <div class="header-mega-overlay" id="megaOverlay"></div>
   <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Services</h3>
-              <p class="header-mega-desc">Full-spectrum digital marketing solutions that drive measurable growth</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="services/seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google with data-driven SEO strategies</span></a></li>
-              <li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
-              <li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
-              <li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic with strategic content creation</span></a></li>
-              <li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View our complete range of digital marketing services</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services"><div class="header-mega-content-inner"><h3 class="header-mega-title">Services</h3><p class="header-mega-desc">Full-spectrum digital marketing solutions</p></div><ul class="header-mega-child-grid"><li><a href="services/seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google</span></a></li><li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness</span></a></li><li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI</span></a></li><li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads</span></a></li><li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic</span></a></li><li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Stand out</span></a></li><li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View all</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
   <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Portfolio</h3>
-              <p class="header-mega-desc">See our results and client success stories</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
-              <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results</p></div><ul class="header-mega-child-grid"><li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View projects</span></a></li><li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
   <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Company</h3>
-              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Learn about our mission and values</span></a></li>
-              <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and industry trends</span></a></li>
-              <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise</p></div><ul class="header-mega-child-grid"><li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story and mission</span></a></li><li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights</span></a></li><li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our team</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
-  <div class="header-mobile-panel" id="mobilePanel">
-    <div class="header-mobile-inner">
-      <div class="header-mobile-section">
-        <h4 class="header-mobile-heading">Services</h4>
-        <ul class="header-mobile-links">
-          <li><a href="services/seo.html">SEO Optimization</a></li>
-          <li><a href="services/social-media.html">Social Media Marketing</a></li>
-          <li><a href="services/ppc.html">PPC Advertising</a></li>
-          <li><a href="services/email-marketing.html">Email Marketing</a></li>
-          <li><a href="services/content-marketing.html">Content Marketing</a></li>
-          <li><a href="services/brand-identity.html">Brand Identity</a></li>
-          <li><a href="services.html">All Services</a></li>
-        </ul>
-      </div>
-      <div class="header-mobile-section">
-        <h4 class="header-mobile-heading">Portfolio</h4>
-        <ul class="header-mobile-links">
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-        </ul>
-      </div>
-      <div class="header-mobile-section">
-        <h4 class="header-mobile-heading">Company</h4>
-        <ul class="header-mobile-links">
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="careers.html">Careers</a></li>
-        </ul>
-      </div>
-      <a href="contact.html" class="header-mobile-cta">Get Started</a>
-    </div>
-  </div>
+  <div class="header-mobile-panel" id="mobilePanel"><div class="header-mobile-inner"><div class="header-mobile-section"><h4 class="header-mobile-heading">Services</h4><ul class="header-mobile-links"><li><a href="services/seo.html">SEO</a></li><li><a href="services/social-media.html">Social Media</a></li><li><a href="services/ppc.html">PPC</a></li><li><a href="services/email-marketing.html">Email Marketing</a></li><li><a href="services/content-marketing.html">Content Marketing</a></li><li><a href="services/brand-identity.html">Brand Identity</a></li><li><a href="services.html">All Services</a></li></ul></div><div class="header-mobile-section"><h4 class="header-mobile-heading">Portfolio</h4><ul class="header-mobile-links"><li><a href="portfolio.html">Portfolio</a></li><li><a href="case-studies.html">Case Studies</a></li></ul></div><div class="header-mobile-section"><h4 class="header-mobile-heading">Company</h4><ul class="header-mobile-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div><a href="contact.html" class="header-mobile-cta">Get Started</a></div></div>
 </header>
 
-<!-- ==================== PAGE BANNER ==================== -->
 <section class="page-banner">
   <div class="container">
-    <div class="page-banner-tagline">
-      <span>About Us</span>
-    </div>
-    <h1>The Team Behind Your <span class="text-gradient">Digital Success</span></h1>
-    <p>Founded in 2015, Saif Digital Marketing Agency has grown from a small startup to a full-service digital marketing powerhouse. We've helped over 200 businesses transform their digital presence and achieve measurable growth.</p>
-    <a href="contact.html" class="primary-cta">Contact Us <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h1>About Us</h1>
+    <p>We are a passionate team of digital marketing experts dedicated to helping businesses grow their online presence and achieve measurable results.</p>
+    <a href="contact.html" class="primary-cta">Get Started</a>
   </div>
 </section>
 
-<!-- ==================== CLIENT LOGOS ==================== -->
-<div class="clients-logos bannerClients">
-  <div class="clients-container container glass-effect">
-    <h3 class="clients-heading">Trusted by 200+ Brands Worldwide</h3>
-    <div class="clients-slider-wrap">
-      <div class="clients-slider" id="clientsSlider">
-        <div class="clients-slide-track" id="clientsSlideTrack">
-          <div class="client_logo_container"><img src="assets/images/client-1.jpg" alt="Client 1"></div>
-          <div class="client_logo_container"><img src="assets/images/client-2.jpg" alt="Client 2"></div>
-          <div class="client_logo_container"><img src="assets/images/client-3.jpg" alt="Client 3"></div>
-          <div class="client_logo_container"><img src="assets/images/client-4.jpg" alt="Client 4"></div>
-          <div class="client_logo_container"><img src="assets/images/client-5.jpg" alt="Client 5"></div>
-          <div class="client_logo_container"><img src="assets/images/client-6.jpg" alt="Client 6"></div>
-          <div class="client_logo_container"><img src="assets/images/client-1.jpg" alt="Client 1"></div>
-          <div class="client_logo_container"><img src="assets/images/client-2.jpg" alt="Client 2"></div>
-          <div class="client_logo_container"><img src="assets/images/client-3.jpg" alt="Client 3"></div>
-          <div class="client_logo_container"><img src="assets/images/client-4.jpg" alt="Client 4"></div>
-          <div class="client_logo_container"><img src="assets/images/client-5.jpg" alt="Client 5"></div>
-          <div class="client_logo_container"><img src="assets/images/client-6.jpg" alt="Client 6"></div>
+<section class="section-padding white-bg">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <div class="about-img-wrap">
+          <img src="assets/images/about-team.jpg" alt="Saif Digital Team" class="img-fluid rounded">
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- ==================== OUR STORY ==================== -->
-<section class="about-story-section dark-section">
-  <div class="container">
-    <div class="about-story-grid">
-      <div class="about-story-img-wrap">
-        <img src="assets/images/about-office.jpg" alt="Saif Digital Office">
-      </div>
-      <div>
-        <div class="about-story-tagline">Our Journey</div>
-        <h2 class="about-story-title">What started as a passion project between three friends has evolved into a leading digital marketing agency</h2>
-        <p class="about-story-desc">In 2015, Saif recognized that many businesses struggled to navigate the complex digital landscape. He assembled a team of experts who shared his vision: to make world-class digital marketing accessible to businesses of all sizes.</p>
-        <p class="about-story-desc">Today, we're a team of 50+ digital marketing specialists, content creators, designers, and strategists who have generated over $50 million in revenue for our clients across the globe.</p>
-        <div class="about-story-quote">
-          <p>"Our mission is to empower businesses of all sizes with innovative digital marketing strategies that drive measurable growth and lasting success."</p>
+      <div class="col-lg-6">
+        <span class="section-eyebrow">Who We Are</span>
+        <h2 class="section-title mt-2">We are a team of passionate digital marketers</h2>
+        <p>Founded in 2015, Saif Digital Marketing Agency has grown from a small startup to one of the most trusted digital marketing partners for businesses across the globe. Our team of 50+ specialists combines creativity with data-driven strategies to deliver results that matter.</p>
+        <p>From startups to Fortune 500 companies, we've helped over 200 brands transform their digital presence, increase revenue, and build lasting connections with their audiences.</p>
+        <div class="row mt-4">
+          <div class="col-6 mb-3"><div class="stat-box"><div class="stat-value">200+</div><div class="stat-label">Clients Worldwide</div></div></div>
+          <div class="col-6 mb-3"><div class="stat-box"><div class="stat-value">350+</div><div class="stat-label">Successful Projects</div></div></div>
+          <div class="col-6 mb-3"><div class="stat-box"><div class="stat-value">$50M+</div><div class="stat-label">Revenue Generated</div></div></div>
+          <div class="col-6 mb-3"><div class="stat-box"><div class="stat-value">10+</div><div class="stat-label">Years Experience</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== MISSION & VISION ==================== -->
-<section class="about-mv-section dark-section-2">
+<section class="section-padding light-gray-bg">
   <div class="container">
-    <h2 class="about-section-title">Mission & Vision</h2>
-    <div class="about-mv-grid">
-      <div class="about-mv-card">
-        <div class="about-mv-icon about-mv-icon-blue"><i class="bi bi-bullseye"></i></div>
-        <h3>Our Mission</h3>
-        <p>To empower businesses with innovative digital marketing strategies that drive measurable growth and lasting success. We combine data-driven insights with creative excellence to deliver campaigns that outperform expectations.</p>
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Our Story</span>
+      <h2 class="section-title">The Journey So Far</h2>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-rocket"></i></div>
+            <h3>2015 - Foundation</h3>
+            <p>Started with a vision to help businesses succeed online through innovative digital marketing strategies.</p>
+          </div>
+        </div>
       </div>
-      <div class="about-mv-card">
-        <div class="about-mv-icon about-mv-icon-green"><i class="bi bi-eye"></i></div>
-        <h3>Our Vision</h3>
-        <p>To be the most trusted digital marketing partner for businesses worldwide, known for our data-driven approach, transparent communication, and exceptional results that transform brands and drive revenue.</p>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3>2018 - Growth</h3>
+            <p>Expanded our team to 30+ specialists and reached 100+ clients across multiple industries.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-trophy"></i></div>
+            <h3>2023 - Recognition</h3>
+            <p>Awarded Best Digital Marketing Agency and recognized as a top employer in the industry.</p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== VALUES TABS ==================== -->
-<section class="about-values-section dark-section">
+<section class="section-padding white-bg">
   <div class="container">
-    <h2>Our Core Values</h2>
-    <div class="values-tabs-nav">
-      <button class="values-tab-btn active" data-value-tab="data-driven">Data Driven</button>
-      <button class="values-tab-btn" data-value-tab="creative">Creative Excellence</button>
-      <button class="values-tab-btn" data-value-tab="client-first">Client First</button>
-      <button class="values-tab-btn" data-value-tab="innovation">Innovation</button>
-      <button class="values-tab-btn" data-value-tab="transparency">Transparency</button>
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Our Team</span>
+      <h2 class="section-title">Meet the Experts</h2>
+      <p class="section-desc">Our team of 50+ specialists is dedicated to delivering exceptional results for every client.</p>
     </div>
-
-    <div class="values-tab-content active" id="tab-data-driven">
-      <div class="values-tab-image">
-        <img src="assets/images/about-office.jpg" alt="Data Driven">
-      </div>
-      <div class="values-tab-text">
-        <h3>Data Driven</h3>
-        <p>Every decision we make is backed by data. We use advanced analytics to optimize campaigns and maximize ROI for our clients.</p>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Real-time analytics dashboards for campaign tracking</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>AI-powered audience segmentation and targeting</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>A/B testing on every creative and strategy element</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Monthly performance reports with actionable insights</span></div>
-      </div>
-    </div>
-
-    <div class="values-tab-content" id="tab-creative">
-      <div class="values-tab-image">
-        <img src="assets/images/about-office.jpg" alt="Creative Excellence">
-      </div>
-      <div class="values-tab-text">
-        <h3>Creative Excellence</h3>
-        <p>We combine creativity with strategy to produce compelling content that captures attention and drives engagement.</p>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Award-winning design team with global brand experience</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Custom brand identity and visual systems</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Video production and motion graphics capabilities</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Content strategies that resonate with target audiences</span></div>
-      </div>
-    </div>
-
-    <div class="values-tab-content" id="tab-client-first">
-      <div class="values-tab-image">
-        <img src="assets/images/about-office.jpg" alt="Client First">
-      </div>
-      <div class="values-tab-text">
-        <h3>Client First</h3>
-        <p>Your success is our success. We treat every client's business as our own, with dedicated account managers and transparent reporting.</p>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Dedicated account manager for every client</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Weekly strategy calls and transparent reporting</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Custom-tailored strategies, never cookie-cutter</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>24/7 support and rapid response times</span></div>
-      </div>
-    </div>
-
-    <div class="values-tab-content" id="tab-innovation">
-      <div class="values-tab-image">
-        <img src="assets/images/about-office.jpg" alt="Innovation">
-      </div>
-      <div class="values-tab-text">
-        <h3>Innovation</h3>
-        <p>We stay ahead of digital trends, continuously testing new strategies and technologies to keep our clients ahead of the competition.</p>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>AI and machine learning integration in campaigns</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Early adoption of emerging platforms and trends</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Proprietary tools for campaign optimization</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Continuous R&D investment in marketing technology</span></div>
-      </div>
-    </div>
-
-    <div class="values-tab-content" id="tab-transparency">
-      <div class="values-tab-image">
-        <img src="assets/images/about-office.jpg" alt="Transparency">
-      </div>
-      <div class="values-tab-text">
-        <h3>Transparency</h3>
-        <p>No hidden fees, no jargon. We provide clear, honest reporting so you always know where your investment is going.</p>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Full access to campaign data and analytics</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Transparent pricing with no hidden costs</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Honest reporting including areas for improvement</span></div>
-        <div class="values-feature-item"><i class="bi bi-check-circle-fill"></i><span>Open-book management and communication</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== TEAM ==================== -->
-<section class="about-team-section dark-section-2">
-  <div class="container">
-    <h2>Leadership Team</h2>
     <div class="team-grid">
       <div class="team-card">
-        <img src="assets/images/team-1.jpg" alt="Saif">
-        <h3>Saif</h3>
-        <p class="role">Founder & CEO</p>
-        <p>With 15+ years in digital marketing, Saif leads our strategic vision and ensures every client receives cutting-edge solutions.</p>
-        <div class="team-card-socials">
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <div class="team-card-img"><img src="assets/images/team-1.jpg" alt="Sarah Johnson"></div>
+        <div class="team-card-body">
+          <h3>Sarah Johnson</h3>
+          <p>Founder & CEO</p>
+          <div class="team-social">
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+          </div>
         </div>
       </div>
       <div class="team-card">
-        <img src="assets/images/team-2.jpg" alt="Fatima Khan">
-        <h3>Fatima Khan</h3>
-        <p class="role">Marketing Director</p>
-        <p>Fatima oversees all marketing campaigns and has helped generate over $30M in client revenue across multiple industries.</p>
-        <div class="team-card-socials">
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <div class="team-card-img"><img src="assets/images/team-2.jpg" alt="Ahmad Hassan"></div>
+        <div class="team-card-body">
+          <h3>Ahmad Hassan</h3>
+          <p>Head of Marketing</p>
+          <div class="team-social">
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+          </div>
         </div>
       </div>
       <div class="team-card">
-        <img src="assets/images/team-3.jpg" alt="Muhammad Raza">
-        <h3>Muhammad Raza</h3>
-        <p class="role">Creative Director</p>
-        <p>Muhammad leads our creative team, producing compelling content and designs that capture attention and drive engagement.</p>
-        <div class="team-card-socials">
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <div class="team-card-img"><img src="assets/images/team-3.jpg" alt="Fatima Khan"></div>
+        <div class="team-card-body">
+          <h3>Fatima Khan</h3>
+          <p>Creative Director</p>
+          <div class="team-social">
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+          </div>
         </div>
       </div>
       <div class="team-card">
-        <img src="assets/images/team-4.jpg" alt="Ayesha Khan">
-        <h3>Ayesha Khan</h3>
-        <p class="role">Head of Analytics</p>
-        <p>Ayesha ensures every campaign is data-driven, using advanced analytics and reporting to optimize performance continuously.</p>
-        <div class="team-card-socials">
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
+        <div class="team-card-img"><img src="assets/images/team-4.jpg" alt="James Wilson"></div>
+        <div class="team-card-body">
+          <h3>James Wilson</h3>
+          <p>SEO Lead</p>
+          <div class="team-social">
+            <a href="#"><i class="bi bi-linkedin"></i></a>
+            <a href="#"><i class="bi bi-twitter"></i></a>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== AWARDS ==================== -->
-<section class="about-awards-section dark-section">
+<section class="section-padding light-gray-bg">
   <div class="container">
-    <h2>Awards & Recognition</h2>
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Why Choose Us</span>
+      <h2 class="section-title">Our Core Values</h2>
+      <p class="section-desc">We believe in transparency, innovation, and delivering measurable results for every client.</p>
+    </div>
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-lightbulb"></i></div>
+            <h3>Innovation First</h3>
+            <p>We stay ahead of industry trends and leverage the latest technologies to deliver cutting-edge solutions.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-bar-chart-line"></i></div>
+            <h3>Data-Driven</h3>
+            <p>Every decision we make is backed by data, ensuring maximum ROI for your marketing investment.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6">
+        <div class="service-card h-100">
+          <div class="service-card-body">
+            <div class="service-card-icon"><i class="bi bi-people"></i></div>
+            <h3>Client Focused</h3>
+            <p>Your success is our success. We build long-term partnerships based on trust and results.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding white-bg" id="testimonials">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Testimonials</span>
+      <h2 class="section-title">What Our Clients Say</h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="testimonial-text">"Saif Digital transformed our online presence. We saw a 300% increase in organic traffic within 6 months. Their team is incredibly talented and dedicated to delivering results."</p>
+        <div class="testimonial-author"><img src="assets/images/team-1.jpg" alt="Sarah Johnson" class="testimonial-avatar"><div><div class="testimonial-name">Sarah Johnson</div><div class="testimonial-role">CEO, TechStart</div></div></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars"><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i></div>
+        <p class="testimonial-text">"Their PPC campaigns generated 5X ROI for our business. Highly recommend their team for anyone looking to scale their digital advertising efforts effectively."</p>
+        <div class="testimonial-author"><img src="assets/images/team-2.jpg" alt="Ahmad Hassan" class="testimonial-avatar"><div><div class="testimonial-name">Ahmad Hassan</div><div class="testimonial-role">Marketing Director, GrowthCo</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-padding light-gray-bg" id="awards">
+  <div class="container">
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Awards</span>
+      <h2 class="section-title">Industry Recognition</h2>
+    </div>
     <div class="awards-grid">
-      <div class="about-award-card">
-        <img src="assets/images/award-1.jpg" alt="Best Digital Marketing Agency 2025">
-        <div class="about-award-card-body">
-          <h3 class="about-award-card-name">Best Digital Marketing Agency 2025</h3>
-          <p class="about-award-card-year">Digital Marketing Awards</p>
-        </div>
-      </div>
-      <div class="about-award-card">
-        <img src="assets/images/award-2.jpg" alt="Excellence in SEO 2024">
-        <div class="about-award-card-body">
-          <h3 class="about-award-card-name">Excellence in SEO 2024</h3>
-          <p class="about-award-card-year">Search Engine Journal Awards</p>
-        </div>
-      </div>
-      <div class="about-award-card">
-        <img src="assets/images/award-3.jpg" alt="Top Social Media Agency 2023">
-        <div class="about-award-card-body">
-          <h3 class="about-award-card-name">Top Social Media Agency 2023</h3>
-          <p class="about-award-card-year">Social Media Marketing Awards</p>
-        </div>
-      </div>
+      <div class="award-card"><i class="bi bi-award"></i><h4>Best Digital Agency 2024</h4><p>Industry Awards</p></div>
+      <div class="award-card"><i class="bi bi-star"></i><h4>Top SEO Company</h4><p>Clutch Reviews</p></div>
+      <div class="award-card"><i class="bi bi-trophy"></i><h4>Creative Excellence</h4><p>Web Awards</p></div>
+      <div class="award-card"><i class="bi bi-gem"></i><h4>Innovation Leader</h4><p>Tech Awards</p></div>
     </div>
   </div>
 </section>
 
-<!-- ==================== CTA SECTION ==================== -->
-<section class="about-cta-section">
-  <div class="container about-cta-inner">
-    <h2>Want to Work With Us?</h2>
-    <p>Let's discuss how we can help your business grow with a tailored digital marketing strategy that delivers real results.</p>
-    <a href="contact.html" class="about-cta-btn">Get in Touch <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Ready to Work With Us?</h2>
+    <p>Let's discuss how we can help you achieve your digital marketing goals.</p>
+    <a href="contact.html" class="btn-white">Get Started <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== NEWSLETTER SECTION ==================== -->
-<section class="newsletter-img-section">
-  <div class="newsletter-img-inner">
-    <div class="newsletter-img-left">
-      <img src="assets/images/newsletter-img.jpg" alt="Subscribe to Saif Digital Newsletter">
-    </div>
-    <div class="newsletter-img-right">
-      <h2>Subscribe to Our Newsletter</h2>
-      <p>Get the latest digital marketing tips and industry insights delivered to your inbox.</p>
-      <form class="newsletter-img-form" id="newsletterImgForm">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
-      <div class="newsletter-img-stats">
-        <div class="newsletter-img-stat-item">
-          <h4>15K+</h4>
-          <p>Subscribers</p>
-        </div>
-        <div class="newsletter-img-stat-item">
-          <h4>Weekly</h4>
-          <p>New Content</p>
-        </div>
-        <div class="newsletter-img-stat-item">
-          <h4>Free</h4>
-          <p>Always</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ==================== FOOTER ==================== -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="row">
-      <div class="col-lg-12 col-md-12 footer-inner-right">
-        <div class="footer-rightcontent">
-          <div class="logo_footer">
-            <svg width="133" height="30" viewBox="0 0 133 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-              <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-              <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-              <path d="M39.3254 16.115H47.3823V13.291H39.3254V9.73637H48.113V6.64844H35.667V23.2809H48.3252V20.1929H39.3254V16.115Z" fill="white"/>
-              <path d="M49.4756 9.67893H54.4964V23.28H58.1595V9.67893H63.1804V6.5957H49.5322V9.67893H49.4756Z" fill="white"/>
-              <path d="M63.3254 16.115H71.3823V13.291H63.3254V9.73637H72.113V6.64844H59.667V23.2809H72.3252V20.1929H63.3254V16.115Z" fill="white"/>
-              <path d="M73.4756 9.67893H78.4964V23.28H82.1595V9.67893H87.1804V6.5957H73.5322V9.67893H73.4756Z" fill="white"/>
-              <path d="M101.61 6.58594C96.66 6.58594 93.761 10.282 93.761 14.9823C93.761 19.6826 96.66 23.2844 101.61 23.2844C106.56 23.2844 109.455 19.6354 109.455 14.9823C109.455 10.3292 106.556 6.58594 101.61 6.58594ZM101.61 20.3284C98.456 20.3284 97.259 17.6271 97.259 14.9776C97.259 12.1772 98.456 9.53244 101.61 9.53244C104.764 9.53244 105.957 12.2338 105.957 14.9776C105.957 17.7214 104.759 20.3284 101.61 20.3284Z" fill="white"/>
-              <path d="M87.6603 13.5311C83.6625 12.5316 82.9129 12.3289 82.9129 11.1314C82.9129 9.78313 84.2094 9.33054 85.3126 9.33054C87.0097 9.33054 88.3628 9.83027 88.4618 11.7302H91.856C91.856 8.03408 88.8059 6.58203 85.5058 6.58203C82.6065 6.58203 79.5563 8.13308 79.5563 11.3813C79.5563 14.3797 81.9559 15.2801 84.3084 15.9307C86.6562 16.5294 89.0558 16.8312 89.0558 18.5802C89.0558 20.2303 87.2078 20.5791 85.9584 20.5791C84.1057 20.5791 82.4085 19.7305 82.4085 17.6279H79.0094C78.9575 21.5786 82.2576 23.2758 85.8076 23.2758C90.1543 23.2758 92.455 21.0788 92.455 18.1748C92.403 14.5258 88.8059 13.8234 87.6556 13.5216L87.6603 13.5311Z" fill="white"/>
-            </svg>
-          </div>
-          <ul>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="services.html">Our Services</a></li>
-            <li><a href="portfolio.html">Portfolio</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="careers.html">Careers</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Services</h4>
-          <ul>
-            <li><a href="services/seo.html">SEO</a></li>
-            <li><a href="services/social-media.html">Social Media</a></li>
-            <li><a href="services/ppc.html">PPC</a></li>
-            <li><a href="services/email-marketing.html">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html">Brand Identity</a></li>
-          </ul>
-        </div>
-        <div class="footer-rightcontent">
-          <h4>Contact Us</h4>
-          <ul>
-            <li>123 Digital Avenue, Tech City, TC 12345</li>
-            <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-            <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-          </ul>
-          <div class="contact-social" style="margin-top:16px;">
-            <a href="#" class="social-link"><i class="bi bi-linkedin"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-twitter-x"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-facebook"></i></a>
-            <a href="#" class="social-link"><i class="bi bi-youtube"></i></a>
-          </div>
-        </div>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="header-logo" style="margin-bottom:16px;"><a href="/" class="header-logo-link"><svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/><path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/><path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/></svg><span class="header-logo-text">Saif<span>Digital</span></span></a></div>
+        <p>AI-enabled digital marketing solutions that drive measurable growth.</p>
+        <div class="footer-social"><a href="#"><i class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-youtube"></i></a></div>
       </div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="about.html#testimonials">Testimonials</a></li><li><a href="about.html#awards">Awards</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services/seo.html">SEO</a></li><li><a href="services/social-media.html">Social Media</a></li><li><a href="services/ppc.html">PPC</a></li><li><a href="services/email-marketing.html">Email</a></li><li><a href="services/content-marketing.html">Content</a></li><li><a href="services/brand-identity.html">Branding</a></li></ul></div>
+      <div class="footer-col"><h4>Insights</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="case-studies.html">Case Studies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact Us</h4><ul><li><i class="bi bi-geo-alt"></i> 123 Digital Ave, Tech City, TC 12345</li><li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li><li><i class="bi bi-envelope"></i> hello@saifdigital.com</li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Saif Digital Marketing Agency. All Rights Reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Saif Digital Marketing Agency. All Rights Reserved.</p><div class="footer-bottom-links"><a href="#">Terms</a><a href="#">Privacy</a></div></div>
   </div>
 </footer>
 
-<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // Values Tabs
-  var tabBtns = document.querySelectorAll('.values-tab-btn');
-  var tabContents = document.querySelectorAll('.values-tab-content');
-
-  tabBtns.forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      tabBtns.forEach(function(b) { b.classList.remove('active'); });
-      tabContents.forEach(function(c) { c.classList.remove('active'); });
-
-      this.classList.add('active');
-      document.getElementById('tab-' + this.dataset.valueTab).classList.add('active');
-    });
-  });
-
-  // Newsletter form
-  var newsletterForm = document.getElementById('newsletterImgForm');
-  if (newsletterForm) {
-    newsletterForm.addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert('Thank you for subscribing!');
-      this.reset();
-    });
-  }
-});
-</script>
 </body>
 </html>

@@ -8,17 +8,16 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
-  <link rel="stylesheet" href="css/style.css?v=3">
-  <link rel="stylesheet" href="css/responsive.css?v=3">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<!-- ==================== HEADER ==================== -->
 <header class="site-header" id="site-header">
   <nav class="header-nav container">
     <div class="header-nav-inner">
       <div class="header-logo">
-        <a href="index.html" class="header-logo-link">
+        <a href="/" class="header-logo-link">
           <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
             <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
@@ -27,28 +26,17 @@
           <span class="header-logo-text">Saif<span>Digital</span></span>
         </a>
       </div>
-
       <ul class="header-nav-desktop">
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">
-            Services
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="services" aria-expanded="false">Services <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">
-            Portfolio
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="portfolio" aria-expanded="false">Portfolio <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
         <li class="header-nav-item has-dropdown">
-          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">
-            Company
-            <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
+          <button type="button" class="header-nav-link header-nav-trigger" data-mega-trigger="company" aria-expanded="false">Company <svg class="header-nav-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></button>
         </li>
       </ul>
-
       <div class="header-actions">
         <a href="contact.html" class="header-cta">Get Started</a>
         <button type="button" class="header-hamburger" id="hamburgerBtn" aria-label="Toggle menu" aria-expanded="false">
@@ -59,356 +47,121 @@
       </div>
     </div>
   </nav>
-
   <div class="header-mega-overlay" id="megaOverlay"></div>
-
-  <!-- Mega Menu: Services -->
   <div class="header-mega-panel" id="mega-services" data-mega-panel="services">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Services</h3>
-              <p class="header-mega-desc">Full-spectrum digital marketing solutions that drive measurable growth</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="services/seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google with data-driven SEO strategies</span></a></li>
-              <li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness and engage your target audience</span></a></li>
-              <li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI with targeted paid campaigns</span></a></li>
-              <li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads with personalized email automation</span></a></li>
-              <li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic with strategic content creation</span></a></li>
-              <li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Create a memorable brand that stands out</span></a></li>
-              <li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View our complete range of digital marketing services</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active" data-mega-content="0" data-mega-panel-id="services"><div class="header-mega-content-inner"><h3 class="header-mega-title">Services</h3><p class="header-mega-desc">Full-spectrum digital marketing solutions</p></div><ul class="header-mega-child-grid"><li><a href="services/seo.html" class="header-mega-child-link"><span class="header-mega-child-title">SEO Optimization</span><span class="header-mega-child-desc">Rank higher on Google</span></a></li><li><a href="services/social-media.html" class="header-mega-child-link"><span class="header-mega-child-title">Social Media Marketing</span><span class="header-mega-child-desc">Build brand awareness</span></a></li><li><a href="services/ppc.html" class="header-mega-child-link"><span class="header-mega-child-title">PPC Advertising</span><span class="header-mega-child-desc">Maximize ROI</span></a></li><li><a href="services/email-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Email Marketing</span><span class="header-mega-child-desc">Convert leads</span></a></li><li><a href="services/content-marketing.html" class="header-mega-child-link"><span class="header-mega-child-title">Content Marketing</span><span class="header-mega-child-desc">Drive traffic</span></a></li><li><a href="services/brand-identity.html" class="header-mega-child-link"><span class="header-mega-child-title">Brand Identity</span><span class="header-mega-child-desc">Stand out</span></a></li><li><a href="services.html" class="header-mega-child-link"><span class="header-mega-child-title">All Services</span><span class="header-mega-child-desc">View all</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
-
-  <!-- Mega Menu: Portfolio -->
   <div class="header-mega-panel" id="mega-portfolio" data-mega-panel="portfolio">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Portfolio</h3>
-              <p class="header-mega-desc">See our results and client success stories</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View our complete project portfolio</span></a></li>
-              <li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis of our most successful campaigns</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Portfolio</h3><p class="header-mega-desc">See our results</p></div><ul class="header-mega-child-grid"><li><a href="portfolio.html" class="header-mega-child-link"><span class="header-mega-child-title">Portfolio</span><span class="header-mega-child-desc">View projects</span></a></li><li><a href="case-studies.html" class="header-mega-child-link"><span class="header-mega-child-title">Case Studies</span><span class="header-mega-child-desc">In-depth analysis</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
-
-  <!-- Mega Menu: Company -->
   <div class="header-mega-panel" id="mega-company" data-mega-panel="company">
-    <div class="header-mega-inner">
-      <div class="header-mega-grid">
-        <div class="header-mega-right">
-          <div class="header-mega-content is-active">
-            <div class="header-mega-content-inner">
-              <h3 class="header-mega-title">Company</h3>
-              <p class="header-mega-desc">Technology, trust, and expertise in digital marketing</p>
-            </div>
-            <ul class="header-mega-child-grid">
-              <li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story, mission, and the team behind the success</span></a></li>
-              <li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights and marketing tips</span></a></li>
-              <li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our growing team of digital experts</span></a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div>
-    </div>
+    <div class="header-mega-inner"><div class="header-mega-grid"><div class="header-mega-right"><div class="header-mega-content is-active"><div class="header-mega-content-inner"><h3 class="header-mega-title">Company</h3><p class="header-mega-desc">Technology, trust, and expertise</p></div><ul class="header-mega-child-grid"><li><a href="about.html" class="header-mega-child-link"><span class="header-mega-child-title">About Us</span><span class="header-mega-child-desc">Our story and mission</span></a></li><li><a href="blog.html" class="header-mega-child-link"><span class="header-mega-child-title">Blog</span><span class="header-mega-child-desc">Latest insights</span></a></li><li><a href="careers.html" class="header-mega-child-link"><span class="header-mega-child-title">Careers</span><span class="header-mega-child-desc">Join our team</span></a></li></ul></div></div></div><div class="header-mega-footer"><a href="contact.html" class="header-mega-cta-btn">Get Started</a></div></div>
   </div>
-
-  <!-- Mobile Nav -->
-  <div class="header-mobile-panel" id="header-mobile-panel">
-    <nav class="header-mobile-nav">
-      <ul class="header-mobile-list">
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="services" aria-expanded="false">
-            Services
-            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <ul class="header-mobile-dropdown" id="mobile-services">
-            <li><a href="services/seo.html" class="header-mobile-link">SEO Optimization</a></li>
-            <li><a href="services/social-media.html" class="header-mobile-link">Social Media Marketing</a></li>
-            <li><a href="services/ppc.html" class="header-mobile-link">PPC Advertising</a></li>
-            <li><a href="services/email-marketing.html" class="header-mobile-link">Email Marketing</a></li>
-            <li><a href="services/content-marketing.html" class="header-mobile-link">Content Marketing</a></li>
-            <li><a href="services/brand-identity.html" class="header-mobile-link">Brand Identity</a></li>
-            <li><a href="services.html" class="header-mobile-link">All Services</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="portfolio" aria-expanded="false">
-            Portfolio
-            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <ul class="header-mobile-dropdown" id="mobile-portfolio">
-            <li><a href="portfolio.html" class="header-mobile-link">Portfolio</a></li>
-            <li><a href="case-studies.html" class="header-mobile-link">Case Studies</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item has-children">
-          <button type="button" class="header-mobile-trigger" data-mobile-trigger="company" aria-expanded="false">
-            Company
-            <svg class="header-mobile-chevron" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </button>
-          <ul class="header-mobile-dropdown" id="mobile-company">
-            <li><a href="about.html" class="header-mobile-link">About Us</a></li>
-            <li><a href="blog.html" class="header-mobile-link">Blog</a></li>
-            <li><a href="careers.html" class="header-mobile-link">Careers</a></li>
-          </ul>
-        </li>
-        <li class="header-mobile-item"><a href="contact.html" class="header-mobile-link header-mobile-link--direct">Contact Us</a></li>
-        <li class="header-mobile-item"><a href="careers.html" class="header-mobile-link header-mobile-link--direct">Careers</a></li>
-      </ul>
-    </nav>
-  </div>
+  <div class="header-mobile-panel" id="mobilePanel"><div class="header-mobile-inner"><div class="header-mobile-section"><h4 class="header-mobile-heading">Services</h4><ul class="header-mobile-links"><li><a href="services/seo.html">SEO</a></li><li><a href="services/social-media.html">Social Media</a></li><li><a href="services/ppc.html">PPC</a></li><li><a href="services/email-marketing.html">Email Marketing</a></li><li><a href="services/content-marketing.html">Content Marketing</a></li><li><a href="services/brand-identity.html">Brand Identity</a></li><li><a href="services.html">All Services</a></li></ul></div><div class="header-mobile-section"><h4 class="header-mobile-heading">Portfolio</h4><ul class="header-mobile-links"><li><a href="portfolio.html">Portfolio</a></li><li><a href="case-studies.html">Case Studies</a></li></ul></div><div class="header-mobile-section"><h4 class="header-mobile-heading">Company</h4><ul class="header-mobile-links"><li><a href="about.html">About Us</a></li><li><a href="blog.html">Blog</a></li><li><a href="careers.html">Careers</a></li></ul></div><a href="contact.html" class="header-mobile-cta">Get Started</a></div></div>
 </header>
 
-<!-- ==================== PAGE BANNER ==================== -->
 <section class="page-banner">
   <div class="container">
-    <span class="page-banner-tagline">Our Blog</span>
-    <h1>Digital Marketing<br><span class="text-gradient">Insights & Tips</span></h1>
-    <p>Stay ahead of the curve with our latest articles on SEO, social media, PPC, content marketing, and digital strategy. Written by our team of experts.</p>
-    <a href="#blog-posts" class="primary-cta">Browse Articles <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <h1>Our Blog</h1>
+    <p>Stay updated with the latest digital marketing trends, tips, and strategies from our team of experts.</p>
   </div>
 </section>
 
-<!-- ==================== BLOG GRID ==================== -->
-<section class="dark-section" id="blog-posts" style="padding: 100px 0;">
+<section class="section-padding white-bg">
   <div class="container">
-    <div class="section-header">
-      <span class="section-eyebrow"><i class="bi bi-journal-text"></i> Latest Articles</span>
-      <h2 class="section-title">Insights & Tips</h2>
-      <p class="section-desc">Expert advice and strategies to help you succeed in digital marketing.</p>
+    <div class="section-header text-center">
+      <span class="section-eyebrow">Latest Posts</span>
+      <h2 class="section-title">Digital Marketing Insights</h2>
+      <p class="section-desc">Expert advice and industry insights to help you grow your business online.</p>
     </div>
     <div class="blog-grid">
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-1.jpg" alt="10 SEO Trends for 2025">
-          <span class="blog-card-tag">SEO</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-1.jpg" alt="SEO Trends for 2025"><span class="blog-card-tag">SEO</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Saif</span>
-            <span><i class="bi bi-calendar"></i> Jan 15, 2025</span>
-          </div>
-          <h3>10 SEO Trends That Will Dominate 2025</h3>
-          <p>Stay ahead of the competition with these emerging SEO trends that will shape digital marketing in 2025.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> Jan 10, 2025</span><span><i class="bi bi-clock"></i> 7 min read</span></div>
+          <h3>10 SEO Trends for 2025</h3>
+          <p>From AI-powered search to voice optimization, these are the SEO strategies that will define success in 2025.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-2.jpg" alt="Social Media Strategy Guide">
-          <span class="blog-card-tag" style="background: var(--secondary);">Social</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-2.jpg" alt="Social Media Strategy Guide"><span class="blog-card-tag">Strategy</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Fatima</span>
-            <span><i class="bi bi-calendar"></i> Jan 12, 2025</span>
-          </div>
-          <h3>How to Build a Social Media Strategy That Actually Works</h3>
-          <p>Learn the step-by-step process for creating a social media strategy that drives engagement and conversions.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> Feb 5, 2025</span><span><i class="bi bi-clock"></i> 5 min read</span></div>
+          <h3>Social Media Strategy Guide</h3>
+          <p>A step-by-step framework for building a social media presence that generates real business results.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-3.jpg" alt="Content Marketing ROI">
-          <span class="blog-card-tag" style="background: var(--accent);">Content</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-3.jpg" alt="Content Marketing ROI"><span class="blog-card-tag">Content</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Muhammad</span>
-            <span><i class="bi bi-calendar"></i> Jan 10, 2025</span>
-          </div>
-          <h3>The Complete Guide to Content Marketing ROI</h3>
-          <p>Measure and maximize your content marketing return on investment with these proven frameworks.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> Mar 12, 2025</span><span><i class="bi bi-clock"></i> 6 min read</span></div>
+          <h3>Content Marketing ROI</h3>
+          <p>How to measure and maximize the return on your content marketing investment with the right KPIs.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-1.jpg" alt="PPC Cost Reduction">
-          <span class="blog-card-tag" style="background: #A78BFA;">PPC</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-1.jpg" alt="PPC Best Practices"><span class="blog-card-tag">PPC</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Saif</span>
-            <span><i class="bi bi-calendar"></i> Jan 8, 2025</span>
-          </div>
-          <h3>PPC Advertising: How to Reduce Your Cost Per Click</h3>
-          <p>Discover proven techniques to lower your CPC while maintaining or improving conversion rates.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> Apr 8, 2025</span><span><i class="bi bi-clock"></i> 8 min read</span></div>
+          <h3>PPC Best Practices</h3>
+          <p>Optimize your ad spend and maximize ROI with these proven PPC advertising strategies and techniques.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-2.jpg" alt="Email Marketing Automation">
-          <span class="blog-card-tag" style="background: #FBBF24; color: var(--dark);">Email</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-2.jpg" alt="Email Marketing Automation"><span class="blog-card-tag">Email</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Ayesha</span>
-            <span><i class="bi bi-calendar"></i> Jan 5, 2025</span>
-          </div>
-          <h3>Email Marketing Automation: A Beginner's Guide</h3>
-          <p>Set up your first email automation workflows and start nurturing leads on autopilot.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> May 15, 2025</span><span><i class="bi bi-clock"></i> 6 min read</span></div>
+          <h3>Email Marketing Automation</h3>
+          <p>Set up automated email sequences that nurture leads and drive conversions on autopilot.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
       <article class="blog-card">
-        <div class="blog-card-img">
-          <img src="assets/images/blog-3.jpg" alt="Brand Storytelling">
-          <span class="blog-card-tag" style="background: #F87171;">Branding</span>
-        </div>
+        <div class="blog-card-img"><img src="assets/images/blog-3.jpg" alt="Brand Identity Design"><span class="blog-card-tag">Branding</span></div>
         <div class="blog-card-body">
-          <div class="blog-card-meta">
-            <span><i class="bi bi-person"></i> Fatima</span>
-            <span><i class="bi bi-calendar"></i> Jan 3, 2025</span>
-          </div>
-          <h3>Brand Storytelling: How to Connect With Your Audience</h3>
-          <p>Learn how to craft a compelling brand story that resonates with your target audience.</p>
+          <div class="blog-card-meta"><span><i class="bi bi-calendar3"></i> Jun 20, 2025</span><span><i class="bi bi-clock"></i> 5 min read</span></div>
+          <h3>Brand Identity Design</h3>
+          <p>How to create a powerful brand identity that resonates with your target audience and stands out.</p>
           <a href="#" class="blog-card-link">Read More <i class="bi bi-arrow-right"></i></a>
         </div>
       </article>
-
     </div>
   </div>
 </section>
 
-<!-- ==================== NEWSLETTER SECTION ==================== -->
-<section class="newsletter-section">
-  <div class="newsletter-inner">
-    <div class="newsletter-left">
-      <img src="assets/images/newsletter-img.jpg" alt="Subscribe to Saif Digital Newsletter">
-    </div>
-    <div class="newsletter-right">
-      <h2>Subscribe to Our Newsletter</h2>
-      <p>Get the latest digital marketing tips and industry insights delivered to your inbox.</p>
-      <form class="newsletter-form" id="newsletterForm">
-        <input type="email" placeholder="Enter your email address" required>
-        <button type="submit">Subscribe</button>
-      </form>
-      <div class="newsletter-stats">
-        <div class="newsletter-stat">
-          <h4>15K+</h4>
-          <p>Subscribers</p>
-        </div>
-        <div class="newsletter-stat">
-          <h4>Weekly</h4>
-          <p>New Content</p>
-        </div>
-        <div class="newsletter-stat">
-          <h4>Free</h4>
-          <p>Always</p>
-        </div>
-      </div>
-    </div>
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Want to Stay Updated?</h2>
+    <p>Subscribe to our newsletter for the latest digital marketing insights delivered to your inbox.</p>
+    <a href="contact.html" class="btn-white">Subscribe Now <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg></a>
   </div>
 </section>
 
-<!-- ==================== FOOTER ==================== -->
 <footer class="footer">
   <div class="container">
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="index.html" class="header-logo-link">
-          <svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/>
-            <path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/>
-            <path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/>
-          </svg>
-          <span class="header-logo-text">Saif<span>Digital</span></span>
-        </a>
-        <p>Data-driven digital marketing agency helping businesses grow through SEO, social media, PPC, and content strategy.</p>
-        <div class="footer-social">
-          <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
-          <a href="#" aria-label="Twitter"><i class="bi bi-twitter-x"></i></a>
-          <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
-          <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
-        </div>
+        <div class="header-logo" style="margin-bottom:16px;"><a href="/" class="header-logo-link"><svg class="header-logo-svg" width="36" height="36" viewBox="0 0 36 36" fill="none"><path d="M26.4226 15.2576L0.015625 0V9.09807C0.015625 11.2195 1.18346 13.0547 2.88591 14.0386L29.2948 29.2962V20.1981C29.2948 18.0767 28.1421 16.2415 26.4245 15.2576H26.4226Z" fill="#2563EB"/><path d="M2.83615 20.1667C1.30054 19.2832 0.199062 17.6945 0 15.8594V29.2989L9.3142 23.9242L2.83805 20.1686L2.83615 20.1667Z" fill="#2563EB"/><path d="M26.4712 9.1303C28.0068 10.0138 29.1083 11.6025 29.3074 13.4376V0L19.9932 5.37467L26.4693 9.1303H26.4712Z" fill="#2563EB"/></svg><span class="header-logo-text">Saif<span>Digital</span></span></a></div>
+        <p>AI-enabled digital marketing solutions that drive measurable growth.</p>
+        <div class="footer-social"><a href="#"><i class="bi bi-linkedin"></i></a><a href="#"><i class="bi bi-twitter"></i></a><a href="#"><i class="bi bi-facebook"></i></a><a href="#"><i class="bi bi-youtube"></i></a></div>
       </div>
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="portfolio.html">Testimonials</a></li>
-          <li><a href="careers.html">Careers</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Services</h4>
-        <ul>
-          <li><a href="services/seo.html">SEO</a></li>
-          <li><a href="services/social-media.html">Social Media</a></li>
-          <li><a href="services/ppc.html">PPC</a></li>
-          <li><a href="services/email-marketing.html">Email Marketing</a></li>
-          <li><a href="services/content-marketing.html">Content Marketing</a></li>
-          <li><a href="services/brand-identity.html">Brand Identity</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Insights</h4>
-        <ul>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Contact Us</h4>
-        <ul>
-          <li>123 Digital Avenue, Tech City, TC 12345</li>
-          <li><a href="tel:+15551234567">+1 (555) 123-4567</a></li>
-          <li><a href="mailto:hello@saifdigital.com">hello@saifdigital.com</a></li>
-        </ul>
-      </div>
+      <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="about.html#testimonials">Testimonials</a></li><li><a href="about.html#awards">Awards</a></li><li><a href="careers.html">Careers</a></li></ul></div>
+      <div class="footer-col"><h4>Services</h4><ul><li><a href="services/seo.html">SEO</a></li><li><a href="services/social-media.html">Social Media</a></li><li><a href="services/ppc.html">PPC</a></li><li><a href="services/email-marketing.html">Email</a></li><li><a href="services/content-marketing.html">Content</a></li><li><a href="services/brand-identity.html">Branding</a></li></ul></div>
+      <div class="footer-col"><h4>Insights</h4><ul><li><a href="blog.html">Blog</a></li><li><a href="case-studies.html">Case Studies</a></li></ul></div>
+      <div class="footer-col"><h4>Contact Us</h4><ul><li><i class="bi bi-geo-alt"></i> 123 Digital Ave, Tech City, TC 12345</li><li><i class="bi bi-telephone"></i> +1 (555) 123-4567</li><li><i class="bi bi-envelope"></i> hello@saifdigital.com</li></ul></div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2026 Saif Digital Marketing Agency. All Rights Reserved.</p>
-      <div class="footer-bottom-links">
-        <a href="#">Terms of Use</a>
-        <a href="#">Privacy Policy</a>
-      </div>
-    </div>
+    <div class="footer-bottom"><p>&copy; 2025 Saif Digital Marketing Agency. All Rights Reserved.</p><div class="footer-bottom-links"><a href="#">Terms</a><a href="#">Privacy</a></div></div>
   </div>
 </footer>
 
-<!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
 <script src="js/main.js"></script>
-<script>
-document.getElementById('newsletterForm').addEventListener('submit', function(e) {
-  e.preventDefault();
-  alert('Thank you for subscribing!');
-  this.reset();
-});
-</script>
 </body>
 </html>
