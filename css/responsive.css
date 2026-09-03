@@ -28,6 +28,7 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   html { scroll-padding-top: 56px; }
 
   /* HEADER */
+  .site-header { width: 100vw; }
   .header-nav-inner { padding: 0 12px; height: 52px; }
   .header-logo-text { font-size: 14px; font-weight: 800; }
   .header-logo-svg { width: 22px; height: 22px; }
@@ -36,10 +37,10 @@ html, body { overflow-x: hidden; max-width: 100vw; }
   .header-mobile-panel { top: 52px; z-index: 999; }
 
   /* HERO */
-  .hero-section { padding: 70px 0 30px; }
-  .hero-inner { padding: 0 20px; gap: 16px; max-width: 100%; }
+  .hero-section { padding: 70px 0 30px; width: 100vw; }
+  .hero-inner { padding: 0 20px; gap: 16px; max-width: 100%; overflow: hidden; }
   .hero-tagline { font-size: 11px; margin-bottom: 10px; }
-  .hero-headline { font-size: 22px; line-height: 1.25; margin-bottom: 12px; }
+  .hero-headline { font-size: 20px; line-height: 1.3; margin-bottom: 12px; }
   .hero-description { font-size: 13px; line-height: 1.6; margin-bottom: 18px; max-width: 100%; }
   .hero-cta { flex-direction: column; align-items: center; gap: 10px; }
   .primary-cta { width: 100%; justify-content: center; padding: 12px 20px; font-size: 13px; }
